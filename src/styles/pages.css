@@ -1106,33 +1106,40 @@ html.intro-pending:has(.intro[data-intro]) {
 .site-header .main-nav {
   order: 2;
 }
+/* A two-segment chip: the whole control is chamfered, the active language is
+   lit in steel (a "selected" state, so it never competes with the orange
+   "you are here" chip). */
 .lang-switch {
+  --cut: 6px;
   order: 3;
   display: inline-flex;
   flex: none;
-  border: 1px solid #000;
-  border-radius: 999px;
-  overflow: hidden;
-  box-shadow: var(--bevel);
+  gap: 1px;
+  padding: 1px;
+  background: #05070a;
+  clip-path: polygon(var(--cut) 0, 100% 0, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%, 0 var(--cut));
 }
 .lang-switch a {
-  padding: 6px 10px;
+  padding: 6px 11px;
   font-family: var(--font-pixel);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   letter-spacing: 0.06em;
   color: var(--text-dim);
   text-decoration: none;
-  background: linear-gradient(180deg, #3a444e, #1b2026);
-}
-.lang-switch a + a {
-  border-left: 1px solid #000;
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.08), transparent 46%), linear-gradient(180deg, #36414b, #181d23);
+  transition: color 0.15s, background 0.15s;
 }
 .lang-switch a:hover {
   color: #fff;
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.1), transparent 46%), linear-gradient(180deg, #46525e, #20272e);
+}
+.lang-switch a:focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: -3px;
 }
 .lang-switch a[aria-current='true'] {
-  color: var(--accent-ink);
-  background: linear-gradient(180deg, var(--toxic), #4fae1f);
+  color: #0b0e11;
+  background: linear-gradient(180deg, #f4f7fa, #b8c2cc);
 }
 @media (max-width: 860px) {
   .lang-switch {
@@ -1141,6 +1148,102 @@ html.intro-pending:has(.intro[data-intro]) {
   }
   .lang-switch a {
     padding: 8px 12px;
+  }
+}
+
+/* --- "Games" menu in the header ------------------------------------------------ */
+.nav-games .caret {
+  display: inline-block;
+  font-size: 0.6rem;
+  transition: rotate 0.2s var(--ease-out);
+}
+.nav-games[aria-expanded='true'] .caret {
+  rotate: 180deg;
+}
+.main-nav .nav-games[aria-expanded='true']:not([aria-current='page']) {
+  --edge: var(--accent);
+  --stripe-color: var(--accent);
+  --stripe: 3px;
+  color: #fff;
+}
+.games-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 28px;
+  z-index: 60;
+  width: min(420px, calc(100vw - 32px));
+  padding: 12px;
+  background: linear-gradient(180deg, #232b33, #0e1216);
+  border: 1px solid var(--line-hi);
+  border-top: 2px solid var(--accent);
+  box-shadow: 0 18px 50px rgb(0 0 0 / 0.75);
+}
+.games-menu[hidden] {
+  display: none;
+}
+.games-menu .label {
+  display: block;
+  margin: 2px 4px 10px;
+}
+.games-menu ul {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.games-menu a {
+  --cut: 8px;
+  --map-accent: var(--t, var(--accent));
+  --edge: color-mix(in srgb, var(--t, var(--accent)) 35%, #05070a);
+  --stripe-color: var(--t, var(--accent));
+  --stripe: 4px;
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  align-items: center;
+  justify-content: stretch;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 14px 10px 18px;
+  color: var(--text);
+  text-align: left;
+}
+.games-menu a:hover {
+  --stripe: 8px;
+  --stripe-color: var(--t, var(--accent));
+}
+.games-menu .code {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  line-height: 1;
+  color: var(--t, var(--accent));
+}
+.games-menu .title {
+  font-family: var(--font-cond);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.games-menu .year {
+  font-family: var(--font-pixel);
+  font-size: 0.6rem;
+  color: var(--text-faint);
+}
+.games-menu a[aria-current='true'] .title::after {
+  content: ' ◆';
+  color: var(--t, var(--accent));
+}
+@media (max-width: 860px) {
+  .games-menu {
+    left: 16px;
+    right: 16px;
+    width: auto;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-games .caret {
+    transition: none;
   }
 }
 

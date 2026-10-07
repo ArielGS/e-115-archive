@@ -62,6 +62,18 @@ describe('Responsive layout', () => {
           cy.wrap($el).scrollIntoView().should('be.visible');
         });
         assertFitsWidth(w);
+
+        // The Games menu opens inside the screen and every game is tappable.
+        cy.get('[data-games-toggle]').scrollIntoView().click();
+        cy.get('[data-games-menu]').should('be.visible').and(($m) => {
+          const r = $m[0].getBoundingClientRect();
+          expect(r.left, 'menu left').to.be.at.least(0);
+          expect(r.right, 'menu right').to.be.at.most(w);
+        });
+        cy.get('[data-games-menu] a').each(($a) => {
+          expect($a[0].getBoundingClientRect().height, 'tap target').to.be.at.least(40);
+        });
+        cy.get('body').type('{esc}');
       });
 
       it('guide: spoilers and narrator fit and are tappable', () => {

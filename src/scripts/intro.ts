@@ -62,7 +62,9 @@ export function initIntro(): void {
     else {
       pct.textContent = '115';
       intro.classList.add('is-ready');
-      intro.querySelector<HTMLButtonElement>('[data-intro-enter="off"]')?.focus();
+      // Focus the default choice so Enter works, without drawing a focus ring
+      // for mouse and touch users (keyboard users still get it on Tab).
+      intro.querySelector<HTMLButtonElement>('[data-intro-enter="off"]')?.focus({ focusVisible: false } as FocusOptions);
     }
   };
   setTimeout(tick, 300);

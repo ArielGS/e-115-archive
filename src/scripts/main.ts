@@ -7,9 +7,11 @@ import { initChecklists } from './checklist';
 import { initNarrator } from './narrator';
 import { initFx } from './fx';
 import { initLang } from './lang';
+import { initGamesMenu } from './games-menu';
 
 export function boot(): void {
   initLang();
+  initGamesMenu();
   initIntro();
   initSfx();
   initTabs();
