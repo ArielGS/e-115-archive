@@ -2,19 +2,21 @@
 
 **A spoiler-safe Call of Duty Zombies guide in Spanish and English, styled like a 2000s Flash site.** Live at <https://e-115-archive.vercel.app> · Source at <https://github.com/ArielGS/e-115-archive>. The site is called *Archive 115* in English and *Archivo 115* in Spanish.
 
-Story context for Black Ops 1, 2 and 3, full guides for *Shadows of Evil*, *The Giant* and *Der Eisendrache*, bosses and lore locked behind an eye that you decide to open, and a free voice narrator to listen to every guide. Content is plain Markdown; the site turns it into the custom UI. Code and repository documentation are in English; the guides are written in both languages.
+The full Aether Saga story on one narrated page, context for World at War and Black Ops 1, 2 and 3, full guides for *Nacht der Untoten*, *Kino der Toten*, *TranZit*, *Shadows of Evil*, *The Giant* and *Der Eisendrache*, bosses and lore locked behind an eye that you decide to open, and a free voice narrator to listen to every guide. Content is plain Markdown; the site turns it into the custom UI. Code and repository documentation are in English; the guides are written in both languages.
 
 ## Features
 
 - **Two languages.** Spanish at `/`, English at `/en/`. The browser language picks the default; the ES | EN switch in the header remembers your choice and keeps you on the same page (and section).
-- **Era tabs** (BO1 / BO2 / BO3) with story context, playable crews and every map of each game.
+- **Era tabs** (WaW / BO1 / BO2 / BO3) with story context, playable crews and every map of each game.
+- **Story page** (`/historia/`, `/en/story/`): the whole Aether Saga in story order, from Nacht der Untoten to Revelations, with every twist locked, Richtofen's files and a glossary. The voice narrator reads it too.
 - **Map guides** with objective, first rounds, buildables, enemies and the main Easter egg.
 - **Spoiler eye**: bosses, lore twists and quest steps stay locked until you confirm. Progress is remembered per guide (in both languages), so the page "unlocks" as you play.
-- **Verified content**: every fact in the Black Ops III guides was checked against the Call of Duty Wiki; see [`docs/audit-bo3.md`](docs/audit-bo3.md).
-- **Voice narrator**: reads the guide with the browser's free Web Speech API, skips locked spoilers, adds lines that exist only in audio, and plays a synthesized ambience per map plus an optional "recording" effect (tape hiss, crackle, radio clicks). It picks the most natural voice the browser offers (Edge's "Natural" voices, Apple's Enhanced/Premium voices) and suggests where to get one when only robotic voices are available. No servers, no API keys.
+- **Verified content**: every fact in the guides and the story page was checked against the Call of Duty Wiki; see [`docs/audit-bo3.md`](docs/audit-bo3.md) and [`docs/audit-story-and-classic-guides.md`](docs/audit-story-and-classic-guides.md).
+- **Voice narrator**: reads the guide with the browser's free Web Speech API, skips locked spoilers, adds lines that exist only in audio, and plays a synthesized ambience per map plus an optional "recording" effect (tape hiss, crackle, radio clicks). The narrator panel can be minimised to a compact bar while it keeps reading. It picks the most natural voice the browser offers (Edge's "Natural" voices, Apple's Enhanced/Premium voices) and suggests where to get one when only robotic voices are available. No servers, no API keys.
 - **Flash-era feel**: preloader with "enter with / without sound", bevelled chrome stage, pixel fonts, scanlines, ticker, glitch titles, synthesized UI sounds (opt-in) and page wipes. Everything respects `prefers-reduced-motion`.
 - **Real images** from the Call of Duty Wiki, downloaded by a script that records the source of each file and shows it on the page.
 - Static site: no database, no CDN, no backend. Works on phones, tablets and desktops.
+- **Search-engine ready**: sitemap with `hreflang`, robots.txt, canonical links, social cards and structured data; crawlers are never redirected between languages. Setup for Google Search Console in [`docs/seo.md`](docs/seo.md).
 
 ## Quick start
 
@@ -55,14 +57,15 @@ The commands work the same in any terminal, VS Code's included (`scripts/cypress
 - **Netlify / Cloudflare Pages / Vercel**: build command `npm run build`, output folder `dist`.
 - **Any server**: `docker compose up -d`.
 
-Environment variables (see `.env.example`): `BASE_PATH` (sub-folder hosting), `SITE_URL`, `PUBLIC_REPO_URL` (shows "edit this page" links when set).
+Environment variables (see `.env.example`): `BASE_PATH` (sub-folder hosting), `SITE_URL`, `PUBLIC_GOOGLE_SITE_VERIFICATION` / `PUBLIC_BING_SITE_VERIFICATION` (free search-engine verification, see [`docs/seo.md`](docs/seo.md)), `PUBLIC_REPO_URL` (repository behind the "contribute" and "edit this page" links; defaults to <https://github.com/ArielGS/e-115-archive>).
 
 ## Project layout
 
 ```
 src/content/               ← all the writing lives here (Markdown), one folder per language
   pages/{es,en}/basics.md    home "survival manual"
-  eras/{es,en}/bo1|bo2|bo3.md  era tabs
+  pages/{es,en}/story.md     the full story page
+  eras/{es,en}/waw|bo1|bo2|bo3.md  era tabs
   maps/{es,en}/<era>/<map>.md  one file per map and language (status: guide | stub)
 src/i18n/                  UI strings, localized routes, language detection
 src/views/                 page templates shared by both languages

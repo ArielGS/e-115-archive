@@ -14,6 +14,8 @@ const STRINGS = {
     finished: 'Fin de la transmisión',
     noVoice: 'Tu navegador no tiene voz integrada. Prueba con Chrome, Edge o Safari.',
     otherVoices: 'Otros idiomas',
+    minimize: 'Minimizar narrador (el audio sigue)',
+    expand: 'Expandir narrador',
     locked: (title: string) => `Hay un expediente bloqueado: «${title}». Lo salto para no hacerte spoiler; ábrelo con el ojo cuando quieras.`,
   },
   en: {
@@ -27,6 +29,8 @@ const STRINGS = {
     finished: 'End of transmission',
     noVoice: 'Your browser has no built-in voice. Try Chrome, Edge or Safari.',
     otherVoices: 'Other languages',
+    minimize: 'Minimise narrator (audio keeps playing)',
+    expand: 'Expand narrator',
     locked: (title: string) => `There is a locked file: "${title}". I will skip it so nothing is spoiled; open it with the eye whenever you want.`,
   },
 } as const;

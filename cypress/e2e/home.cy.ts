@@ -65,6 +65,32 @@ describe('Home page', () => {
       cy.focused().should('have.attr', 'data-tab', 'bo3');
     });
 
+    it('starts the story with a World at War tab and the first guide of each older game', () => {
+      cy.visitPage('/');
+      cy.get('[role="tab"]').first().should('have.attr', 'data-tab', 'waw');
+      cy.get('#tab-waw').click();
+      cy.location('hash').should('eq', '#waw');
+      cy.get('#panel-waw').should('be.visible').within(() => {
+        cy.get('.map-card').should('have.length', 4);
+        cy.get('.map-card:not(.is-stub)').should('have.length', 1).and('contain.text', 'Nacht der Untoten');
+      });
+      cy.get('#tab-bo1').click();
+      cy.get('#panel-bo1 .map-card:not(.is-stub)').should('have.length', 1).and('contain.text', 'Kino der Toten');
+      cy.get('#tab-bo2').click();
+      cy.get('#panel-bo2 .map-card:not(.is-stub)').should('have.length', 1).and('contain.text', 'TranZit');
+      cy.get('.main-nav').contains('a', 'WaW').click();
+      cy.get('#tab-waw').should('have.attr', 'aria-selected', 'true');
+    });
+
+    it('every playable character in every game has a picture', () => {
+      cy.visitPage('/');
+      // Placeholders (.ph) are only a fallback: no crew card should need one.
+      cy.get('.crew-card').should('have.length.at.least', 20);
+      cy.get('.crew-card .ph').should('not.exist');
+      cy.get('.crew-card img').each(($img) => expect($img.attr('alt'), 'alt text').to.not.be.empty);
+      cy.get('#panel-bo2 .crew-card img').should('have.length', 4).first().should('have.attr', 'src').and('contain', '/characters/victis/');
+    });
+
     it('opens the tab from a deep link', () => {
       cy.visitPage('/#bo2');
       cy.get('#tab-bo2').should('have.attr', 'aria-selected', 'true');

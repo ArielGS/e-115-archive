@@ -50,6 +50,38 @@ describe('Voice narrator', () => {
     });
   });
 
+  it('minimises to a compact bar without stopping the audio, and expands again', () => {
+    cy.get('[data-n-ambient]').uncheck({ force: true });
+    cy.get('[data-n-follow]').uncheck({ force: true });
+    cy.contains('button', 'Escuchar guía').click();
+    cy.get('[data-narrator]').should('have.class', 'is-playing');
+    cy.speech().its('spoken').should('have.length.greaterThan', 1);
+    cy.speech().then((log) => {
+      const cancelsBefore = log.cancels;
+      const spokenBefore = log.spoken.length;
+      cy.get('[data-n-min]').should('have.attr', 'aria-expanded', 'true').click();
+      cy.get('[data-narrator]').should('have.class', 'is-min').and('have.class', 'is-open').and('have.class', 'is-playing');
+      cy.get('[data-n-min]').should('have.attr', 'aria-expanded', 'false').and('have.attr', 'aria-label', 'Expandir narrador');
+      // The compact bar keeps the transport controls; the settings are tucked away.
+      cy.get('.narrator-settings').should('not.be.visible');
+      cy.get('[data-n-play]').should('be.visible').and('have.attr', 'aria-label', 'Pausar');
+      // Reading carries on while minimised and nothing was cancelled.
+      cy.speech().its('spoken.length', READ_AHEAD).should('be.greaterThan', spokenBefore + 2);
+      cy.speech().its('cancels').should('eq', cancelsBefore);
+      cy.get('[data-narrator]').should(($n) => {
+        const r = $n[0].getBoundingClientRect();
+        expect(r.height, 'compact height').to.be.lessThan(200);
+      });
+    });
+    cy.get('[data-n-min]').click();
+    cy.get('[data-narrator]').should('not.have.class', 'is-min').and('have.class', 'is-playing');
+    cy.get('.narrator-settings').should('be.visible');
+    // Closing still stops the narrator, and a reopened panel is full size.
+    cy.get('[data-n-min]').click();
+    cy.get('[data-n-close]').click();
+    cy.get('[data-narrator]').should('not.have.class', 'is-open').and('not.have.class', 'is-playing').and('not.have.class', 'is-min');
+  });
+
   it('pauses, resumes, skips and stops', () => {
     cy.get('[data-n-ambient]').uncheck({ force: true });
     cy.get('[data-n-follow]').uncheck({ force: true });

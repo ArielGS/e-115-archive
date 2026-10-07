@@ -19,9 +19,18 @@ crew:
   - name: Floyd Campbell
     note: Boxer who does not fight clean. Shadows of Evil.
     img: /images/maps/bo3/shadows-of-evil/floyd.webp
-  - name: Primis
-    note: Young Dempsey, Nikolai, Takeo and Richtofen. Every other map.
-    img: /images/basics/primis.webp
+  - name: Tank Dempsey
+    note: American spy. The young version, from Dimension 63.
+    img: /images/characters/primis/dempsey.webp
+  - name: Nikolai Belinski
+    note: Russian spy. The young version, from Dimension 63.
+    img: /images/characters/primis/nikolai.webp
+  - name: Takeo Masaki
+    note: Japanese spy. Fights with a katana.
+    img: /images/characters/primis/takeo.webp
+  - name: Edward Richtofen
+    note: Group 935 scientist, with a plan he shares with no one.
+    img: /images/characters/primis/richtofen.webp
 ---
 
 ## What you need to know
@@ -30,7 +39,7 @@ Black Ops III (2015) tells **two stories** that end up crossing paths.
 
 The first is **Shadows of Evil**: four strangers in a 1940s city wake up with a strange mark on their hand. A man made of shadow promises them redemption if they do as he says. It has nothing to do with what came before… apparently.
 
-The second starts in **The Giant** and runs through the rest of the game. Its heroes are the **Primis**: the young versions of Dempsey, Nikolai, Takeo and Richtofen who appeared in Origins. Richtofen has a plan to break the zombie cycle across every dimension, and the others are not sure they can trust him. Mild spoiler: they are right to doubt.
+The second starts in **The Giant** and runs through the rest of the game. Its heroes are the **Primis**: the young versions of Dempsey, Nikolai, Takeo and Richtofen who appeared in Origins. Richtofen has a plan to fix a broken multiverse, and the others are not sure they can trust him. Mild spoiler: they are right to doubt.
 
 To follow BO3, one idea is enough: **there are many dimensions** with different versions of the same characters, and two ancient forces are fighting over them: the **Keepers** and the **Apothicons**, huge tentacled creatures.
 
@@ -43,7 +52,7 @@ To follow BO3, one idea is enough: **there are many dimensions** with different 
 - **Zombies Chronicles** (2017 DLC) brings back eight classic maps, remastered.
 
 :::spoiler[What Richtofen is really after]{level="lore" id="que-busca-de-verdad-richtofen"}
-The Primis Richtofen wants to gather the souls of the **old** versions of his comrades (the Ultimis) in an artifact called the **Summoning Key**. To store them, those versions have to die: that is why, in The Giant, he shoots his other self. All he says is that he does it "to secure a better tomorrow"; the full plan is revealed in Revelations.
+The Primis Richtofen wants to gather the souls of the **old** versions of his comrades (the Ultimis) in an artifact called the **Summoning Key**. To store them, those versions have to die: that is why, in The Giant, he shoots his other self. All he says is that he does it "to secure a better tomorrow". The souls end up in **the House**, in Agartha, where Doctor Monty is preparing a new reality without Apothicons; the ending of Revelations wraps it up. You have it all, behind spoilers, on the **Story** page.
 :::
 
 :::spoiler[How Shadows of Evil fits in]{level="ee" id="como-encaja-shadows-of-evil"}

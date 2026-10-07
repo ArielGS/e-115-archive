@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { detectScript, localePath, pagePath, preferredLang, splitLangPath, switchPath, t, tList, ui, LANGS } from '../../src/i18n/ui';
+import { detectScript, isCrawler, localePath, pagePath, preferredLang, splitLangPath, switchPath, t, tList, ui, LANGS } from '../../src/i18n/ui';
 
 describe('localized paths', () => {
   it('Spanish lives at the root, English under /en/', () => {
@@ -14,6 +14,8 @@ describe('localized paths', () => {
     expect(pagePath('en', 'credits')).toBe('/en/credits/');
     expect(pagePath('es', 'contribute')).toBe('/contribuir/');
     expect(pagePath('en', 'contribute')).toBe('/en/contribute/');
+    expect(pagePath('es', 'story')).toBe('/historia/');
+    expect(pagePath('en', 'story')).toBe('/en/story/');
   });
 
   it('splits the language prefix', () => {
@@ -32,6 +34,9 @@ describe('localized paths', () => {
     expect(switchPath('/creditos/', 'en')).toBe('/en/credits/');
     expect(switchPath('/en/contribute/', 'es')).toBe('/contribuir/');
     expect(switchPath('/contribuir/', 'es')).toBe('/contribuir/');
+    expect(switchPath('/historia/', 'en')).toBe('/en/story/');
+    expect(switchPath('/en/story/', 'es')).toBe('/historia/');
+    expect(switchPath('/waw/nacht-der-untoten/', 'en')).toBe('/en/waw/nacht-der-untoten/');
   });
 });
 
@@ -82,7 +87,7 @@ describe('detectScript (the inline redirect that runs in <head>)', () => {
   const alternates = { es: '/bo3/the-giant/', en: '/en/bo3/the-giant/' };
 
   /** Runs the generated script against a fake browser and returns where it redirected. */
-  function run(opts: { lang: 'es' | 'en'; saved?: string | null; langs?: string[]; detect?: boolean; hash?: string; throwOnStorage?: boolean }) {
+  function run(opts: { lang: 'es' | 'en'; saved?: string | null; langs?: string[]; detect?: boolean; hash?: string; throwOnStorage?: boolean; userAgent?: string }) {
     let redirected: string | null = null;
     const localStorage = {
       getItem: () => {
@@ -90,7 +95,7 @@ describe('detectScript (the inline redirect that runs in <head>)', () => {
         return opts.saved ?? null;
       },
     };
-    const navigator = { languages: opts.langs ?? [], language: opts.langs?.[0] ?? '' };
+    const navigator = { languages: opts.langs ?? [], language: opts.langs?.[0] ?? '', userAgent: opts.userAgent ?? 'Mozilla/5.0 (Windows NT 10.0) Chrome/130' };
     const location = { search: '', hash: opts.hash ?? '', replace: (u: string) => (redirected = u) };
     const code = detectScript({ lang: opts.lang, alternates, detect: opts.detect ?? true });
     new Function('localStorage', 'navigator', 'location', code)(localStorage, navigator, location);
@@ -125,6 +130,16 @@ describe('detectScript (the inline redirect that runs in <head>)', () => {
   it('can be turned off and never throws', () => {
     expect(run({ lang: 'es', langs: ['en-US'], detect: false })).toBeNull();
     expect(run({ lang: 'es', langs: ['en-US'], throwOnStorage: true })).toBeNull();
+  });
+
+  it('never redirects search engine crawlers, so every language gets indexed', () => {
+    const googlebot = 'Mozilla/5.0 (Linux; Android 6.0.1) Chrome/130 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)';
+    expect(run({ lang: 'es', langs: ['en-US'], userAgent: googlebot })).toBeNull();
+    expect(run({ lang: 'en', langs: ['es-ES'], userAgent: 'Mozilla/5.0 (compatible; bingbot/2.0)' })).toBeNull();
+    expect(isCrawler(googlebot)).toBe(true);
+    expect(isCrawler('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36')).toBe(false);
+    // A real English browser is still redirected.
+    expect(run({ lang: 'es', langs: ['en-US'] })).toBe('/en/bo3/the-giant/');
   });
 
   it('agrees with preferredLang', () => {

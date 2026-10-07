@@ -41,10 +41,23 @@ Los protagonistas son los **Primis**: versiones más jóvenes de los cuatro pers
 
 ::figure{src="/images/maps/bo3/the-giant/primis.webp" caption="Los Primis: Dempsey, Nikolai, Takeo y Richtofen."}
 
-- **Tank Dempsey**: espía estadounidense.
-- **Nikolai Belinski**: espía ruso.
-- **Takeo Masaki**: espía japonés. Lucha con katana.
-- **Edward Richtofen**: científico del Grupo 935, con un plan que no comparte con nadie.
+::::grid
+:::card[Tank Dempsey]{img="/images/characters/primis/dempsey.webp"}
+Espía estadounidense.
+:::
+
+:::card[Nikolai Belinski]{img="/images/characters/primis/nikolai.webp"}
+Espía ruso.
+:::
+
+:::card[Takeo Masaki]{img="/images/characters/primis/takeo.webp"}
+Espía japonés. Lucha con katana.
+:::
+
+:::card[Edward Richtofen]{img="/images/characters/primis/richtofen.webp"}
+Científico del Grupo 935, con un plan que no comparte con nadie.
+:::
+::::
 
 En la cinemática de inicio pasa algo que deja a los otros tres con la boca abierta. Si te la saltaste o no la entendiste:
 

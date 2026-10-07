@@ -7,7 +7,8 @@ const imagePath = z.string().regex(/^\/images\/.+\.(webp|png|jpe?g|svg)$/, 'must
 
 const hexColor = z.string().regex(/^#[0-9a-fA-F]{6}$/);
 
-export const ERA_IDS = ['bo1', 'bo2', 'bo3'] as const;
+/** World at War first, then the three Black Ops games: story order. */
+export const ERA_IDS = ['waw', 'bo1', 'bo2', 'bo3'] as const;
 
 export const eraSchema = z.object({
   title: z.string(),
@@ -43,6 +44,10 @@ export const mapSchema = z.object({
 export const pageSchema = z.object({
   title: z.string(),
   description: z.string().optional(),
+  /** Header image, for pages with their own hero (the story page). */
+  hero: imagePath.optional(),
+  /** One line the voice narrator says before reading the page. */
+  intro: z.string().optional(),
 });
 
 export type Era = z.infer<typeof eraSchema>;

@@ -5,7 +5,8 @@ import Intro from '../components/Intro.astro';
 import EraTabs from '../components/EraTabs.astro';
 import { entryLang } from '../lib/maps';
 import { url } from '../lib/site';
-import { localePath, t, tList, type Lang } from '../i18n/ui';
+import { website } from '../lib/seo';
+import { localePath, pagePath, t, tList, type Lang } from '../i18n/ui';
 
 interface Props {
   lang: Lang;
@@ -16,9 +17,11 @@ const basics = await getEntry('pages', `${lang}/basics`);
 if (!basics) throw new Error(`src/content/pages/${lang}/basics.md is missing`);
 const { Content: Basics } = await render(basics);
 const guides = (await getCollection('maps', (m) => entryLang(m) === lang)).filter((m) => m.data.status === 'guide').length;
+const home = new URL(url(localePath(lang, '/')), Astro.site).href;
+const structured = [website({ name: t(lang, 'site.name'), url: home, description: t(lang, 'site.description'), lang })];
 ---
 
-<Base lang={lang} page="home" nav="home" path={localePath(lang, '/')} image="/images/eras/bo3.webp">
+<Base lang={lang} page="home" nav="home" path={localePath(lang, '/')} image="/images/eras/bo3.webp" structured={structured}>
   <Intro slot="intro" lang={lang} />
 
   <section class="hero" aria-labelledby="home-title">
@@ -34,6 +37,7 @@ const guides = (await getCollection('maps', (m) => entryLang(m) === lang)).filte
         <p class="hero-sub">{t(lang, 'home.sub')}</p>
         <div class="hero-actions">
           <a class="btn btn--primary" href="#manual" data-sfx>{t(lang, 'home.cta.basics')}</a>
+          <a class="btn" href={url(pagePath(lang, 'story'))} data-sfx>{t(lang, 'home.cta.story')}</a>
           <a class="btn" href="#eras" data-sfx>{t(lang, 'home.cta.games')}</a>
           <a class="btn btn--ghost" href="#bo3" data-sfx>{t(lang, 'home.cta.guides')}</a>
         </div>

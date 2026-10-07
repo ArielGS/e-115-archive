@@ -49,6 +49,66 @@
     "page": "https://callofduty.fandom.com/wiki/File:Ultimis.png",
     "source": "Call of Duty Wiki (Fandom)"
   },
+  "/images/characters/primis/dempsey.webp": {
+    "file": "Dempsey Portrait BOIII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Dempsey_Portrait_BOIII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/characters/primis/nikolai.webp": {
+    "file": "Nikolai Portrait BOIII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Nikolai_Portrait_BOIII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/characters/primis/richtofen.webp": {
+    "file": "Richtofen Portrait BOIII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Richtofen_Portrait_BOIII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/characters/primis/takeo.webp": {
+    "file": "Takeo Portrait BOIII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Takeo_Portrait_BOIII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/characters/ultimis/dempsey.webp": {
+    "file": "Dempsey Portrait BOI.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Dempsey_Portrait_BOI.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/characters/ultimis/nikolai.webp": {
+    "file": "Nikolai Portrait BOI.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Nikolai_Portrait_BOI.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/characters/ultimis/richtofen.webp": {
+    "file": "Richtofen Portrait BOI.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Richtofen_Portrait_BOI.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/characters/ultimis/takeo.webp": {
+    "file": "Takeo Portrait BOI.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Takeo_Portrait_BOI.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/characters/victis/marlton.webp": {
+    "file": "Marlton talks to Russ Buried BOII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Marlton_talks_to_Russ_Buried_BOII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/characters/victis/misty.webp": {
+    "file": "Abigail Misty Briarton infobox BOII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Abigail_Misty_Briarton_infobox_BOII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/characters/victis/russman.webp": {
+    "file": "Russman close up Buried BOII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Russman_close_up_Buried_BOII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/characters/victis/stuhlinger.webp": {
+    "file": "Samuel J. Stuhlinger infobox BOII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Samuel_J._Stuhlinger_infobox_BOII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
   "/images/eras/bo1.webp": {
     "file": "Kino Der Toten Loading Screen.png",
     "page": "https://callofduty.fandom.com/wiki/File:Kino_Der_Toten_Loading_Screen.png",
@@ -62,6 +122,11 @@
   "/images/eras/bo3.webp": {
     "file": "Shadows of Evil Morg City Reveal Image BOIII.png",
     "page": "https://callofduty.fandom.com/wiki/File:Shadows_of_Evil_Morg_City_Reveal_Image_BOIII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/eras/waw.webp": {
+    "file": "Nacht der Untoten Overview.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:Nacht_der_Untoten_Overview.jpg",
     "source": "Call of Duty Wiki (Fandom)"
   },
   "/images/maps/bo1/ascension/thumb.webp": {
@@ -79,9 +144,64 @@
     "page": "https://callofduty.fandom.com/wiki/File:Five_Menu_Selection_BO.png",
     "source": "Call of Duty Wiki (Fandom)"
   },
+  "/images/maps/bo1/kino-der-toten/alley.webp": {
+    "file": "Kino der Toten Alley BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Kino_der_Toten_Alley_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo1/kino-der-toten/arrival.webp": {
+    "file": "MDT G935 CoD BO.png",
+    "page": "https://callofduty.fandom.com/wiki/File:MDT_G935_CoD_BO.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo1/kino-der-toten/crawler.webp": {
+    "file": "Crawler Zombie BO3.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:Crawler_Zombie_BO3.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo1/kino-der-toten/fire-pit.webp": {
+    "file": "Fire Pit BO3.PNG",
+    "page": "https://callofduty.fandom.com/wiki/File:Fire_Pit_BO3.PNG",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo1/kino-der-toten/hellhound.webp": {
+    "file": "Hellhound Kino der Toten BO3.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:Hellhound_Kino_der_Toten_BO3.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo1/kino-der-toten/hero.webp": {
+    "file": "Kino der Toten View BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Kino_der_Toten_View_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo1/kino-der-toten/mainframe.webp": {
+    "file": "Mainframe Kino der Toten BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Mainframe_Kino_der_Toten_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo1/kino-der-toten/samantha-room-ruined.webp": {
+    "file": "SamanthasRoomZombiefied.png",
+    "page": "https://callofduty.fandom.com/wiki/File:SamanthasRoomZombiefied.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo1/kino-der-toten/samantha-room.webp": {
+    "file": "SamanthasRoom.png",
+    "page": "https://callofduty.fandom.com/wiki/File:SamanthasRoom.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo1/kino-der-toten/teleporter.webp": {
+    "file": "MTD Kino der Toten BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:MTD_Kino_der_Toten_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
   "/images/maps/bo1/kino-der-toten/thumb.webp": {
     "file": "Kino Der Toten Menu Selection BO.png",
     "page": "https://callofduty.fandom.com/wiki/File:Kino_Der_Toten_Menu_Selection_BO.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo1/kino-der-toten/thundergun.webp": {
+    "file": "Thundergun model BO.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Thundergun_model_BO.png",
     "source": "Call of Duty Wiki (Fandom)"
   },
   "/images/maps/bo1/moon/thumb.webp": {
@@ -119,9 +239,89 @@
     "page": "https://callofduty.fandom.com/wiki/File:Origins_Lobby_Icon_BO2.png",
     "source": "Call of Duty Wiki (Fandom)"
   },
+  "/images/maps/bo2/tranzit/avogadro.webp": {
+    "file": "Avogadro TranZit BOII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Avogadro_TranZit_BOII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo2/tranzit/bus.webp": {
+    "file": "Bus model BOII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Bus_model_BOII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo2/tranzit/denizen.webp": {
+    "file": "Denizen Tranzit BOII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Denizen_Tranzit_BOII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo2/tranzit/diner.webp": {
+    "file": "Diner TranZit BOII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Diner_TranZit_BOII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo2/tranzit/electric-trap.webp": {
+    "file": "Electric Trap built TranZit BO2.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Electric_Trap_built_TranZit_BO2.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo2/tranzit/farm.webp": {
+    "file": "View of Farm 4 BOII.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:View_of_Farm_4_BOII.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo2/tranzit/hero.webp": {
+    "file": "Bus Depot Loading Screen BOII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Bus_Depot_Loading_Screen_BOII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo2/tranzit/jet-gun.webp": {
+    "file": "Thrustodyne Aeronautics Model 23 Menu Icon BOII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Thrustodyne_Aeronautics_Model_23_Menu_Icon_BOII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo2/tranzit/outhouse.webp": {
+    "file": "Power Plant outhouse entrance BOII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Power_Plant_outhouse_entrance_BOII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo2/tranzit/pack-a-punch.webp": {
+    "file": "Pack-a-Punch Machine Town BOII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Pack-a-Punch_Machine_Town_BOII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo2/tranzit/power.webp": {
+    "file": "Power Plant underground reactor BOII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Power_Plant_underground_reactor_BOII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo2/tranzit/prototype.webp": {
+    "file": "Nacht der Untoten outside BOII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Nacht_der_Untoten_outside_BOII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo2/tranzit/pylon.webp": {
+    "file": "NAV table Green Run BOII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:NAV_table_Green_Run_BOII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo2/tranzit/shield.webp": {
+    "file": "Assault Shield Zombies BOII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Assault_Shield_Zombies_BOII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
   "/images/maps/bo2/tranzit/thumb.webp": {
     "file": "TranZit lobby BOII.png",
     "page": "https://callofduty.fandom.com/wiki/File:TranZit_lobby_BOII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo2/tranzit/tunnel.webp": {
+    "file": "TranZit Tunnel BO2.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:TranZit_Tunnel_BO2.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo2/tranzit/turbine.webp": {
+    "file": "Turbine Infobox TranZit BOII.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:Turbine_Infobox_TranZit_BOII.jpg",
     "source": "Call of Duty Wiki (Fandom)"
   },
   "/images/maps/bo3/der-eisendrache/approach.webp": {
@@ -462,6 +662,141 @@
   "/images/maps/bo3/zetsubou-no-shima/thumb.webp": {
     "file": "Zetsubou No Shima Menu Selection BO3.png",
     "page": "https://callofduty.fandom.com/wiki/File:Zetsubou_No_Shima_Menu_Selection_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/waw/der-riese/thumb.webp": {
+    "file": "Der Riese Menu Selection WaW.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Der_Riese_Menu_Selection_WaW.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/waw/nacht-der-untoten/ascend.webp": {
+    "file": "Nacht Ascend From Darkness BO3.jpeg",
+    "page": "https://callofduty.fandom.com/wiki/File:Nacht_Ascend_From_Darkness_BO3.jpeg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/waw/nacht-der-untoten/crash.webp": {
+    "file": "Nacht der Untoten crashed B-17 WaW.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:Nacht_der_Untoten_crashed_B-17_WaW.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/waw/nacht-der-untoten/help-door.webp": {
+    "file": "Nacht Help Door BO3.jpeg",
+    "page": "https://callofduty.fandom.com/wiki/File:Nacht_Help_Door_BO3.jpeg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/waw/nacht-der-untoten/help-room.webp": {
+    "file": "Nacht der Untoten Help Room.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:Nacht_der_Untoten_Help_Room.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/waw/nacht-der-untoten/hero.webp": {
+    "file": "Nacht der Untoten View BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Nacht_der_Untoten_View_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/waw/nacht-der-untoten/marines.webp": {
+    "file": "Marines Nacht der Untoten WaW.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:Marines_Nacht_der_Untoten_WaW.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/waw/nacht-der-untoten/mystery-box.webp": {
+    "file": "Nacht der Untoten Mystery Box.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:Nacht_der_Untoten_Mystery_Box.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/waw/nacht-der-untoten/ray-gun.webp": {
+    "file": "Ray Gun 3rd person view WaW.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Ray_Gun_3rd_person_view_WaW.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/waw/nacht-der-untoten/thumb.webp": {
+    "file": "Nacht Der Untoten Menu Selection WaW.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Nacht_Der_Untoten_Menu_Selection_WaW.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/waw/nacht-der-untoten/upstairs.webp": {
+    "file": "Nacht der Untoten Upstairs.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:Nacht_der_Untoten_Upstairs.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/waw/shi-no-numa/thumb.webp": {
+    "file": "Shi No Numa Menu Selection WaW.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Shi_No_Numa_Menu_Selection_WaW.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/waw/verruckt/thumb.webp": {
+    "file": "Verruckt Menu Selection WaW.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Verruckt_Menu_Selection_WaW.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/story/children.webp": {
+    "file": "Children BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Children_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/story/earth.webp": {
+    "file": "Moon screen earth.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:Moon_screen_earth.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/story/fluffy.webp": {
+    "file": "Fluffy Origins BOII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Fluffy_Origins_BOII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/story/great-war.webp": {
+    "file": "Origins Crew Revelations Ending BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Origins_Crew_Revelations_Ending_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/story/group-935.webp": {
+    "file": "Group 935 logo WaW.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Group_935_logo_WaW.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/story/hero.webp": {
+    "file": "Kino Der Toten Loading Screen BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Kino_Der_Toten_Loading_Screen_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/story/maxis.webp": {
+    "file": "Ludvig Maxis photo Origins BOII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Ludvig_Maxis_photo_Origins_BOII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/story/meteor.webp": {
+    "file": "Shi No Numa meteor BO3.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:Shi_No_Numa_meteor_BO3.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/story/peter-mccain.webp": {
+    "file": "Peter McCain corpse BO3.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:Peter_McCain_corpse_BO3.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/story/richtofen-primis.webp": {
+    "file": "PrimisRichtofen BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:PrimisRichtofen_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/story/richtofen-ultimis.webp": {
+    "file": "WWII Richtofen Laughing Closeup BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:WWII_Richtofen_Laughing_Closeup_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/story/samantha-moon.webp": {
+    "file": "Samantha Maxis floating Moon BO.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Samantha_Maxis_floating_Moon_BO.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/story/the-house.webp": {
+    "file": "The House BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:The_House_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/story/wunderwaffe.webp": {
+    "file": "Wunderwaffe DG-2 3rd Person WaW.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Wunderwaffe_DG-2_3rd_Person_WaW.png",
     "source": "Call of Duty Wiki (Fandom)"
   }
 }

@@ -60,9 +60,9 @@ function imagesIn(file: (typeof files)[number]): string[] {
 describe('content files', () => {
   it('there is content to test, in both languages', () => {
     for (const lang of ['es', 'en']) {
-      expect(maps.filter((m) => m.lang === lang).length).toBeGreaterThanOrEqual(18);
-      expect(eras.filter((e) => e.lang === lang).map((e) => basename(e.path, '.md')).sort()).toEqual(['bo1', 'bo2', 'bo3']);
-      expect(pages.filter((p) => p.lang === lang).map((p) => basename(p.path, '.md')).sort()).toEqual(['basics', 'contribute']);
+      expect(maps.filter((m) => m.lang === lang).length).toBeGreaterThanOrEqual(22);
+      expect(eras.filter((e) => e.lang === lang).map((e) => basename(e.path, '.md')).sort()).toEqual(['bo1', 'bo2', 'bo3', 'waw']);
+      expect(pages.filter((p) => p.lang === lang).map((p) => basename(p.path, '.md')).sort()).toEqual(['basics', 'contribute', 'story']);
     }
     expect(files.every((f) => f.lang === 'es' || f.lang === 'en'), 'every file lives in an es/ or en/ folder').toBe(true);
   });
@@ -112,13 +112,23 @@ describe('maps', () => {
   });
 
   it('every era has maps', () => {
-    for (const era of ['bo1', 'bo2', 'bo3']) expect(maps.filter((m) => m.data.era === era).length).toBeGreaterThan(0);
+    for (const era of ['waw', 'bo1', 'bo2', 'bo3']) expect(maps.filter((m) => m.data.era === era).length).toBeGreaterThan(0);
   });
 
   it('the first three Black Ops III maps have full guides in both languages', () => {
     for (const lang of ['es', 'en']) {
       const guides = maps.filter((m) => m.lang === lang && m.data.era === 'bo3' && m.data.status === 'guide').map((m) => basename(m.path, '.md'));
       expect(guides.sort(), lang).toEqual(['der-eisendrache', 'shadows-of-evil', 'the-giant']);
+    }
+  });
+
+  it('the first map of World at War, Black Ops and Black Ops II has a full guide in both languages', () => {
+    for (const lang of ['es', 'en']) {
+      const first = (era: string) => maps.filter((m) => m.lang === lang && m.data.era === era).sort((a, b) => Number(a.data.order) - Number(b.data.order))[0];
+      expect(first('waw').inner, lang).toBe('waw/nacht-der-untoten.md');
+      expect(first('bo1').inner, lang).toBe('bo1/kino-der-toten.md');
+      expect(first('bo2').inner, lang).toBe('bo2/tranzit.md');
+      for (const era of ['waw', 'bo1', 'bo2']) expect(first(era).data.status, `${lang} ${era}`).toBe('guide');
     }
   });
 
@@ -137,6 +147,25 @@ describe('maps', () => {
       expect(root.querySelectorAll('.narration').length, 'narration-only lines').toBeGreaterThan(0);
       expect(m.data.intro, 'narrator intro').toBeTruthy();
       expect(m.data.hero, 'hero image').toBeTruthy();
+    });
+  });
+});
+
+describe('story page', () => {
+  describe.each(pages.filter((p) => basename(p.path, '.md') === 'story').map((p) => [p.rel, p] as const))('%s', (_rel, page) => {
+    it('is a narrated, spoiler-safe walk through every game', async () => {
+      const root = dom(await md(page.body, { lang: page.lang }));
+      const sections = [...root.querySelectorAll('h2')].map((h) => h.textContent ?? '');
+      expect(sections.length, 'enough chapters').toBeGreaterThanOrEqual(8);
+      for (const game of ['World at War', 'Black Ops II', 'Black Ops III']) {
+        expect(sections.some((t) => t.includes(game)), `a chapter for ${game}`).toBe(true);
+      }
+      expect(page.data.intro, 'narrator intro').toBeTruthy();
+      expect(page.data.hero, 'hero image').toBeTruthy();
+      expect(root.querySelectorAll('.narration').length, 'narration-only lines').toBeGreaterThan(2);
+      // Every twist stays behind the eye: plenty of locked blocks, and Richtofen has his own files.
+      expect(root.querySelectorAll('[data-spoiler]').length, 'locked spoilers').toBeGreaterThanOrEqual(10);
+      expect(root.querySelectorAll('.dossier.spoiler').length, 'locked dossiers').toBeGreaterThanOrEqual(2);
     });
   });
 });

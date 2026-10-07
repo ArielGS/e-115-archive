@@ -22,7 +22,7 @@ Instructions for AI coding agents (Claude Code, Codex, Copilot, Cursor…) and f
 
 | Path | What lives there | Edit? |
 | --- | --- | --- |
-| `src/content/{eras,maps,pages}/{es,en}/` | All guide text (Markdown + front matter) | Yes: this is where most work happens |
+| `src/content/{eras,maps,pages}/{es,en}/` | All guide text (Markdown + front matter), including the story page (`pages/*/story.md`) | Yes: this is where most work happens |
 | `src/lib/schema.ts` | Front matter schemas (shared with tests) | Carefully; update both languages' files |
 | `src/lib/remark-zombies.ts` | Markdown directives → HTML | With unit tests |
 | `src/i18n/ui.ts` | UI strings, localized routes, language detection | Add keys to **both** `es` and `en` |

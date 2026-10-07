@@ -19,9 +19,18 @@ crew:
   - name: Floyd Campbell
     note: Boxeador que no pelea limpio. Shadows of Evil.
     img: /images/maps/bo3/shadows-of-evil/floyd.webp
-  - name: Primis
-    note: Dempsey, Nikolai, Takeo y Richtofen jóvenes. Resto de mapas.
-    img: /images/basics/primis.webp
+  - name: Tank Dempsey
+    note: Espía estadounidense. Versión joven, de la Dimensión 63.
+    img: /images/characters/primis/dempsey.webp
+  - name: Nikolai Belinski
+    note: Espía ruso. Versión joven, de la Dimensión 63.
+    img: /images/characters/primis/nikolai.webp
+  - name: Takeo Masaki
+    note: Espía japonés. Lucha con katana.
+    img: /images/characters/primis/takeo.webp
+  - name: Edward Richtofen
+    note: Científico del Grupo 935, con un plan que no comparte con nadie.
+    img: /images/characters/primis/richtofen.webp
 ---
 
 ## Lo que tienes que saber
@@ -30,7 +39,7 @@ Black Ops III (2015) cuenta **dos historias** que acaban cruzándose.
 
 La primera es **Shadows of Evil**: cuatro desconocidos de una ciudad de los años 40 despiertan con una marca extraña en la mano. Un hombre vestido de sombra les promete redención si hacen lo que él dice. No tiene nada que ver con lo anterior… en apariencia.
 
-La segunda empieza en **The Giant** y sigue el resto del juego. Protagonizan los **Primis**: las versiones jóvenes de Dempsey, Nikolai, Takeo y Richtofen que aparecieron en Origins. Richtofen tiene un plan para romper el ciclo de los zombis en todas las dimensiones, y los demás no saben si fiarse de él. Spoiler leve: hacen bien en dudar.
+La segunda empieza en **The Giant** y sigue el resto del juego. Protagonizan los **Primis**: las versiones jóvenes de Dempsey, Nikolai, Takeo y Richtofen que aparecieron en Origins. Richtofen tiene un plan para arreglar un multiverso roto, y los demás no saben si fiarse de él. Spoiler leve: hacen bien en dudar.
 
 Para entender BO3 basta con esta idea: **existen muchas dimensiones** con versiones distintas de los mismos personajes, y hay dos fuerzas antiguas peleando por ellas: los **Guardianes** (Keepers) y los **Apothicons**, unas criaturas enormes de tentáculos.
 
@@ -43,7 +52,7 @@ Para entender BO3 basta con esta idea: **existen muchas dimensiones** con versio
 - **Zombies Chronicles** (DLC de 2017) trae remasterizados ocho mapas clásicos.
 
 :::spoiler[Qué busca de verdad Richtofen]{level="lore"}
-El Richtofen de los Primis quiere reunir las almas de las versiones **antiguas** de sus compañeros (los Ultimis) en un artefacto llamado la **Llave de Invocación**. Para guardarlas, esas versiones tienen que morir: por eso en The Giant dispara a su otro yo. Él solo dice que lo hace "para asegurar un mañana mejor"; el plan completo se desvela en Revelations.
+El Richtofen de los Primis quiere reunir las almas de las versiones **antiguas** de sus compañeros (los Ultimis) en un artefacto llamado la **Llave de Invocación**. Para guardarlas, esas versiones tienen que morir: por eso en The Giant dispara a su otro yo. Él solo dice que lo hace "para asegurar un mañana mejor". Las almas acaban en **la Casa**, en Agartha, donde el Doctor Monty prepara una realidad nueva sin Apothicons; el final de Revelations lo cierra. Lo tienes completo, bajo spoiler, en la página **Historia**.
 :::
 
 :::spoiler[Cómo encaja Shadows of Evil]{level="ee"}

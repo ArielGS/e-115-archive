@@ -113,8 +113,20 @@ export function initNarrator(): void {
   const voiceTip = $<HTMLElement>('[data-n-voice-tip]');
   const scope = $<HTMLCanvasElement>('[data-n-scope]');
 
+  const minBtn = $<HTMLButtonElement>('[data-n-min]');
+  // Minimising only hides the panel's details: playback, ambience and the
+  // recording effect carry on. Closing (✕) is what stops the narrator.
+  const setMinimized = (min: boolean) => {
+    panel.classList.toggle('is-min', min);
+    minBtn.setAttribute('aria-expanded', String(!min));
+    minBtn.setAttribute('aria-label', min ? L.expand : L.minimize);
+    minBtn.title = min ? L.expand : L.minimize;
+  };
+  minBtn.addEventListener('click', () => setMinimized(!panel.classList.contains('is-min')));
+
   const setOpen = (open: boolean) => {
     panel.classList.toggle('is-open', open);
+    if (!open) setMinimized(false);
     document.querySelectorAll('[data-narrator-open]').forEach((b) => b.setAttribute('aria-expanded', String(open)));
   };
   document.querySelectorAll('[data-narrator-open]').forEach((b) =>

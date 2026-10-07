@@ -3,6 +3,7 @@ import { getCollection, getEntry, render } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Narrator from '../components/Narrator.astro';
 import { url, editUrl } from '../lib/site';
+import { article, breadcrumbs } from '../lib/seo';
 import { neighbours, mapPath, mapKey, entryLang, type MapEntry } from '../lib/maps';
 import { localePath, pagePath, t } from '../i18n/ui';
 
@@ -29,12 +30,40 @@ const facts = [
   ...d.facts,
   ...(d.difficulty ? [{ label: t(lang, 'map.difficulty'), value: '★'.repeat(d.difficulty) + '☆'.repeat(5 - d.difficulty) }] : []),
 ];
+const sentence = (s: string) => (/[.!?…]$/.test(s.trim()) ? s.trim() : `${s.trim()}.`);
+const abs = (p: string) => new URL(url(p), Astro.site).href;
+const seoTitle = isGuide ? t(lang, 'seo.guideTitle', { title: d.title, game: era.data.title }) : d.title;
+const seoDescription = isGuide ? t(lang, 'seo.guideDesc', { title: d.title, game: era.data.title, tagline: sentence(d.tagline) }) : d.tagline;
+const structured = [
+  ...(isGuide
+    ? [
+        article({
+          headline: seoTitle,
+          description: seoDescription,
+          url: abs(mapPath(entry)),
+          image: abs(hero),
+          lang,
+          site: t(lang, 'site.name'),
+          siteUrl: abs(localePath(lang, '/')),
+          about: `Call of Duty: ${era.data.title}`,
+        }),
+      ]
+    : []),
+  breadcrumbs([
+    { name: t(lang, 'site.name'), url: abs(localePath(lang, '/')) },
+    { name: era.data.title, url: abs(eraHome) },
+    { name: d.title, url: abs(mapPath(entry)) },
+  ]),
+];
 ---
 
 <Base
   lang={lang}
-  title={d.title}
-  description={d.tagline}
+  title={seoTitle}
+  description={seoDescription}
+  noindex={!isGuide}
+  ogType={isGuide ? 'article' : 'website'}
+  structured={structured}
   page={`map:${key}`}
   path={mapPath(entry)}
   accent={d.accent}

@@ -1,8 +1,9 @@
 ---
 import { getEntry, render } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import { SITE } from '../lib/site';
-import { pagePath, t, type Lang } from '../i18n/ui';
+import { SITE, url } from '../lib/site';
+import { localePath, pagePath, t, type Lang } from '../i18n/ui';
+import { breadcrumbs } from '../lib/seo';
 
 interface Props {
   lang: Lang;
@@ -11,6 +12,13 @@ const { lang } = Astro.props;
 const page = await getEntry('pages', `${lang}/contribute`);
 if (!page) throw new Error(`src/content/pages/${lang}/contribute.md is missing`);
 const { Content } = await render(page);
+const abs = (p: string) => new URL(url(p), Astro.site).href;
+const structured = [
+  breadcrumbs([
+    { name: t(lang, 'site.name'), url: abs(localePath(lang, '/')) },
+    { name: page.data.title, url: abs(pagePath(lang, 'contribute')) },
+  ]),
+];
 ---
 
 <Base
@@ -20,6 +28,7 @@ const { Content } = await render(page);
   page="contribute"
   nav="contribute"
   path={pagePath(lang, 'contribute')}
+  structured={structured}
 >
   <section class="section">
     <div class="sec-head">

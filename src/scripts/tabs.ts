@@ -1,4 +1,4 @@
-// Era tabs (BO1 / BO2 / BO3) on the home page. The URL hash (#bo2) selects
+// Era tabs (WaW / BO1 / BO2 / BO3) on the home page. The URL hash (#bo2) selects
 // a tab so each era can be linked directly.
 import { blip } from './sfx';
 

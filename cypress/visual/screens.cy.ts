@@ -7,6 +7,12 @@ const shots: [string, string, (() => void)?][] = [
   ['/bo3/the-giant/', 'giant'],
   ['/bo3/der-eisendrache/', 'de'],
   ['/bo2/origins/', 'stub'],
+  ['/#waw', 'home-waw'],
+  ['/#bo2', 'home-bo2'],
+  ['/historia/', 'story'],
+  ['/waw/nacht-der-untoten/', 'nacht'],
+  ['/bo1/kino-der-toten/', 'kino'],
+  ['/bo2/tranzit/', 'tranzit'],
 ];
 
 const settle = () =>
@@ -44,6 +50,20 @@ describe('screens', () => {
     cy.get('.narrator-fab').click();
     cy.wait(600);
     cy.screenshot('narrator', { capture: 'viewport', overwrite: true });
+    cy.get('[data-n-min]').click();
+    cy.wait(400);
+    cy.screenshot('narrator-minimised', { capture: 'viewport', overwrite: true });
+  });
+  it('character portraits', () => {
+    cy.visitPage('/#bo2');
+    settle();
+    cy.get('#panel-bo2 .crew').scrollIntoView().wait(600).screenshot('crew-bo2', { overwrite: true });
+    cy.visitPage('/#bo3');
+    settle();
+    cy.get('#panel-bo3 .crew').scrollIntoView().wait(600).screenshot('crew-bo3', { overwrite: true });
+    cy.visitPage('/bo1/kino-der-toten/');
+    settle();
+    cy.get('.prose .card-grid').first().scrollIntoView().wait(800).screenshot('guide-portraits-kino', { overwrite: true });
   });
   it('mobile', () => {
     cy.viewport(390, 844);
@@ -53,5 +73,10 @@ describe('screens', () => {
     cy.visitPage('/bo3/the-giant/');
     cy.wait(800);
     cy.screenshot('mobile-giant', { capture: 'viewport', overwrite: true });
+    cy.visitPage('/historia/', { speech: true });
+    cy.get('.narrator-fab').click();
+    cy.get('[data-n-min]').click();
+    cy.wait(600);
+    cy.screenshot('mobile-story-narrator-minimised', { capture: 'viewport', overwrite: true });
   });
 });

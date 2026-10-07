@@ -41,10 +41,23 @@ The heroes are the **Primis**: younger versions of the four classic characters, 
 
 ::figure{src="/images/maps/bo3/the-giant/primis.webp" caption="The Primis: Dempsey, Nikolai, Takeo and Richtofen."}
 
-- **Tank Dempsey**: American spy.
-- **Nikolai Belinski**: Russian spy.
-- **Takeo Masaki**: Japanese spy. Fights with a katana.
-- **Edward Richtofen**: Group 935 scientist, with a plan he shares with no one.
+::::grid
+:::card[Tank Dempsey]{img="/images/characters/primis/dempsey.webp"}
+American spy.
+:::
+
+:::card[Nikolai Belinski]{img="/images/characters/primis/nikolai.webp"}
+Russian spy.
+:::
+
+:::card[Takeo Masaki]{img="/images/characters/primis/takeo.webp"}
+Japanese spy. Fights with a katana.
+:::
+
+:::card[Edward Richtofen]{img="/images/characters/primis/richtofen.webp"}
+Group 935 scientist, with a plan he shares with no one.
+:::
+::::
 
 Something happens in the opening cutscene that leaves the other three speechless. If you skipped it or did not follow it:
 
