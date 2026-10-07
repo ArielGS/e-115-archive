@@ -26,6 +26,8 @@ Archivo 115 es de código abierto y bilingüe. Cada guía es **un archivo Markdo
 | `:::grid` + `:::card[Título]{img="…"}` | Rejilla de tarjetas. |
 | `:::quote{by="Personaje"}` | Cita de un personaje. |
 | `::figure{src="…" caption="…"}` | Imagen con pie de foto y crédito automático. Añade `wide` para que no se incline. |
+| `:::checklist[Título]{id="…"}` | Convierte una lista numerada en pasos que se pueden marcar. El progreso se guarda por `id`: usa el mismo en los dos idiomas. Va siempre dentro de un spoiler. |
+| `:::card[…]{href="…"}` | Hace que toda la tarjeta enlace a un artículo de la Call of Duty Wiki (el único enlace externo permitido). |
 
 Un bloque se cierra con `:::`. Si anidas bloques (un spoiler dentro de otro), el de fuera necesita más dos puntos: `::::spoiler` … `::::`.
 

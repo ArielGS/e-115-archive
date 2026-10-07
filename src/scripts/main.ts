@@ -3,6 +3,7 @@ import { initIntro } from './intro';
 import { initSfx } from './sfx';
 import { initTabs } from './tabs';
 import { initSpoilers } from './spoilers';
+import { initChecklists } from './checklist';
 import { initNarrator } from './narrator';
 import { initFx } from './fx';
 import { initLang } from './lang';
@@ -13,6 +14,7 @@ export function boot(): void {
   initSfx();
   initTabs();
   initSpoilers();
+  initChecklists();
   initNarrator();
   initFx();
 }

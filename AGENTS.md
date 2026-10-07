@@ -9,11 +9,11 @@ Instructions for AI coding agents (Claude Code, Codex, Copilot, Cursor…) and f
 ## Golden rules
 
 1. **Never invent game facts.** Every factual claim in `src/content/` (locations, costs, rounds, quest steps, quotes, story events, release dates) must be verifiable on the [Call of Duty Wiki](https://callofduty.fandom.com/). If you cannot verify it, do not write it. Tips and opinions must read as tips ("good spot to…"), never as facts. List the wiki pages you used in the pull request.
-2. **Spoilers stay locked.** Bosses, story twists and Easter egg steps go inside `:::spoiler` or a locked `:::dossier`. Never put a `##` heading inside a spoiler (it leaks into the table of contents). Never reveal a locked dossier's real name in its `codename` or `teaser`.
+2. **Spoilers stay locked.** Bosses, story twists and Easter egg steps go inside `:::spoiler` or a locked `:::dossier`. Never put a `##` heading inside a spoiler (it leaks into the table of contents). Never reveal a locked dossier's real name in its `codename` or `teaser`. Quest checklists (`:::checklist`) also go inside a spoiler, and keep the same `id` and number of steps in both languages.
 3. **Both languages, always in sync.** Any change to `src/content/**/es/…` needs the equivalent change in `src/content/**/en/…` (and the other way round): same files, same front matter data, same images, same spoiler/dossier `id`s, same number of facts. English files reuse the Spanish ids. The content tests enforce this.
 4. **Code in English, content in the reader's language.** Identifiers, comments, commit messages and all repository documentation (README, CONTRIBUTING, `docs/`, `.github/` templates, this file) are in English only; in them the project is "Archive 115". Spanish belongs only in `src/content/**/es/` and the Spanish UI strings. Guide text is in neutral Spanish (`tú` / `ustedes`, never `vosotros`) or plain English.
 5. **Every behaviour change ships with tests.** Logic → Vitest (`tests/unit`). User flows → Cypress (`cypress/e2e`). Do not delete or weaken a test to make it pass; fix the code, or explain to the human why the test was wrong.
-6. **Stay static and self-contained.** No servers, no API keys, no third-party scripts or CDNs, no analytics, no video embeds or video links. Fonts come from `@fontsource`, images from `public/images`.
+6. **Stay static and self-contained.** No servers, no API keys, no third-party scripts or CDNs, no analytics, no video embeds or video links. The only external links content may add are Call of Duty Wiki articles (character cards use `href`); the site is a guide, not a wiki. Fonts come from `@fontsource`, images from `public/images`.
 7. **Real images, always credited.** Images are only added through `scripts/images.manifest.json` + `npm run images`, which downloads them and writes `src/data/image-credits.json`. Never hand-edit the credits file and never commit an image without a credit.
 8. **Accessibility and motion.** Keep text contrast, `alt` text, keyboard access and `prefers-reduced-motion` support. New animations must switch off under reduced motion.
 9. **Responsive is not optional.** Every page must work from 375 px phones to large desktops with no horizontal scroll. `cypress/e2e/responsive.cy.ts` checks six devices.
@@ -22,7 +22,7 @@ Instructions for AI coding agents (Claude Code, Codex, Copilot, Cursor…) and f
 
 | Path | What lives there | Edit? |
 | --- | --- | --- |
-| `src/content/{eras,maps,pages}/{es,en}/` | All guide text (Markdown + front matter), including the story page (`pages/*/story.md`) | Yes: this is where most work happens |
+| `src/content/{eras,maps,pages}/{es,en}/` | All guide text (Markdown + front matter), including the story page (`pages/*/story.md`) and the quest checklists (`pages/*/quests.md`) | Yes: this is where most work happens |
 | `src/lib/schema.ts` | Front matter schemas (shared with tests) | Carefully; update both languages' files |
 | `src/lib/remark-zombies.ts` | Markdown directives → HTML | With unit tests |
 | `src/i18n/ui.ts` | UI strings, localized routes, language detection | Add keys to **both** `es` and `en` |

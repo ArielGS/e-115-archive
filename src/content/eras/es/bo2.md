@@ -10,15 +10,19 @@ crew:
   - name: Samuel Stuhlinger
     note: Exmiembro de una secta que comía zombis. Oye una voz en su cabeza… y no está loco.
     img: /images/characters/victis/stuhlinger.webp
+    wiki: https://callofduty.fandom.com/wiki/Samuel_J._Stuhlinger
   - name: Marlton Johnson
     note: Un cerebrito de buen corazón, superviviente de Nuketown.
     img: /images/characters/victis/marlton.webp
+    wiki: https://callofduty.fandom.com/wiki/Marlton_Johnson
   - name: Misty Briarton
     note: Vaquera dura y directa.
     img: /images/characters/victis/misty.webp
+    wiki: https://callofduty.fandom.com/wiki/Abigail_%22Misty%22_Briarton
   - name: Russman
     note: Exagente de Broken Arrow. Años de Elemento 115 le dejaron la mente tocada.
     img: /images/characters/victis/russman.webp
+    wiki: https://callofduty.fandom.com/wiki/Russman
 ---
 
 ## Lo que tienes que saber

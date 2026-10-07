@@ -51,6 +51,12 @@ The container holds a **frozen Tank Dempsey**: not the Primis one, but the **Ult
 
 ## The castle
 
+::figure{src="/images/maps/bo3/der-eisendrache/castle.webp" caption="Concept art of Griffin Castle." wide}
+
+::figure{src="/images/maps/bo3/der-eisendrache/view-2.webp" caption="One of the two cable cars in the starting room."}
+
+::figure{src="/images/maps/bo3/der-eisendrache/undercroft.webp" caption="Concept art of the Undercroft."}
+
 - **Gondolas:** there are two in the starting room. Zombies sometimes drop a **fuse**; use it to call a gondola, which arrives carrying a power-up or a weapon (and sometimes a zombie).
 - **Courtyards (lower and upper):** the castle's central outdoor areas.
 - **Bastion:** an outdoor area with the **Death Ray**, a huge trap.
@@ -186,6 +192,8 @@ In the fight it uses the powers of the **four bows**: a rain of skulls, skeleton
 ## The full story
 
 :::spoiler[The secret quest: My Brother's Keeper]{level="ee" id="la-mision-secreta-my-brother-s-keeper"}
+
+::figure{src="/images/maps/bo3/der-eisendrache/boss-concept.webp" caption="Concept art of the final fight."}
 The main quest is called **My Brother's Keeper** and it can be completed **with any number of players**, solo included. You need: one upgraded bow per player, the Ragnarok DG-4 built and the Death Ray used at least once.
 
 1. **The beacons:** with the normal bow, shoot the electrified rods on the Undercroft teleporter.

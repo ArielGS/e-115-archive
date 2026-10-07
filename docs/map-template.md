@@ -11,7 +11,7 @@
 #   Enemies and bosses             → Enemigos y jefes
 # The Spanish narrator intro starts with "Transmisión del Archivo ciento quince."
 title: "Map name"
-era: bo3 # waw | bo1 | bo2 | bo3
+era: bo3 # waw | bo1 | bo2 | bo3 | bo4
 order: 4 # position within its game
 status: guide # guide = full guide | stub = pending entry
 released: "2016-04-19"

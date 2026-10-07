@@ -141,6 +141,50 @@ describe('other directives', () => {
   });
 });
 
+describe(':::checklist', () => {
+  const SRC = ':::checklist[La misión]{id="test-quest"}\n1. **Primero** algo.\n2. Luego otra cosa.\n   - una pista\n3. Y al final.\n:::';
+
+  it('turns an ordered list into tickable steps with stable ids and a progress bar', async () => {
+    const root = dom(await md(SRC));
+    const list = root.querySelector('[data-checklist]')!;
+    expect(list.getAttribute('data-checklist')).toBe('test-quest');
+    expect(list.getAttribute('data-total')).toBe('3');
+    expect(list.querySelector('.checklist-title')!.textContent).toBe('La misión');
+    expect(list.querySelector('[data-checklist-count]')!.textContent).toBe('0/3');
+    expect(list.querySelector('[data-checklist-reset]')!.textContent).toBe('Reiniciar');
+    const boxes = [...list.querySelectorAll('input[type="checkbox"]')];
+    expect(boxes.map((b) => b.getAttribute('data-check'))).toEqual(['test-quest:1', 'test-quest:2', 'test-quest:3']);
+    expect(boxes[0].getAttribute('aria-label')).toBe('Paso 1: Primero algo.');
+    // nested hints stay as a normal list, without their own checkbox
+    expect(list.querySelectorAll('li.checklist-step')).toHaveLength(3);
+    expect(list.querySelector('.checklist-text ul li')!.textContent).toBe('una pista');
+  });
+
+  it('uses English labels and rejects duplicates or missing lists', async () => {
+    const en = dom(await md(SRC, { lang: 'en' }));
+    expect(en.querySelector('[data-checklist-reset]')!.textContent).toBe('Reset');
+    expect(en.querySelector('input')!.getAttribute('aria-label')).toMatch(/^Step 1: /);
+    await expect(md(SRC + '\n\n' + SRC)).rejects.toThrow(/duplicate checklist id/);
+    await expect(md(':::checklist{id="x"}\nSin lista.\n:::')).rejects.toThrow(/needs a list/);
+    await expect(md(':::checklist\n1. a\n:::')).rejects.toThrow(/needs id/);
+  });
+});
+
+describe(':::card links', () => {
+  it('makes the whole card a link to the Call of Duty Wiki, opening in a new tab', async () => {
+    const root = dom(await md(':::card[Russman]{img="/images/characters/victis/russman.webp" href="https://callofduty.fandom.com/wiki/Russman"}\nExagente.\n:::'));
+    const card = root.querySelector('a.card')!;
+    expect(card.getAttribute('href')).toBe('https://callofduty.fandom.com/wiki/Russman');
+    expect(card.getAttribute('target')).toBe('_blank');
+    expect(card.getAttribute('rel')).toBe('noopener');
+    expect(card.querySelector('.card-link')!.textContent).toContain('Call of Duty Wiki');
+  });
+
+  it('refuses links anywhere else: the site is a guide, not a link list', async () => {
+    await expect(md(':::card[X]{href="https://example.com"}\nY\n:::')).rejects.toThrow(/only point to the Call of Duty Wiki/);
+  });
+});
+
 describe('language', () => {
   it('uses English labels for English content', async () => {
     const root = dom(

@@ -42,19 +42,19 @@ Los protagonistas son los **Primis**: versiones más jóvenes de los cuatro pers
 ::figure{src="/images/maps/bo3/the-giant/primis.webp" caption="Los Primis: Dempsey, Nikolai, Takeo y Richtofen."}
 
 ::::grid
-:::card[Tank Dempsey]{img="/images/characters/primis/dempsey.webp"}
+:::card[Tank Dempsey]{img="/images/characters/primis/dempsey.webp" href="https://callofduty.fandom.com/wiki/%22Tank%22_Dempsey_(Primis)"}
 Espía estadounidense.
 :::
 
-:::card[Nikolai Belinski]{img="/images/characters/primis/nikolai.webp"}
+:::card[Nikolai Belinski]{img="/images/characters/primis/nikolai.webp" href="https://callofduty.fandom.com/wiki/Nikolai_Belinski_(Primis)"}
 Espía ruso.
 :::
 
-:::card[Takeo Masaki]{img="/images/characters/primis/takeo.webp"}
+:::card[Takeo Masaki]{img="/images/characters/primis/takeo.webp" href="https://callofduty.fandom.com/wiki/Takeo_Masaki_(Primis)"}
 Espía japonés. Lucha con katana.
 :::
 
-:::card[Edward Richtofen]{img="/images/characters/primis/richtofen.webp"}
+:::card[Edward Richtofen]{img="/images/characters/primis/richtofen.webp" href="https://callofduty.fandom.com/wiki/Edward_Richtofen_(Primis)"}
 Científico del Grupo 935, con un plan que no comparte con nadie.
 :::
 ::::
@@ -68,10 +68,16 @@ Dempsey le ve agacharse sobre el cadáver con algo en la mano. En Der Eisendrach
 :::
 
 :::spoiler[¿Por qué hay dos Richtofen?]{level="lore"}
+
+::figure{src="/images/maps/bo3/the-giant/ultimis.webp" caption="Los Ultimis: las versiones antiguas de los cuatro."}
 La saga funciona con **dimensiones paralelas**. Los Ultimis (los de World at War y Black Ops 1) y los Primis (los de Origins y Black Ops III) son las mismas personas en dimensiones distintas. El Richtofen joven está reuniendo las almas de las versiones antiguas, y para guardarlas en la Llave primero tienen que morir. Por qué lo hace se va descubriendo en los mapas siguientes.
 :::
 
 ## La fábrica
+
+::figure{src="/images/maps/bo3/the-giant/concept.webp" caption="Arte conceptual de la fábrica." wide}
+
+::figure{src="/images/maps/bo3/the-giant/view-3.webp" caption="Uno de los hornos de la fábrica."}
 
 ::figure{src="/images/maps/bo3/the-giant/hero.webp" caption="Plano de la fábrica: la zona inicial, el patio y los tres teletransportadores." wide}
 
@@ -182,6 +188,8 @@ Busca tres **frascos verdes brillantes con espinas dentro** y mantén pulsado el
 :::
 
 ## Consejos para jugar en pareja
+
+::figure{src="/images/maps/bo3/the-giant/cast.webp" caption="Las voces de los Primis: Steve Blum (Dempsey), Tom Kane (Takeo), Nolan North (Richtofen) y Fred Tatasciore (Nikolai)."}
 
 - **Para enlazar teletransportadores, dividan el trabajo:** uno activa el teletransportador y el otro despeja el camino de vuelta a la zona inicial.
 - **El puente es un buen cuello de botella**, pero no el mejor sitio para quedarse rodeado.

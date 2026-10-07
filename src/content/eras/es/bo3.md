@@ -10,27 +10,35 @@ crew:
   - name: Nero Blackstone
     note: Mago en decadencia. Shadows of Evil.
     img: /images/maps/bo3/shadows-of-evil/nero.webp
+    wiki: https://callofduty.fandom.com/wiki/Nero_Blackstone
   - name: Jessica Rose
     note: Bailarina de burlesque con ambiciones de estrella. Shadows of Evil.
     img: /images/maps/bo3/shadows-of-evil/jessica.webp
+    wiki: https://callofduty.fandom.com/wiki/Jessica_Rose
   - name: Jack Vincent
     note: Detective corrupto. Shadows of Evil.
     img: /images/maps/bo3/shadows-of-evil/jack.webp
+    wiki: https://callofduty.fandom.com/wiki/Jack_Vincent
   - name: Floyd Campbell
     note: Boxeador que no pelea limpio. Shadows of Evil.
     img: /images/maps/bo3/shadows-of-evil/floyd.webp
+    wiki: https://callofduty.fandom.com/wiki/Floyd_Campbell
   - name: Tank Dempsey
     note: Espía estadounidense. Versión joven, de la Dimensión 63.
     img: /images/characters/primis/dempsey.webp
+    wiki: https://callofduty.fandom.com/wiki/%22Tank%22_Dempsey_(Primis)
   - name: Nikolai Belinski
     note: Espía ruso. Versión joven, de la Dimensión 63.
     img: /images/characters/primis/nikolai.webp
+    wiki: https://callofduty.fandom.com/wiki/Nikolai_Belinski_(Primis)
   - name: Takeo Masaki
     note: Espía japonés. Lucha con katana.
     img: /images/characters/primis/takeo.webp
+    wiki: https://callofduty.fandom.com/wiki/Takeo_Masaki_(Primis)
   - name: Edward Richtofen
     note: Científico del Grupo 935, con un plan que no comparte con nadie.
     img: /images/characters/primis/richtofen.webp
+    wiki: https://callofduty.fandom.com/wiki/Edward_Richtofen_(Primis)
 ---
 
 ## Lo que tienes que saber

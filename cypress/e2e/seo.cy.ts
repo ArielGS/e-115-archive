@@ -27,7 +27,7 @@ describe('Search engines', () => {
       const doc = new DOMParser().parseFromString(res.body, 'application/xml');
       expect(doc.querySelector('parsererror')).to.eq(null);
       const locs = [...doc.getElementsByTagName('loc')].map((l) => local(l.textContent!));
-      ['/', '/en/', '/historia/', '/en/story/', '/waw/nacht-der-untoten/', '/en/bo1/kino-der-toten/', '/bo2/tranzit/', '/bo3/the-giant/'].forEach(
+      ['/', '/en/', '/historia/', '/en/story/', '/waw/nacht-der-untoten/', '/en/bo1/kino-der-toten/', '/bo2/tranzit/', '/bo3/the-giant/', '/misiones/', '/en/quests/', '/bo4/blood-of-the-dead/'].forEach(
         (path) => expect(locs, path).to.include(path),
       );
       // Pending map entries are not offered to search engines.

@@ -47,19 +47,19 @@ It is **2035**, ten years after the Earth was shattered at the end of *Moon*. Yo
 The heroes are **Victis**, four survivors who met by chance:
 
 ::::grid
-:::card[Samuel J. Stuhlinger]{img="/images/characters/victis/stuhlinger.webp"}
+:::card[Samuel J. Stuhlinger]{img="/images/characters/victis/stuhlinger.webp" href="https://callofduty.fandom.com/wiki/Samuel_J._Stuhlinger"}
 A former member of **The Flesh**, a cult that ate zombie meat. He hears a voice in his head… and he is not crazy.
 :::
 
-:::card[Abigail "Misty" Briarton]{img="/images/characters/victis/misty.webp"}
+:::card[Abigail "Misty" Briarton]{img="/images/characters/victis/misty.webp" href="https://callofduty.fandom.com/wiki/Abigail_%22Misty%22_Briarton"}
 A tough, straight-talking cowgirl.
 :::
 
-:::card[Marlton Johnson]{img="/images/characters/victis/marlton.webp"}
+:::card[Marlton Johnson]{img="/images/characters/victis/marlton.webp" href="https://callofduty.fandom.com/wiki/Marlton_Johnson"}
 A kind-hearted nerd, sole survivor of a nuclear incident at Camp Edward (the *Nuketown Zombies* map).
 :::
 
-:::card[Russman]{img="/images/characters/victis/russman.webp"}
+:::card[Russman]{img="/images/characters/victis/russman.webp" href="https://callofduty.fandom.com/wiki/Russman"}
 A former agent of **Broken Arrow**, a secret US research division. Years of exposure to Element 115 left his mind badly damaged.
 :::
 ::::

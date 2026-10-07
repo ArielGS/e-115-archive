@@ -16,6 +16,8 @@ describe('localized paths', () => {
     expect(pagePath('en', 'contribute')).toBe('/en/contribute/');
     expect(pagePath('es', 'story')).toBe('/historia/');
     expect(pagePath('en', 'story')).toBe('/en/story/');
+    expect(pagePath('es', 'quests')).toBe('/misiones/');
+    expect(pagePath('en', 'quests')).toBe('/en/quests/');
   });
 
   it('splits the language prefix', () => {
@@ -36,6 +38,7 @@ describe('localized paths', () => {
     expect(switchPath('/contribuir/', 'es')).toBe('/contribuir/');
     expect(switchPath('/historia/', 'en')).toBe('/en/story/');
     expect(switchPath('/en/story/', 'es')).toBe('/historia/');
+    expect(switchPath('/misiones/', 'en')).toBe('/en/quests/');
     expect(switchPath('/waw/nacht-der-untoten/', 'en')).toBe('/en/waw/nacht-der-untoten/');
   });
 });

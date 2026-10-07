@@ -37,6 +37,10 @@ If this is your first time in Morg City, do not panic. One step at a time: first
 
 ## Where you are and who you are
 
+::figure{src="/images/maps/bo3/shadows-of-evil/overhead.webp" caption="Morg City from the rooftops." wide}
+
+::figure{src="/images/maps/bo3/shadows-of-evil/mark.webp" caption="The mark on the hand (here, Jessica’s)."}
+
 **Morg City** is a fictional American city with the look of 1940s film noir: neon signs, nightclubs, crooked cops and rain. There are no soldiers or scientists here: the heroes are **four ordinary people with a shady past**.
 
 ::::grid
@@ -117,6 +121,8 @@ Along the way you can build a shield, call in a robot police officer, craft a wo
 
 ## Your first rounds
 
+::figure{src="/images/maps/bo3/shadows-of-evil/train.webp" caption="Concept art of the tram that links the districts."}
+
 :::steps
 1. **Rounds 1 and 2: save up.** Kill with your pistol and knife. **Quick Revive** is next to the truck in the starting area (only 500 when playing solo).
 2. **Take a good look at the truck in the starting alley.** There is a wooden crate only the Beast can smash. Pick up what is inside afterwards in human form: it is the **Summoning Key**.
@@ -132,6 +138,8 @@ One tip before moving on: if you play as a duo, split the Beast between you. Sin
 :::
 
 ## The rituals and the Pack-a-Punch
+
+::figure{src="/images/maps/bo3/shadows-of-evil/ruby-rabbit.webp" caption="Concept art of the Ruby Rabbit, one of the ritual sites."}
 
 Each character has a **ritual site** tied to their story. At each one you must place a **personal item** that is hidden somewhere on the map and can only be reached with the Beast.
 
@@ -172,6 +180,10 @@ Each ritual sacrifices someone close to the character: Nero's **lawyer**, Jessic
 :::
 
 :::spoiler[What happens after the last ritual]{level="lore" id="que-pasa-al-terminar-el-ultimo-ritual"}
+
+::figure{src="/images/maps/bo3/shadows-of-evil/sacred-place.webp" caption="The Sacred Place, beneath the city."}
+
+::figure{src="/images/maps/bo3/shadows-of-evil/pack-a-punch.webp" caption="The Morg City Pack-a-Punch."}
 The Shadowman drops the act: he thanks them, takes the Summoning Key and leaves. The sky turns red and an enormous tentacled creature appears floating over the city. The four have done exactly what he needed. The Pack-a-Punch, at least, is now open.
 :::
 
@@ -284,6 +296,8 @@ They are part of the secret quest. In short:
 ## The full story
 
 :::spoiler[The secret quest: Apocalypse Averted]{level="ee" id="la-mision-secreta-apocalypse-averted"}
+
+::figure{src="/images/maps/bo3/shadows-of-evil/shadowman-key.webp" caption="The Shadowman and the Summoning Key."}
 The map's main quest is called **Apocalypse Averted**. The "required" part is the rituals and the Pack-a-Punch. What follows is optional, long and hard:
 
 1. **Swords.** Every player gets and upgrades their Apothicon Sword (see the special weapons section).
@@ -310,6 +324,8 @@ For the four in Morg City it ends badly: their dimension does not survive for lo
 :::
 
 ## Tips for playing as a duo
+
+::figure{src="/images/maps/bo3/shadows-of-evil/cast.webp" caption="The map’s voices: Jeff Goldblum (Nero), Heather Graham (Jessica), Neal McDonough (Jack), Ron Perlman (Floyd) and Robert Picardo (the Shadowman)."}
 
 - **Split the Beast.** Each of you has one use per round: one powers perks, the other smashes crates or acts as the reviving "taxi".
 - **Remember the bottle colour** in the Junction before spending on doors.

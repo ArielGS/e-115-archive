@@ -4,9 +4,19 @@
     "page": "https://callofduty.fandom.com/wiki/File:ApothiconsAlphaOmegaIntro.png",
     "source": "Call of Duty Wiki (Fandom)"
   },
+  "/images/basics/bo4-perks.webp": {
+    "file": "Perk-a-Cola machines BO4.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:Perk-a-Cola_machines_BO4.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
   "/images/basics/element-115.webp": {
     "file": "ShiNoNumaMeteor.jpg",
     "page": "https://callofduty.fandom.com/wiki/File:ShiNoNumaMeteor.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/basics/elixirs.webp": {
+    "file": "Elixirs and Talisman BO4.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:Elixirs_and_Talisman_BO4.jpg",
     "source": "Call of Duty Wiki (Fandom)"
   },
   "/images/basics/gobblegum.webp": {
@@ -47,6 +57,26 @@
   "/images/basics/ultimis.webp": {
     "file": "Ultimis.png",
     "page": "https://callofduty.fandom.com/wiki/File:Ultimis.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/characters/chaos/bruno.webp": {
+    "file": "Bruno Delacroix Infobox Portrait BO4.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Bruno_Delacroix_Infobox_Portrait_BO4.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/characters/chaos/diego.webp": {
+    "file": "Diego Infobox BO4.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Diego_Infobox_BO4.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/characters/chaos/scarlett.webp": {
+    "file": "ScarlettRhodes VOD Intro BO4.png",
+    "page": "https://callofduty.fandom.com/wiki/File:ScarlettRhodes_VOD_Intro_BO4.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/characters/chaos/shaw.webp": {
+    "file": "StantonShaw IX Intro BO4.png",
+    "page": "https://callofduty.fandom.com/wiki/File:StantonShaw_IX_Intro_BO4.png",
     "source": "Call of Duty Wiki (Fandom)"
   },
   "/images/characters/primis/dempsey.webp": {
@@ -122,6 +152,11 @@
   "/images/eras/bo3.webp": {
     "file": "Shadows of Evil Morg City Reveal Image BOIII.png",
     "page": "https://callofduty.fandom.com/wiki/File:Shadows_of_Evil_Morg_City_Reveal_Image_BOIII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/eras/bo4.webp": {
+    "file": "Blood of the Dead Reveal Image BO4Z.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:Blood_of_the_Dead_Reveal_Image_BO4Z.jpg",
     "source": "Call of Duty Wiki (Fandom)"
   },
   "/images/eras/waw.webp": {
@@ -664,6 +699,126 @@
     "page": "https://callofduty.fandom.com/wiki/File:Zetsubou_No_Shima_Menu_Selection_BO3.png",
     "source": "Call of Duty Wiki (Fandom)"
   },
+  "/images/maps/bo4/alpha-omega/thumb.webp": {
+    "file": "AlphaOmega LoadingScreen BO4.png",
+    "page": "https://callofduty.fandom.com/wiki/File:AlphaOmega_LoadingScreen_BO4.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo4/ancient-evil/thumb.webp": {
+    "file": "AncientEvil LoadingScreen Zombies BO4.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:AncientEvil_LoadingScreen_Zombies_BO4.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo4/blood-of-the-dead/blundergat.webp": {
+    "file": "Blundergat BO4.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Blundergat_BO4.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo4/blood-of-the-dead/catwalk.webp": {
+    "file": "BloodOfTheDead CatWalk ConceptArt BO4.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:BloodOfTheDead_CatWalk_ConceptArt_BO4.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo4/blood-of-the-dead/docks.webp": {
+    "file": "PrimisDocks BOTD BO4.png",
+    "page": "https://callofduty.fandom.com/wiki/File:PrimisDocks_BOTD_BO4.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo4/blood-of-the-dead/ending.webp": {
+    "file": "Richtofen Death BOTD BO4.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Richtofen_Death_BOTD_BO4.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo4/blood-of-the-dead/hero.webp": {
+    "file": "BOTD Loading Screen BO4.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:BOTD_Loading_Screen_BO4.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo4/blood-of-the-dead/kronorium.webp": {
+    "file": "Kronorium BO4.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Kronorium_BO4.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo4/blood-of-the-dead/lab.webp": {
+    "file": "Blood of the Dead Victis.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Blood_of_the_Dead_Victis.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo4/blood-of-the-dead/map.webp": {
+    "file": "BO4 - BOTD Layout.png",
+    "page": "https://callofduty.fandom.com/wiki/File:BO4_-_BOTD_Layout.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo4/blood-of-the-dead/new-industries.webp": {
+    "file": "BloodOfTheDead NewIndustries ConceptArt BO4.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:BloodOfTheDead_NewIndustries_ConceptArt_BO4.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo4/blood-of-the-dead/pack-a-punch.webp": {
+    "file": "PAPSpirit BO4.png",
+    "page": "https://callofduty.fandom.com/wiki/File:PAPSpirit_BO4.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo4/blood-of-the-dead/portal.webp": {
+    "file": "Brutus destorys teleport.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Brutus_Destroys_Portal_BO4.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo4/blood-of-the-dead/spectral-shield.webp": {
+    "file": "Spectral Shield BO4.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:Spectral_Shield_BO4.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo4/blood-of-the-dead/thumb.webp": {
+    "file": "BOTD Loading Screen BO4.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:BOTD_Loading_Screen_BO4.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo4/blood-of-the-dead/vials.webp": {
+    "file": "TwoForEachOfThem BOTD BO4.png",
+    "page": "https://callofduty.fandom.com/wiki/File:TwoForEachOfThem_BOTD_BO4.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo4/blood-of-the-dead/warden-house.webp": {
+    "file": "Blood of the Dead WardenHouse.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Blood_of_the_Dead_WardenHouse.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo4/blood-of-the-dead/warden-ingame.webp": {
+    "file": "BO4 Brutus.png",
+    "page": "https://callofduty.fandom.com/wiki/File:BO4_Brutus.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo4/blood-of-the-dead/warden.webp": {
+    "file": "Brutus Cinematic BO4.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Brutus_Cinematic_BO4.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo4/classified/thumb.webp": {
+    "file": "Classified Loading Screen.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:Classified_Loading_Screen.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo4/dead-of-the-night/thumb.webp": {
+    "file": "Dead of the Night BO4.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:Dead_of_the_Night_BO4.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo4/ix/thumb.webp": {
+    "file": "IX Loading Screen BO4.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:IX_Loading_Screen_BO4.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo4/tag-der-toten/thumb.webp": {
+    "file": "TagDerToten LoadingScreen BO4.png",
+    "page": "https://callofduty.fandom.com/wiki/File:TagDerToten_LoadingScreen_BO4.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo4/voyage-of-despair/thumb.webp": {
+    "file": "Voyage loading screen.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:Voyage_loading_screen.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
   "/images/maps/waw/der-riese/thumb.webp": {
     "file": "Der Riese Menu Selection WaW.png",
     "page": "https://callofduty.fandom.com/wiki/File:Der_Riese_Menu_Selection_WaW.png",
@@ -772,6 +927,11 @@
   "/images/story/peter-mccain.webp": {
     "file": "Peter McCain corpse BO3.jpg",
     "page": "https://callofduty.fandom.com/wiki/File:Peter_McCain_corpse_BO3.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/story/primis-and-ultimis.webp": {
+    "file": "Primis and Ultimis BO4.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Primis_and_Ultimis_BO4.png",
     "source": "Call of Duty Wiki (Fandom)"
   },
   "/images/story/richtofen-primis.webp": {

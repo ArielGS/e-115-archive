@@ -8,7 +8,7 @@ import { entryLang, mapKey } from '../lib/maps';
 import { url } from '../lib/site';
 import { sitemapXml, type SitemapEntry } from '../lib/seo';
 
-const PAGES: PageKey[] = ['story', 'contribute', 'credits'];
+const PAGES: PageKey[] = ['story', 'quests', 'contribute', 'credits'];
 
 export const GET: APIRoute = async ({ site }) => {
   const abs = (path: string) => new URL(url(path), site).href;

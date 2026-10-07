@@ -78,15 +78,22 @@ const panels = await Promise.all(
           <div>
             <p class="label">{t(lang, 'era.crew')}</p>
             <div class="crew" style="margin-top:12px">
-              {era.data.crew.map((c) => (
-                <div class="crew-card">
-                  {c.img ? <img src={url(c.img)} alt={c.name} loading="lazy" /> : <span class="ph">{c.name.charAt(0)}</span>}
-                  <div>
-                    <b>{c.name}</b>
-                    <span>{c.note}</span>
-                  </div>
-                </div>
-              ))}
+              {era.data.crew.map((c) => {
+                const Tag = c.wiki ? 'a' : 'div';
+                return (
+                  <Tag
+                    class:list={['crew-card', { 'crew-card--link': c.wiki }]}
+                    {...(c.wiki ? { href: c.wiki, target: '_blank', rel: 'noopener', 'aria-label': `${c.name}: ${t(lang, 'era.wiki')}` } : {})}
+                  >
+                    {c.img ? <img src={url(c.img)} alt={c.name} loading="lazy" /> : <span class="ph">{c.name.charAt(0)}</span>}
+                    <div>
+                      <b>{c.name}</b>
+                      <span>{c.note}</span>
+                      {c.wiki && <i class="crew-wiki" aria-hidden="true">{t(lang, 'era.wiki')}</i>}
+                    </div>
+                  </Tag>
+                );
+              })}
             </div>
           </div>
         )}

@@ -634,6 +634,10 @@ section.spoiler > .spoiler-body {
   opacity: 0.35;
   pointer-events: none;
 }
+/* The stamp is decoration, so it lives in CSS: one word per page language. */
+html[lang='en'] .dossier:not(.is-open) .dossier-head::before {
+  content: 'CLASSIFIED';
+}
 .dossier:not(.is-open) .dossier-head {
   border-bottom: 0;
 }
@@ -744,4 +748,104 @@ section.spoiler > .spoiler-body {
   .prose .card-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* --- quest checklists (:::checklist) ------------------------------------------ */
+.checklist {
+  margin: 1.4em 0;
+  padding: 14px 16px 6px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--map-accent, var(--accent));
+  border-radius: var(--radius);
+}
+.checklist.is-complete {
+  border-color: var(--toxic);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--toxic) 25%, transparent);
+}
+.checklist-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin-bottom: 8px;
+}
+.checklist-title {
+  flex-basis: 100%;
+  margin: 0 !important;
+  font-family: var(--font-cond);
+  font-weight: 700;
+  font-size: 1.15rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #fff;
+}
+.checklist-head .progress-bar {
+  flex: 1;
+  min-width: 90px;
+}
+.checklist ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: step;
+}
+.checklist-step {
+  counter-increment: step;
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 4px 12px;
+  align-items: start;
+  padding: 10px 0;
+  border-top: 1px dashed var(--line);
+}
+.checklist-box {
+  width: 24px;
+  height: 24px;
+  margin: 2px 0 0;
+  accent-color: var(--toxic);
+  cursor: pointer;
+}
+.checklist-text > :first-child {
+  margin-top: 0;
+}
+.checklist-text > :last-child {
+  margin-bottom: 0;
+}
+.checklist-text > p:first-child::before {
+  content: counter(step) '. ';
+  font-family: var(--font-pixel);
+  font-size: 0.75em;
+  color: var(--text-faint);
+}
+.checklist-step.is-done .checklist-text {
+  opacity: 0.55;
+}
+.checklist-step.is-done .checklist-text > p:first-child {
+  text-decoration: line-through;
+  text-decoration-color: color-mix(in srgb, var(--toxic) 70%, transparent);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .checklist-step .checklist-text {
+    transition: opacity 0.25s;
+  }
+}
+
+/* Character cards that link to the Call of Duty Wiki. */
+a.card--link {
+  color: inherit;
+  text-decoration: none;
+}
+a.card--link:hover,
+a.card--link:focus-visible {
+  border-color: var(--map-accent, var(--accent));
+}
+.card-link {
+  display: block;
+  padding: 0 14px 12px;
+  font-family: var(--font-pixel);
+  font-size: 0.55rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--map-accent, var(--accent));
 }

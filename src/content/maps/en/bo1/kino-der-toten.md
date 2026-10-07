@@ -44,19 +44,19 @@ It is **28 October 1963** and you are in the **Deutsches Sol Kino** ("German Sun
 You play as **Ultimis**, the same four from the last *World at War* maps:
 
 ::::grid
-:::card[Tank Dempsey]{img="/images/characters/ultimis/dempsey.webp"}
+:::card[Tank Dempsey]{img="/images/characters/ultimis/dempsey.webp" href="https://callofduty.fandom.com/wiki/%22Tank%22_Dempsey_(Ultimis)"}
 US Marine.
 :::
 
-:::card[Nikolai Belinski]{img="/images/characters/ultimis/nikolai.webp"}
+:::card[Nikolai Belinski]{img="/images/characters/ultimis/nikolai.webp" href="https://callofduty.fandom.com/wiki/Nikolai_Belinski_(Ultimis)"}
 Soviet soldier.
 :::
 
-:::card[Takeo Masaki]{img="/images/characters/ultimis/takeo.webp"}
+:::card[Takeo Masaki]{img="/images/characters/ultimis/takeo.webp" href="https://callofduty.fandom.com/wiki/Takeo_Masaki_(Ultimis)"}
 Imperial Japanese officer.
 :::
 
-:::card[Edward Richtofen]{img="/images/characters/ultimis/richtofen.webp"}
+:::card[Edward Richtofen]{img="/images/characters/ultimis/richtofen.webp" href="https://callofduty.fandom.com/wiki/Edward_Richtofen_(Ultimis)"}
 Group 935 scientist and the one leading the group.
 :::
 ::::

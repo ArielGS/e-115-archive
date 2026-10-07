@@ -130,7 +130,7 @@
 /* --- era tabs ------------------------------------------------------------- */
 .tabs {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 10px;
   margin-bottom: 0;
   padding: 10px;
@@ -205,11 +205,13 @@
   background: var(--toxic);
   box-shadow: 0 0 8px var(--toxic);
 }
-@media (max-width: 520px) {
-  /* Four games: a 2×2 grid keeps every code readable on phones. */
+/* Five games: one row on desktop, 3 + 2 on tablets and phones. */
+@media (max-width: 1000px) {
   .tabs {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
+}
+@media (max-width: 520px) {
   .tab {
     padding: 10px;
   }
@@ -329,6 +331,31 @@
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: #fff;
+}
+.crew-card--link {
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+}
+.crew-card--link:hover,
+.crew-card--link:focus-visible {
+  border-color: var(--era-accent, var(--accent));
+  background: color-mix(in srgb, var(--era-accent, var(--accent)) 10%, var(--panel));
+}
+.crew-wiki {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--font-pixel);
+  font-size: 0.55rem;
+  font-style: normal;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--era-accent, var(--accent));
+}
+@media (prefers-reduced-motion: no-preference) {
+  .crew-card--link:hover {
+    transform: translateY(-2px);
+  }
 }
 .crew-card span {
   font-size: 0.88rem;

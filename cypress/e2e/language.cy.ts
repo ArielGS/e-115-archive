@@ -92,6 +92,10 @@ describe('Language', () => {
     cy.visitPage('/en/bo3/shadows-of-evil/', { lang: 'en', speech: true });
     cy.contains('button', 'Listen to the guide');
     cy.get('#margwa .dossier-code').should('have.text', 'File 01');
+    // The "classified" stamp on locked files follows the page language too.
+    cy.get('#margwa .dossier-head').then(($h) => {
+      expect(getComputedStyle($h[0], '::before').content).to.eq('"CLASSIFIED"');
+    });
     cy.get('#margwa [data-spoiler-toggle]').should('contain.text', 'Reveal').click();
     cy.get('#margwa .spoiler-confirm').should('contain.text', 'Open it?');
     cy.get('#margwa [data-spoiler-cancel]').should('have.text', 'Not yet').click();

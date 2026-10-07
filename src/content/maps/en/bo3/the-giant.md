@@ -42,19 +42,19 @@ The heroes are the **Primis**: younger versions of the four classic characters, 
 ::figure{src="/images/maps/bo3/the-giant/primis.webp" caption="The Primis: Dempsey, Nikolai, Takeo and Richtofen."}
 
 ::::grid
-:::card[Tank Dempsey]{img="/images/characters/primis/dempsey.webp"}
+:::card[Tank Dempsey]{img="/images/characters/primis/dempsey.webp" href="https://callofduty.fandom.com/wiki/%22Tank%22_Dempsey_(Primis)"}
 American spy.
 :::
 
-:::card[Nikolai Belinski]{img="/images/characters/primis/nikolai.webp"}
+:::card[Nikolai Belinski]{img="/images/characters/primis/nikolai.webp" href="https://callofduty.fandom.com/wiki/Nikolai_Belinski_(Primis)"}
 Russian spy.
 :::
 
-:::card[Takeo Masaki]{img="/images/characters/primis/takeo.webp"}
+:::card[Takeo Masaki]{img="/images/characters/primis/takeo.webp" href="https://callofduty.fandom.com/wiki/Takeo_Masaki_(Primis)"}
 Japanese spy. Fights with a katana.
 :::
 
-:::card[Edward Richtofen]{img="/images/characters/primis/richtofen.webp"}
+:::card[Edward Richtofen]{img="/images/characters/primis/richtofen.webp" href="https://callofduty.fandom.com/wiki/Edward_Richtofen_(Primis)"}
 Group 935 scientist, with a plan he shares with no one.
 :::
 ::::
@@ -68,10 +68,16 @@ Dempsey sees him crouch over the body with something in his hand. In Der Eisendr
 :::
 
 :::spoiler[Why are there two Richtofens?]{level="lore" id="por-que-hay-dos-richtofen"}
+
+::figure{src="/images/maps/bo3/the-giant/ultimis.webp" caption="Ultimis: the older versions of the four."}
 The saga runs on **parallel dimensions**. The Ultimis (from World at War and Black Ops 1) and the Primis (from Origins and Black Ops III) are the same people in different dimensions. The young Richtofen is collecting the souls of the old versions, and to store them in the Key they first have to die. Why he does it is revealed over the following maps.
 :::
 
 ## The factory
+
+::figure{src="/images/maps/bo3/the-giant/concept.webp" caption="Concept art of the factory." wide}
+
+::figure{src="/images/maps/bo3/the-giant/view-3.webp" caption="One of the factory’s furnaces."}
 
 ::figure{src="/images/maps/bo3/the-giant/hero.webp" caption="Factory blueprint: the starting area, the courtyard and the three teleporters." wide}
 
@@ -182,6 +188,8 @@ Find three **glowing green jars with spines inside** and hold the interact butto
 :::
 
 ## Tips for playing as a duo
+
+::figure{src="/images/maps/bo3/the-giant/cast.webp" caption="The Primis voices: Steve Blum (Dempsey), Tom Kane (Takeo), Nolan North (Richtofen) and Fred Tatasciore (Nikolai)."}
 
 - **To link teleporters, split the work:** one activates the teleporter, the other clears the way back to the starting area.
 - **The bridge is a good choke point**, but not a good place to get surrounded.

@@ -25,6 +25,8 @@ Archive 115 is open source and bilingual. Each guide is **one Markdown file per 
 | `:::steps` | Wraps a numbered list to show it as quest steps. |
 | `:::grid` + `:::card[Title]{img="…"}` | Card grid. |
 | `:::quote{by="Character"}` | A character quote. |
+| `:::checklist[Title]{id="…"}` | Turns a numbered list into steps that can be ticked. Progress is saved per `id`: use the same one in both languages. Always goes inside a spoiler. |
+| `:::card[…]{href="…"}` | Makes the whole card link to a Call of Duty Wiki article (the only external link allowed). |
 | `::figure{src="…" caption="…"}` | Image with caption and automatic credit. Add `wide` so it is not tilted. |
 
 A block closes with `:::`. When nesting blocks (a spoiler inside another), the outer one needs more colons: `::::spoiler` … `::::`.

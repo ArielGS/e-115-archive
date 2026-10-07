@@ -44,19 +44,19 @@ Es **28 de octubre de 1963** y estás en el **Deutsches Sol Kino** ("Cine del So
 Juegas con los **Ultimis**, los mismos cuatro de los últimos mapas de *World at War*:
 
 ::::grid
-:::card[Tank Dempsey]{img="/images/characters/ultimis/dempsey.webp"}
+:::card[Tank Dempsey]{img="/images/characters/ultimis/dempsey.webp" href="https://callofduty.fandom.com/wiki/%22Tank%22_Dempsey_(Ultimis)"}
 Marine estadounidense.
 :::
 
-:::card[Nikolai Belinski]{img="/images/characters/ultimis/nikolai.webp"}
+:::card[Nikolai Belinski]{img="/images/characters/ultimis/nikolai.webp" href="https://callofduty.fandom.com/wiki/Nikolai_Belinski_(Ultimis)"}
 Soldado soviético.
 :::
 
-:::card[Takeo Masaki]{img="/images/characters/ultimis/takeo.webp"}
+:::card[Takeo Masaki]{img="/images/characters/ultimis/takeo.webp" href="https://callofduty.fandom.com/wiki/Takeo_Masaki_(Ultimis)"}
 Oficial imperial japonés.
 :::
 
-:::card[Edward Richtofen]{img="/images/characters/ultimis/richtofen.webp"}
+:::card[Edward Richtofen]{img="/images/characters/ultimis/richtofen.webp" href="https://callofduty.fandom.com/wiki/Edward_Richtofen_(Ultimis)"}
 Científico del Grupo 935 y quien guía al grupo.
 :::
 ::::

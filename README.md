@@ -2,13 +2,14 @@
 
 **A spoiler-safe Call of Duty Zombies guide in Spanish and English, styled like a 2000s Flash site.** Live at <https://e-115-archive.vercel.app> · Source at <https://github.com/ArielGS/e-115-archive>. The site is called *Archive 115* in English and *Archivo 115* in Spanish.
 
-The full Aether Saga story on one narrated page, context for World at War and Black Ops 1, 2 and 3, full guides for *Nacht der Untoten*, *Kino der Toten*, *TranZit*, *Shadows of Evil*, *The Giant* and *Der Eisendrache*, bosses and lore locked behind an eye that you decide to open, and a free voice narrator to listen to every guide. Content is plain Markdown; the site turns it into the custom UI. Code and repository documentation are in English; the guides are written in both languages.
+The full Aether Saga story on one narrated page, context for World at War and Black Ops 1 to 4, full guides for *Nacht der Untoten*, *Kino der Toten*, *TranZit*, *Shadows of Evil*, *The Giant*, *Der Eisendrache* and *Blood of the Dead*, interactive checklists for every secret quest, bosses and lore locked behind an eye that you decide to open, and a free voice narrator to listen to every guide. Content is plain Markdown; the site turns it into the custom UI. Code and repository documentation are in English; the guides are written in both languages.
 
 ## Features
 
 - **Two languages.** Spanish at `/`, English at `/en/`. The browser language picks the default; the ES | EN switch in the header remembers your choice and keeps you on the same page (and section).
-- **Era tabs** (WaW / BO1 / BO2 / BO3) with story context, playable crews and every map of each game.
-- **Story page** (`/historia/`, `/en/story/`): the whole Aether Saga in story order, from Nacht der Untoten to Revelations, with every twist locked, Richtofen's files and a glossary. The voice narrator reads it too.
+- **Era tabs** (WaW / BO1 / BO2 / BO3 / BO4) with story context, playable crews (each one links to its Call of Duty Wiki article) and every map of each game.
+- **Story page** (`/historia/`, `/en/story/`): the whole Aether Saga in story order, from Nacht der Untoten to Tag der Toten, with every twist locked, Richtofen's files and a glossary. The voice narrator reads it too.
+- **Quest checklists** (`/misiones/`, `/en/quests/`): the main Easter egg of every map with a guide as tickable steps with hints, locked behind spoilers, saved in the browser and shared between both languages.
 - **Map guides** with objective, first rounds, buildables, enemies and the main Easter egg.
 - **Spoiler eye**: bosses, lore twists and quest steps stay locked until you confirm. Progress is remembered per guide (in both languages), so the page "unlocks" as you play.
 - **Verified content**: every fact in the guides and the story page was checked against the Call of Duty Wiki; see [`docs/audit-bo3.md`](docs/audit-bo3.md) and [`docs/audit-story-and-classic-guides.md`](docs/audit-story-and-classic-guides.md).
@@ -65,7 +66,8 @@ Environment variables (see `.env.example`): `BASE_PATH` (sub-folder hosting), `S
 src/content/               ← all the writing lives here (Markdown), one folder per language
   pages/{es,en}/basics.md    home "survival manual"
   pages/{es,en}/story.md     the full story page
-  eras/{es,en}/waw|bo1|bo2|bo3.md  era tabs
+  pages/{es,en}/quests.md    the quest checklists
+  eras/{es,en}/waw|bo1|bo2|bo3|bo4.md  era tabs
   maps/{es,en}/<era>/<map>.md  one file per map and language (status: guide | stub)
 src/i18n/                  UI strings, localized routes, language detection
 src/views/                 page templates shared by both languages
