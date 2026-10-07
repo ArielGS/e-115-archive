@@ -35,6 +35,15 @@ export const PRONUNCIATIONS: [RegExp, Replacement][] = [
   [/\bPanzersoldat\b/g, 'Pánser-soldat'],
   [/\bMorg City\b/g, 'Morg Síti'],
   [/\bThe Giant\b/g, 'De Yáiant'],
+  [/\bNacht der Untoten\b/g, 'Najt der Úntoten'],
+  [/\bKino der Toten\b/g, 'Kíno der Tóten'],
+  [/\bDer Riese\b/g, 'Der Ríse'],
+  [/\bVerrückt\b/g, 'Ferrúkt'],
+  [/\bTranZit\b/g, 'Tránsit'],
+  [/\bThundergun\b/g, 'Zándergan'],
+  [/\bStuhlinger\b/g, 'Stúlinguer'],
+  [/\bDenizens?\b/g, plural('Dénisen', 'Dénisens')],
+  [/\bT\.E\.D\.D\./g, 'Ted'],
   [/\b115\b/g, 'ciento quince'],
 ];
 

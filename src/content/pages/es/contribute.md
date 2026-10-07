@@ -33,7 +33,7 @@ Para que el progreso de spoilers se conserve al cambiar de idioma, pon el mismo 
 
 ## Pasos para añadir un mapa
 
-Antes de empezar necesitas Git y Node.js 24.15 o más reciente. Haz un *fork* del repositorio, clónalo y ejecuta `npm install`: funciona igual en Windows, macOS y Linux. La preparación completa, el flujo de trabajo con pull requests y las soluciones a problemas comunes están en el archivo `CONTRIBUTING.md` del repositorio.
+Antes de empezar necesitas Git y Node.js 24.15 o más reciente. Haz un *fork* del [repositorio en GitHub](https://github.com/ArielGS/e-115-archive), clónalo y ejecuta `npm install`: funciona igual en Windows, macOS y Linux. La preparación completa, el flujo de trabajo con pull requests y las soluciones a problemas comunes están en el archivo `CONTRIBUTING.md` del repositorio.
 
 1. Copia `docs/map-template.md` a `src/content/maps/es/bo3/mi-mapa.md` y a `src/content/maps/en/bo3/mi-mapa.md` (o cambia el `status` de un mapa existente de `stub` a `guide` en los dos idiomas).
 2. Rellena el bloque inicial (título, fecha, lugar, color…).

@@ -2,6 +2,9 @@ const GUIDES = [
   { path: '/bo3/shadows-of-evil/', title: 'Shadows of Evil' },
   { path: '/bo3/the-giant/', title: 'The Giant' },
   { path: '/bo3/der-eisendrache/', title: 'Der Eisendrache' },
+  { path: '/waw/nacht-der-untoten/', title: 'Nacht der Untoten' },
+  { path: '/bo1/kino-der-toten/', title: 'Kino der Toten' },
+  { path: '/bo2/tranzit/', title: 'TranZit' },
 ];
 
 describe('Map guides', () => {
@@ -17,6 +20,20 @@ describe('Map guides', () => {
         cy.wrap($b).find('.spoiler-body').should('not.be.visible');
       });
       cy.get('[data-spoiler-count]').first().invoke('text').should('match', /^0\/\d+$/);
+    });
+  });
+
+  it('the classic guides show who you play as, with portraits', () => {
+    [
+      ['/bo1/kino-der-toten/', 'ultimis'],
+      ['/bo2/tranzit/', 'victis'],
+      ['/bo3/the-giant/', 'primis'],
+    ].forEach(([path, crew]) => {
+      cy.visitPage(path);
+      cy.get(`.prose .card img[src*="/characters/${crew}/"]`).should('have.length', 4).each(($img) => {
+        $img[0].loading = 'eager';
+        cy.wrap($img).should(($i) => expect(($i[0] as HTMLImageElement).naturalWidth).to.be.greaterThan(0));
+      });
     });
   });
 
@@ -99,5 +116,15 @@ describe('Map guides', () => {
     cy.contains('a', 'Cómo escribir esta guía').click();
     cy.location('pathname').should('match', /contribuir\/?$/);
     cy.contains('h1', 'Cómo contribuir');
+    // The contribute page sends people to the project's GitHub repository.
+    cy.contains('a.btn', 'Abrir el repositorio').should('have.attr', 'href', 'https://github.com/ArielGS/e-115-archive');
+    cy.get('main a[href="https://github.com/ArielGS/e-115-archive"]').should('have.length.at.least', 2);
+    cy.get('footer').contains('a', 'Código fuente en GitHub').should('have.attr', 'href', 'https://github.com/ArielGS/e-115-archive');
+  });
+
+  it('guides link to their source file on GitHub', () => {
+    cy.visitPage('/bo2/tranzit/');
+    cy.contains('[data-toc] a', 'Editar esta guía')
+      .should('have.attr', 'href', 'https://github.com/ArielGS/e-115-archive/edit/main/src/content/maps/es/bo2/tranzit.md');
   });
 });

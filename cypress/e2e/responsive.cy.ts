@@ -9,7 +9,7 @@ const DEVICES: [string, number, number][] = [
   ['iPad Pro portrait', 1024, 1366],
 ];
 
-const PAGES = ['/', '/bo3/shadows-of-evil/', '/en/bo3/der-eisendrache/', '/bo2/origins/', '/creditos/'];
+const PAGES = ['/', '/historia/', '/bo3/shadows-of-evil/', '/en/bo3/der-eisendrache/', '/waw/nacht-der-untoten/', '/bo2/tranzit/', '/bo2/origins/', '/creditos/'];
 
 const lang = (path: string) => (path.startsWith('/en/') ? 'en' : 'es');
 
@@ -83,6 +83,20 @@ describe('Responsive layout', () => {
           expect(r.bottom, 'narrator bottom').to.be.at.most(h);
         });
         cy.get('[data-n-play]').should('be.visible');
+
+        // Minimised, the narrator is a compact bar that still fits the screen.
+        cy.get('[data-n-min]').click();
+        cy.get('[data-narrator]').should('have.class', 'is-min').and(($n) => {
+          const r = $n[0].getBoundingClientRect();
+          expect(r.left, 'mini narrator left').to.be.at.least(0);
+          expect(r.right, 'mini narrator right').to.be.at.most(w);
+          expect(r.bottom, 'mini narrator bottom').to.be.at.most(h);
+          expect(r.height, 'mini narrator height').to.be.lessThan(h / 3);
+        });
+        cy.get('[data-n-play]').should('be.visible');
+        cy.get('[data-n-min]').should(($b) => {
+          expect($b[0].getBoundingClientRect().height, 'tap target').to.be.at.least(24);
+        });
       });
     });
   });

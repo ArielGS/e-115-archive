@@ -33,7 +33,7 @@ So that spoiler progress carries over when switching language, give each spoiler
 
 ## Adding a map, step by step
 
-Before you start you need Git and Node.js 24.15 or newer. Fork the repository, clone it and run `npm install`: it works the same on Windows, macOS and Linux. The full setup, the pull request workflow and fixes for common problems are in the repository's `CONTRIBUTING.md` file.
+Before you start you need Git and Node.js 24.15 or newer. Fork the [repository on GitHub](https://github.com/ArielGS/e-115-archive), clone it and run `npm install`: it works the same on Windows, macOS and Linux. The full setup, the pull request workflow and fixes for common problems are in the repository's `CONTRIBUTING.md` file.
 
 1. Copy `docs/map-template.md` to `src/content/maps/es/bo3/my-map.md` and `src/content/maps/en/bo3/my-map.md` (or switch an existing map from `stub` to `guide` in both languages).
 2. Fill in the header block (title, date, location, colour…).

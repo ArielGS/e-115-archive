@@ -84,7 +84,8 @@ describe('Language', () => {
     cy.get('.site-footer').should('contain.text', 'Archive 115 //');
 
     cy.visitPage('/en/bo3/the-giant/', { lang: 'en' });
-    cy.title().should('eq', 'The Giant · Archive 115');
+    // Guide titles carry the game for search engines (docs/seo.md).
+    cy.title().should('eq', 'The Giant guide · Black Ops III Zombies · Archive 115');
   });
 
   it('the English page is fully in English (UI, directives and narrator)', () => {

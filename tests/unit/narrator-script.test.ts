@@ -87,6 +87,13 @@ describe('speech helpers', () => {
     expect(speakable('Richtofen y el Elemento 115')).toBe('Ríjtofen y el Elemento ciento quince');
     expect(speakable('Los Keepers y un Keeper')).toBe('Los Kípers y un Kíper');
     expect(speakable('Easter eggs ★ de Der Eisendrache')).toBe('íster egs de Der Áisendraje');
+    // Names from the World at War, Black Ops and Black Ops II guides.
+    expect(speakable('De Nacht der Untoten a Kino der Toten, pasando por Verrückt y Der Riese')).toBe(
+      'De Najt der Úntoten a Kíno der Tóten, pasando por Ferrúkt y Der Ríse',
+    );
+    expect(speakable('En TranZit, T.E.D.D. conduce y Stuhlinger huye de un Denizen y dos Denizens')).toBe(
+      'En Tránsit, Ted conduce y Stúlinguer huye de un Dénisen y dos Dénisens',
+    );
   });
 
   it('chunks long text on sentence boundaries under the limit', () => {

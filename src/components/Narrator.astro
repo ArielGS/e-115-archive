@@ -16,7 +16,19 @@ const { title, lang } = Astro.props;
 <aside class="narrator" id="narrator" data-narrator aria-label={t(lang, 'narrator.label')}>
   <div class="narrator-top">
     <span class="label">{t(lang, 'narrator.title')} // {title}</span>
-    <button type="button" class="narrator-close" data-n-close aria-label={t(lang, 'narrator.close')}>✕</button>
+    <button
+      type="button"
+      class="narrator-close narrator-min"
+      data-n-min
+      aria-expanded="true"
+      aria-controls="narrator"
+      aria-label={t(lang, 'narrator.minimize')}
+      title={t(lang, 'narrator.minimize')}
+    >
+      <svg class="i-min" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 17h14v3H5z"></path></svg>
+      <svg class="i-max" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5zM8 8v9h8V8z"></path></svg>
+    </button>
+    <button type="button" class="narrator-close" data-n-close aria-label={t(lang, 'narrator.close')} title={t(lang, 'narrator.close')}>✕</button>
   </div>
   <div class="narrator-screen">
     <canvas data-n-scope width="340" height="46" aria-hidden="true"></canvas>

@@ -11,6 +11,8 @@ const { lang, current, alternates } = Astro.props;
 
 const links = [
   { id: 'home', href: localePath(lang, '/'), label: t(lang, 'nav.home') },
+  { id: 'story', href: pagePath(lang, 'story'), label: t(lang, 'nav.story') },
+  { id: 'waw', href: localePath(lang, '/#waw'), label: 'WaW' },
   { id: 'bo1', href: localePath(lang, '/#bo1'), label: 'BO1' },
   { id: 'bo2', href: localePath(lang, '/#bo2'), label: 'BO2' },
   { id: 'bo3', href: localePath(lang, '/#bo3'), label: 'BO3' },

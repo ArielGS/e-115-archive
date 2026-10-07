@@ -12,6 +12,7 @@ export const isLang = (value: unknown): value is Lang => LANGS.includes(value as
 const PAGE_SLUGS = {
   contribute: { es: '/contribuir/', en: '/contribute/' },
   credits: { es: '/creditos/', en: '/credits/' },
+  story: { es: '/historia/', en: '/story/' },
 } as const;
 export type PageKey = keyof typeof PAGE_SLUGS;
 
@@ -56,12 +57,21 @@ export function preferredLang(saved: string | null, browserLangs: readonly strin
 }
 
 /**
+ * Search engine crawlers must see every language at its own URL: redirecting
+ * them (Googlebot browses in English) would hide the Spanish pages from search.
+ */
+const CRAWLER_PATTERN = 'bot|crawl|spider|slurp|mediapartners|lighthouse|bingpreview|facebookexternalhit';
+export const isCrawler = (userAgent: string) => new RegExp(CRAWLER_PATTERN, 'i').test(userAgent);
+
+/**
  * Inline <head> script that sends the visitor to their language before the
  * page paints. Same rules as preferredLang(); unit-tested by running it.
+ * Crawlers are never redirected (see isCrawler).
  */
 export function detectScript(opts: { lang: Lang; alternates: Record<string, string>; detect: boolean }): string {
-  const cfg = JSON.stringify({ ...opts, key: LANG_STORAGE_KEY });
+  const cfg = JSON.stringify({ ...opts, key: LANG_STORAGE_KEY, bots: CRAWLER_PATTERN });
   return `(function(c){try{
+if(new RegExp(c.bots,'i').test(navigator.userAgent||''))return;
 var saved=localStorage.getItem(c.key);
 var list=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||'']).filter(Boolean);
 var want=saved==='es'||saved==='en'?saved:null;
@@ -76,10 +86,11 @@ const es = {
   'site.word': 'ARCHIVO',
   'site.tagline': 'Guía de Call of Duty Zombies sin spoilers',
   'site.description':
-    'Guía visual y sin spoilers de Call of Duty Zombies: contexto de Black Ops 1, 2 y 3 y guías de Shadows of Evil, The Giant y Der Eisendrache con spoilers bloqueados y narrador por voz.',
+    'Guía visual y sin spoilers de Call of Duty Zombies: la historia completa de World at War a Black Ops III, contexto de cada juego y guías de Nacht der Untoten, Kino der Toten, TranZit, Shadows of Evil, The Giant y Der Eisendrache, con spoilers bloqueados y narrador por voz.',
   'skip': 'Saltar al contenido',
   'nav.label': 'Principal',
   'nav.home': 'Inicio',
+  'nav.story': 'Historia',
   'nav.contribute': 'Contribuir',
   'nav.credits': 'Créditos',
   'nav.sound': 'Sonido',
@@ -92,7 +103,8 @@ const es = {
     'Consejo: compra Juggernog antes de la ronda 10',
     'Las barricadas también dan puntos: repáralas',
     'Ningún video de YouTube fue necesario para hacer esta página',
-    'Guías disponibles: Shadows of Evil · The Giant · Der Eisendrache',
+    'Guías disponibles: Nacht der Untoten · Kino der Toten · TranZit · Shadows of Evil · The Giant · Der Eisendrache',
+    'Nuevo: la historia completa, de Nacht der Untoten a Revelations, con narrador',
   ],
   'footer.fan':
     'Proyecto de fans, gratuito y de código abierto. No está afiliado a Activision ni a Treyarch. Call of Duty y todo su contenido son marcas y propiedad de sus dueños.',
@@ -114,14 +126,15 @@ const es = {
   'intro.skip': 'Saltar intro >>',
   'home.kicker': 'Transmisión 115 // en vivo',
   'home.sub':
-    'Rondas sin fin, una historia escondida en cada mapa y nadie que te la explique. Aquí está el contexto de Call of Duty Zombies, de Black Ops a Black Ops III: claro, visual y sin spoilers que no pidas. Empieza por lo básico y profundiza hasta donde quieras.',
+    'Rondas sin fin, una historia escondida en cada mapa y nadie que te la explique. Aquí está el contexto de Call of Duty Zombies, de World at War a Black Ops III: claro, visual y sin spoilers que no pidas. Empieza por lo básico y profundiza hasta donde quieras.',
   'home.cta.basics': '¿Qué es Zombies?',
+  'home.cta.story': 'La historia completa',
   'home.cta.games': 'Elegir juego',
   'home.cta.guides': 'Ver guías',
   'home.console.label': 'Estado del archivo',
   'home.console': [
     'Jugadores: 1 a 4 (mejor en pareja)',
-    'Juegos: BO1 · BO2 · BO3',
+    'Juegos: WaW · BO1 · BO2 · BO3',
     'Guías completas: {guides}',
     'Spoilers: bloqueados con el ojo',
     'Narrador por voz: disponible',
@@ -130,7 +143,7 @@ const es = {
   'home.basics': 'Manual de supervivencia',
   'home.eras': 'Elige tu juego',
   'home.eras.sub':
-    'Cada Black Ops cuenta una parte de la historia. Elige el tuyo para ver quiénes son los protagonistas, qué cambia en la jugabilidad y qué mapas tienen guía.',
+    'Cada juego cuenta una parte de la historia. Elige el tuyo para ver quiénes son los protagonistas, qué cambia en la jugabilidad y qué mapas tienen guía.',
   'tabs.label': 'Elige un juego',
   'era.crew': 'Personajes jugables',
   'era.maps': 'Mapas de {code}',
@@ -159,6 +172,7 @@ const es = {
   'narrator.label': 'Narrador por voz',
   'narrator.title': 'Transmisión',
   'narrator.close': 'Cerrar narrador',
+  'narrator.minimize': 'Minimizar narrador (el audio sigue)',
   'narrator.prev': 'Anterior',
   'narrator.play': 'Reproducir',
   'narrator.next': 'Siguiente',
@@ -186,6 +200,15 @@ const es = {
   'credits.local': 'Archivo en este sitio',
   'credits.original': 'Archivo original',
   'contribute.repo': 'Abrir el repositorio',
+  'seo.guideTitle': 'Guía de {title} · {game} Zombies',
+  'seo.guideDesc': 'Guía sin spoilers de {title} ({game} Zombies). {tagline} Objetivo, Pack-a-Punch, enemigos y Easter eggs bajo spoiler, con narrador.',
+  'seo.storyTitle': 'Historia de Call of Duty Zombies: la saga del Éter explicada',
+  'story.kicker': 'Expediente maestro // Saga del Éter',
+  'story.listen': '▶ Escuchar la historia',
+  'story.games': 'Juegos',
+  'story.span': '1918 · 1945 · 1963 · 2025 · 2035',
+  'story.period': 'Época',
+  'story.crews': 'Protagonistas',
 };
 
 type Dict = { [K in keyof typeof es]: (typeof es)[K] extends string[] ? string[] : string };
@@ -195,10 +218,11 @@ const en: Dict = {
   'site.word': 'ARCHIVE',
   'site.tagline': 'A spoiler-free Call of Duty Zombies guide',
   'site.description':
-    'A visual, spoiler-free guide to Call of Duty Zombies: story context for Black Ops 1, 2 and 3 and guides for Shadows of Evil, The Giant and Der Eisendrache, with locked spoilers and a voice narrator.',
+    'A visual, spoiler-free guide to Call of Duty Zombies: the full story from World at War to Black Ops III, context for every game and guides for Nacht der Untoten, Kino der Toten, TranZit, Shadows of Evil, The Giant and Der Eisendrache, with locked spoilers and a voice narrator.',
   'skip': 'Skip to content',
   'nav.label': 'Main',
   'nav.home': 'Home',
+  'nav.story': 'Story',
   'nav.contribute': 'Contribute',
   'nav.credits': 'Credits',
   'nav.sound': 'Sound',
@@ -211,7 +235,8 @@ const en: Dict = {
     'Tip: buy Juggernog before round 10',
     'Barriers give points too: rebuild them',
     'No YouTube videos were needed to make this page',
-    'Guides available: Shadows of Evil · The Giant · Der Eisendrache',
+    'Guides available: Nacht der Untoten · Kino der Toten · TranZit · Shadows of Evil · The Giant · Der Eisendrache',
+    'New: the full story, from Nacht der Untoten to Revelations, with a narrator',
   ],
   'footer.fan':
     'A free, open-source fan project. Not affiliated with Activision or Treyarch. Call of Duty and all related content are trademarks and property of their owners.',
@@ -233,14 +258,15 @@ const en: Dict = {
   'intro.skip': 'Skip intro >>',
   'home.kicker': 'Transmission 115 // live',
   'home.sub':
-    'Endless rounds, a story hidden in every map and nobody to explain it. Here is the context of Call of Duty Zombies, from Black Ops to Black Ops III: clear, visual and with no spoilers you did not ask for. Start with the basics and go as deep as you want.',
+    'Endless rounds, a story hidden in every map and nobody to explain it. Here is the context of Call of Duty Zombies, from World at War to Black Ops III: clear, visual and with no spoilers you did not ask for. Start with the basics and go as deep as you want.',
   'home.cta.basics': 'What is Zombies?',
+  'home.cta.story': 'The full story',
   'home.cta.games': 'Pick a game',
   'home.cta.guides': 'See the guides',
   'home.console.label': 'Archive status',
   'home.console': [
     'Players: 1 to 4 (best as a duo)',
-    'Games: BO1 · BO2 · BO3',
+    'Games: WaW · BO1 · BO2 · BO3',
     'Full guides: {guides}',
     'Spoilers: locked behind the eye',
     'Voice narrator: available',
@@ -249,7 +275,7 @@ const en: Dict = {
   'home.basics': 'Survival manual',
   'home.eras': 'Pick your game',
   'home.eras.sub':
-    'Each Black Ops tells part of the story. Pick yours to meet its characters, see what changes in the gameplay and find which maps have a guide.',
+    'Each game tells part of the story. Pick yours to meet its characters, see what changes in the gameplay and find which maps have a guide.',
   'tabs.label': 'Pick a game',
   'era.crew': 'Playable characters',
   'era.maps': '{code} maps',
@@ -278,6 +304,7 @@ const en: Dict = {
   'narrator.label': 'Voice narrator',
   'narrator.title': 'Transmission',
   'narrator.close': 'Close narrator',
+  'narrator.minimize': 'Minimise narrator (audio keeps playing)',
   'narrator.prev': 'Previous',
   'narrator.play': 'Play',
   'narrator.next': 'Next',
@@ -305,6 +332,15 @@ const en: Dict = {
   'credits.local': 'File on this site',
   'credits.original': 'Original file',
   'contribute.repo': 'Open the repository',
+  'seo.guideTitle': '{title} guide · {game} Zombies',
+  'seo.guideDesc': 'Spoiler-free guide to {title} ({game} Zombies). {tagline} Objective, Pack-a-Punch, enemies and Easter eggs behind spoilers, with a narrator.',
+  'seo.storyTitle': 'Call of Duty Zombies story: the Aether Saga explained',
+  'story.kicker': 'Master file // The Aether Saga',
+  'story.listen': '▶ Listen to the story',
+  'story.games': 'Games',
+  'story.span': '1918 · 1945 · 1963 · 2025 · 2035',
+  'story.period': 'Period',
+  'story.crews': 'Heroes',
 };
 
 export const ui: Record<Lang, Dict> = { es: es as Dict, en };

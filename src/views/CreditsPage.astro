@@ -2,16 +2,24 @@
 import Base from '../layouts/Base.astro';
 import credits from '../data/image-credits.json';
 import { url } from '../lib/site';
-import { pagePath, t, type Lang } from '../i18n/ui';
+import { localePath, pagePath, t, type Lang } from '../i18n/ui';
+import { breadcrumbs } from '../lib/seo';
 
 interface Props {
   lang: Lang;
 }
 const { lang } = Astro.props;
 const rows = Object.entries(credits as Record<string, { file: string; page: string; source: string }>);
+const abs = (p: string) => new URL(url(p), Astro.site).href;
+const structured = [
+  breadcrumbs([
+    { name: t(lang, 'site.name'), url: abs(localePath(lang, '/')) },
+    { name: t(lang, 'credits.title'), url: abs(pagePath(lang, 'credits')) },
+  ]),
+];
 ---
 
-<Base lang={lang} title={t(lang, 'credits.title')} page="credits" nav="credits" path={pagePath(lang, 'credits')}>
+<Base lang={lang} title={t(lang, 'credits.title')} page="credits" nav="credits" path={pagePath(lang, 'credits')} structured={structured}>
   <section class="section">
     <div class="sec-head">
       <span class="label">Sec.∞</span>

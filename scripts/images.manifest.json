@@ -351,7 +351,7 @@
  },
  {
   "out": "maps/bo3/the-giant/der-riese.webp",
-  "file": "Der Riese Loading Screen WaW.jpg",
+  "file": "Nacht der Untoten Overview.jpg",
   "width": 1000
  },
  {
@@ -463,5 +463,340 @@
   "out": "maps/bo3/der-eisendrache/dempsey-capsule.webp",
   "file": "Preserving WWII Dempsey BO3.png",
   "width": 1000
+ },
+ {
+  "out": "eras/waw.webp",
+  "file": "Nacht der Untoten Overview.jpg",
+  "width": 1280
+ },
+ {
+  "out": "maps/waw/nacht-der-untoten/thumb.webp",
+  "file": "Nacht Der Untoten Menu Selection WaW.png",
+  "width": 800
+ },
+ {
+  "out": "maps/waw/verruckt/thumb.webp",
+  "file": "Verruckt Menu Selection WaW.png",
+  "width": 800
+ },
+ {
+  "out": "maps/waw/shi-no-numa/thumb.webp",
+  "file": "Shi No Numa Menu Selection WaW.png",
+  "width": 800
+ },
+ {
+  "out": "maps/waw/der-riese/thumb.webp",
+  "file": "Der Riese Menu Selection WaW.png",
+  "width": 800
+ },
+ {
+  "out": "maps/waw/nacht-der-untoten/hero.webp",
+  "file": "Nacht der Untoten View BO3.png",
+  "width": 1280
+ },
+ {
+  "out": "maps/waw/nacht-der-untoten/crash.webp",
+  "file": "Nacht der Untoten crashed B-17 WaW.jpg",
+  "width": 900
+ },
+ {
+  "out": "maps/waw/nacht-der-untoten/help-room.webp",
+  "file": "Nacht der Untoten Help Room.jpg",
+  "width": 900
+ },
+ {
+  "out": "maps/waw/nacht-der-untoten/upstairs.webp",
+  "file": "Nacht der Untoten Upstairs.jpg",
+  "width": 900
+ },
+ {
+  "out": "maps/waw/nacht-der-untoten/mystery-box.webp",
+  "file": "Nacht der Untoten Mystery Box.jpg",
+  "width": 900
+ },
+ {
+  "out": "maps/waw/nacht-der-untoten/help-door.webp",
+  "file": "Nacht Help Door BO3.jpeg",
+  "width": 900
+ },
+ {
+  "out": "maps/waw/nacht-der-untoten/ascend.webp",
+  "file": "Nacht Ascend From Darkness BO3.jpeg",
+  "width": 900
+ },
+ {
+  "out": "maps/waw/nacht-der-untoten/marines.webp",
+  "file": "Marines Nacht der Untoten WaW.jpg",
+  "width": 900
+ },
+ {
+  "out": "maps/waw/nacht-der-untoten/ray-gun.webp",
+  "file": "Ray Gun 3rd person view WaW.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo1/kino-der-toten/hero.webp",
+  "file": "Kino der Toten View BO3.png",
+  "width": 1280
+ },
+ {
+  "out": "maps/bo1/kino-der-toten/alley.webp",
+  "file": "Kino der Toten Alley BO3.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo1/kino-der-toten/teleporter.webp",
+  "file": "MTD Kino der Toten BO3.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo1/kino-der-toten/mainframe.webp",
+  "file": "Mainframe Kino der Toten BO3.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo1/kino-der-toten/fire-pit.webp",
+  "file": "Fire Pit BO3.PNG",
+  "width": 900
+ },
+ {
+  "out": "maps/bo1/kino-der-toten/crawler.webp",
+  "file": "Crawler Zombie BO3.jpg",
+  "width": 900
+ },
+ {
+  "out": "maps/bo1/kino-der-toten/hellhound.webp",
+  "file": "Hellhound Kino der Toten BO3.jpg",
+  "width": 900
+ },
+ {
+  "out": "maps/bo1/kino-der-toten/thundergun.webp",
+  "file": "Thundergun model BO.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo1/kino-der-toten/samantha-room.webp",
+  "file": "SamanthasRoom.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo1/kino-der-toten/samantha-room-ruined.webp",
+  "file": "SamanthasRoomZombiefied.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo1/kino-der-toten/arrival.webp",
+  "file": "MDT G935 CoD BO.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo2/tranzit/hero.webp",
+  "file": "Bus Depot Loading Screen BOII.png",
+  "width": 1280
+ },
+ {
+  "out": "maps/bo2/tranzit/bus.webp",
+  "file": "Bus model BOII.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo2/tranzit/diner.webp",
+  "file": "Diner TranZit BOII.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo2/tranzit/farm.webp",
+  "file": "View of Farm 4 BOII.jpg",
+  "width": 900
+ },
+ {
+  "out": "maps/bo2/tranzit/power.webp",
+  "file": "Power Plant underground reactor BOII.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo2/tranzit/outhouse.webp",
+  "file": "Power Plant outhouse entrance BOII.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo2/tranzit/tunnel.webp",
+  "file": "TranZit Tunnel BO2.jpg",
+  "width": 900
+ },
+ {
+  "out": "maps/bo2/tranzit/prototype.webp",
+  "file": "Nacht der Untoten outside BOII.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo2/tranzit/pylon.webp",
+  "file": "NAV table Green Run BOII.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo2/tranzit/pack-a-punch.webp",
+  "file": "Pack-a-Punch Machine Town BOII.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo2/tranzit/turbine.webp",
+  "file": "Turbine Infobox TranZit BOII.jpg",
+  "width": 900
+ },
+ {
+  "out": "maps/bo2/tranzit/shield.webp",
+  "file": "Assault Shield Zombies BOII.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo2/tranzit/jet-gun.webp",
+  "file": "Thrustodyne Aeronautics Model 23 Menu Icon BOII.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo2/tranzit/denizen.webp",
+  "file": "Denizen Tranzit BOII.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo2/tranzit/avogadro.webp",
+  "file": "Avogadro TranZit BOII.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo2/tranzit/electric-trap.webp",
+  "file": "Electric Trap built TranZit BO2.png",
+  "width": 900
+ },
+ {
+  "out": "story/hero.webp",
+  "file": "Kino Der Toten Loading Screen BO3.png",
+  "width": 1280
+ },
+ {
+  "out": "story/group-935.webp",
+  "file": "Group 935 logo WaW.png",
+  "width": 900
+ },
+ {
+  "out": "story/meteor.webp",
+  "file": "Shi No Numa meteor BO3.jpg",
+  "width": 900
+ },
+ {
+  "out": "story/richtofen-ultimis.webp",
+  "file": "WWII Richtofen Laughing Closeup BO3.png",
+  "width": 900
+ },
+ {
+  "out": "story/richtofen-primis.webp",
+  "file": "PrimisRichtofen BO3.png",
+  "width": 900
+ },
+ {
+  "out": "story/maxis.webp",
+  "file": "Ludvig Maxis photo Origins BOII.png",
+  "width": 900
+ },
+ {
+  "out": "story/samantha-moon.webp",
+  "file": "Samantha Maxis floating Moon BO.png",
+  "width": 900
+ },
+ {
+  "out": "story/earth.webp",
+  "file": "Moon screen earth.jpg",
+  "width": 900
+ },
+ {
+  "out": "story/fluffy.webp",
+  "file": "Fluffy Origins BOII.png",
+  "width": 900
+ },
+ {
+  "out": "story/wunderwaffe.webp",
+  "file": "Wunderwaffe DG-2 3rd Person WaW.png",
+  "width": 900
+ },
+ {
+  "out": "story/the-house.webp",
+  "file": "The House BO3.png",
+  "width": 900
+ },
+ {
+  "out": "story/children.webp",
+  "file": "Children BO3.png",
+  "width": 900
+ },
+ {
+  "out": "story/great-war.webp",
+  "file": "Origins Crew Revelations Ending BO3.png",
+  "width": 900
+ },
+ {
+  "out": "story/peter-mccain.webp",
+  "file": "Peter McCain corpse BO3.jpg",
+  "width": 900
+ },
+ {
+  "out": "characters/ultimis/dempsey.webp",
+  "file": "Dempsey Portrait BOI.png",
+  "width": 400
+ },
+ {
+  "out": "characters/primis/dempsey.webp",
+  "file": "Dempsey Portrait BOIII.png",
+  "width": 400
+ },
+ {
+  "out": "characters/ultimis/nikolai.webp",
+  "file": "Nikolai Portrait BOI.png",
+  "width": 400
+ },
+ {
+  "out": "characters/primis/nikolai.webp",
+  "file": "Nikolai Portrait BOIII.png",
+  "width": 400
+ },
+ {
+  "out": "characters/ultimis/takeo.webp",
+  "file": "Takeo Portrait BOI.png",
+  "width": 400
+ },
+ {
+  "out": "characters/primis/takeo.webp",
+  "file": "Takeo Portrait BOIII.png",
+  "width": 400
+ },
+ {
+  "out": "characters/ultimis/richtofen.webp",
+  "file": "Richtofen Portrait BOI.png",
+  "width": 400
+ },
+ {
+  "out": "characters/primis/richtofen.webp",
+  "file": "Richtofen Portrait BOIII.png",
+  "width": 400
+ },
+ {
+  "out": "characters/victis/stuhlinger.webp",
+  "file": "Samuel J. Stuhlinger infobox BOII.png",
+  "width": 400
+ },
+ {
+  "out": "characters/victis/misty.webp",
+  "file": "Abigail Misty Briarton infobox BOII.png",
+  "width": 400
+ },
+ {
+  "out": "characters/victis/marlton.webp",
+  "file": "Marlton talks to Russ Buried BOII.png",
+  "width": 400
+ },
+ {
+  "out": "characters/victis/russman.webp",
+  "file": "Russman close up Buried BOII.png",
+  "width": 400
  }
 ]

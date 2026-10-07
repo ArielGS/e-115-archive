@@ -2,7 +2,8 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { url } from '../lib/site';
+import { url, SEO } from '../lib/site';
+import { jsonLd } from '../lib/seo';
 import { LANGS, detectScript, switchPath, t, type Lang } from '../i18n/ui';
 
 interface Props {
@@ -19,13 +20,36 @@ interface Props {
   path: string;
   /** Redirect to the visitor's language. Off for pages shared by both languages (404). */
   detect?: boolean;
+  /** Keep the page out of search results (404, pending map entries). */
+  noindex?: boolean;
+  /** Open Graph type: "article" for guides and the story. */
+  ogType?: 'website' | 'article';
+  /** schema.org objects, rendered as JSON-LD. */
+  structured?: object[];
 }
 
-const { lang, title, description = t(lang, 'site.description'), page, accent, ambient = 'default', image, nav, path, detect = true } = Astro.props;
+const {
+  lang,
+  title,
+  description = t(lang, 'site.description'),
+  page,
+  accent,
+  ambient = 'default',
+  image,
+  nav,
+  path,
+  detect = true,
+  noindex = false,
+  ogType = 'website',
+  structured = [],
+} = Astro.props;
 const siteName = t(lang, 'site.name');
 const fullTitle = title ? `${title} · ${siteName}` : `${siteName} — ${t(lang, 'site.tagline')}`;
 const ogImage = image ? new URL(url(image), Astro.site).href : undefined;
 const alternates = Object.fromEntries(LANGS.map((l) => [l, url(switchPath(path, l))]));
+const absolute = (p: string) => new URL(p, Astro.site).href;
+const canonical = absolute(url(path));
+const ogLocale = (l: Lang) => (l === 'es' ? 'es_ES' : 'en_US');
 ---
 
 <!doctype html>
@@ -36,13 +60,28 @@ const alternates = Object.fromEntries(LANGS.map((l) => [l, url(switchPath(path, 
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <meta name="theme-color" content="#0a0c0f" />
+    <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'} />
+    {!noindex && <link rel="canonical" href={canonical} />}
+    {SEO.google && <meta name="google-site-verification" content={SEO.google} />}
+    {SEO.bing && <meta name="msvalidate.01" content={SEO.bing} />}
+    <link rel="sitemap" type="application/xml" href={url('/sitemap.xml')} />
     <link rel="icon" type="image/svg+xml" href={url('/favicon.svg')} />
-    {LANGS.map((l) => <link rel="alternate" hreflang={l} href={new URL(alternates[l], Astro.site).href} />)}
+    {!noindex && LANGS.map((l) => <link rel="alternate" hreflang={l} href={absolute(alternates[l])} />)}
+    {!noindex && <link rel="alternate" hreflang="x-default" href={absolute(alternates.es)} />}
+    <meta property="og:site_name" content={siteName} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'en_US'} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={ogLocale(lang)} />
+    {LANGS.filter((l) => l !== lang).map((l) => <meta property="og:locale:alternate" content={ogLocale(l)} />)}
     {ogImage && <meta property="og:image" content={ogImage} />}
+    {ogImage && <meta property="og:image:alt" content={title ?? siteName} />}
+    <meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    {ogImage && <meta name="twitter:image" content={ogImage} />}
+    {structured.map((data) => <script is:inline type="application/ld+json" set:html={jsonLd(data)} />)}
     <meta name="generator" content={Astro.generator} />
     <script is:inline set:html={detectScript({ lang, alternates, detect })}></script>
     <script is:inline>

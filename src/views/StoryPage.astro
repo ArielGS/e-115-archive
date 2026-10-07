@@ -1,0 +1,128 @@
+---
+// The full Aether Saga in one page: a guide-like layout (sections, locked
+// spoilers with progress, voice narrator) fed by src/content/pages/<lang>/story.md.
+import { getEntry, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Narrator from '../components/Narrator.astro';
+import { url, editUrl } from '../lib/site';
+import { article, breadcrumbs } from '../lib/seo';
+import { localePath, pagePath, t, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const page = await getEntry('pages', `${lang}/story`);
+if (!page) throw new Error(`src/content/pages/${lang}/story.md is missing`);
+const { Content, headings } = await render(page);
+const d = page.data;
+const hero = d.hero ?? '/images/eras/bo1.webp';
+const toc = headings.filter((h) => h.depth === 2);
+const edit = editUrl(`src/content/pages/${lang}/story.md`);
+const facts = [
+  { label: t(lang, 'story.games'), value: 'WaW · BO1 · BO2 · BO3' },
+  { label: t(lang, 'story.period'), value: t(lang, 'story.span') },
+  { label: t(lang, 'story.crews'), value: 'Ultimis · Victis · Primis' },
+];
+const abs = (p: string) => new URL(url(p), Astro.site).href;
+const seoTitle = t(lang, 'seo.storyTitle');
+const structured = [
+  article({
+    headline: seoTitle,
+    description: d.description ?? '',
+    url: abs(pagePath(lang, 'story')),
+    image: abs(hero),
+    lang,
+    site: t(lang, 'site.name'),
+    siteUrl: abs(localePath(lang, '/')),
+    about: 'Call of Duty Zombies',
+  }),
+  breadcrumbs([
+    { name: t(lang, 'site.name'), url: abs(localePath(lang, '/')) },
+    { name: d.title, url: abs(pagePath(lang, 'story')) },
+  ]),
+];
+---
+
+<Base
+  lang={lang}
+  title={seoTitle}
+  description={d.description}
+  ogType="article"
+  structured={structured}
+  page="story"
+  nav="story"
+  path={pagePath(lang, 'story')}
+  accent="#e0b252"
+  image={hero}
+>
+  <section class="hero map-hero" aria-labelledby="story-title">
+    <div class="hero-bg">
+      <img src={url(hero)} alt="" data-parallax="0.25" fetchpriority="high" />
+    </div>
+    <div class="hero-inner">
+      <div>
+        <div class="hero-kicker">
+          <span class="dot" aria-hidden="true"></span>
+          <span class="label">{t(lang, 'story.kicker')}</span>
+        </div>
+        <h1 id="story-title" class="hero-title glitch" data-text={d.title}>{d.title}</h1>
+        {d.description && <p class="hero-sub">{d.description}</p>}
+        <div class="hero-actions">
+          <button type="button" class="btn btn--primary" data-narrator-open data-autoplay aria-controls="narrator" data-sfx>
+            {t(lang, 'story.listen')}
+          </button>
+          <div class="progress-row">
+            <span class="label">{t(lang, 'map.revealed')}</span>
+            <span class="counter" data-spoiler-count>0/0</span>
+            <span class="progress-bar" data-spoiler-progress aria-hidden="true"></span>
+            <button type="button" class="btn btn--ghost" data-spoiler-reset data-sfx>
+              {t(lang, 'map.hideAll')}
+            </button>
+          </div>
+        </div>
+      </div>
+      <dl class="facts hud">
+        {
+          facts.map((f) => (
+            <div>
+              <dt>{f.label}</dt>
+              <dd>{f.value}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <div class="guide-layout">
+    <nav class="toc" data-toc aria-label={t(lang, 'map.sectionsLabel')}>
+      <span class="label">{t(lang, 'map.sections')}</span>
+      <ol>
+        {
+          toc.map((h) => (
+            <li>
+              <a href={`#${h.slug}`} data-sfx>
+                {h.text}
+              </a>
+            </li>
+          ))
+        }
+      </ol>
+      {
+        edit && (
+          <p style="margin:6px 0 0;font-size:.9rem">
+            <a href={edit} rel="noopener">
+              {t(lang, 'map.edit')}
+            </a>
+          </p>
+        )
+      }
+    </nav>
+    <article class="prose" data-tts-root data-tts-intro={d.intro}>
+      <Content />
+    </article>
+  </div>
+
+  <Narrator slot="after" title={d.title} lang={lang} />
+</Base>

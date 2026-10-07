@@ -130,7 +130,7 @@
 /* --- era tabs ------------------------------------------------------------- */
 .tabs {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 10px;
   margin-bottom: 0;
   padding: 10px;
@@ -206,6 +206,10 @@
   box-shadow: 0 0 8px var(--toxic);
 }
 @media (max-width: 520px) {
+  /* Four games: a 2×2 grid keeps every code readable on phones. */
+  .tabs {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .tab {
     padding: 10px;
   }
@@ -699,6 +703,43 @@ body:has(.narrator.is-open) .narrator-fab {
   background: #000;
   border: 1px solid var(--line-hi);
   border-radius: 50%;
+}
+.narrator-min svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+.narrator-min .i-max,
+.narrator.is-min .narrator-min .i-min {
+  display: none;
+}
+.narrator.is-min .narrator-min .i-max {
+  display: block;
+}
+/* Minimised: a compact bar with status and transport controls. The voice,
+   ambience and recording effect keep playing underneath. */
+.narrator.is-min {
+  width: min(320px, calc(100vw - 36px));
+  padding: 10px 12px;
+}
+.narrator.is-min .narrator-top .label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.narrator.is-min .narrator-screen {
+  margin: 8px 0;
+  padding: 4px 8px;
+}
+.narrator.is-min .narrator-screen canvas,
+.narrator.is-min .narrator-now,
+.narrator.is-min .narrator-settings,
+.narrator.is-min .narrator-hint {
+  display: none;
+}
+.narrator.is-min .n-btn {
+  height: 34px;
 }
 .narrator-screen {
   position: relative;

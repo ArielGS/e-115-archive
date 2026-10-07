@@ -284,6 +284,10 @@
 }
 .figure img {
   width: 100%;
+  /* Square or portrait art (logos, character shots) must not swallow the page. */
+  max-height: 440px;
+  object-fit: contain;
+  background: #000;
   border: 1px solid #000;
 }
 .figure--wide {
