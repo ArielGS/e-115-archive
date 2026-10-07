@@ -124,36 +124,39 @@
   margin-left: auto;
   flex-wrap: wrap;
 }
-.main-nav a,
-.chip-btn {
+/* Header chips: the compact version of .btn (same chamfer, stripe and glow).
+   The page you are on is the one orange chip. Header chips always use the
+   site orange, not the map accent, so the bar looks the same everywhere. */
+.main-nav .chip {
+  --cut: 6px;
+  --stripe: 2px;
+  --map-accent: var(--accent);
+  --edge: #05070a;
+  --fill-a: #36414b;
+  --fill-b: #181d23;
+  --stripe-color: transparent;
+  flex: none;
+  padding: 7px 13px;
   font-family: var(--font-pixel);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  white-space: nowrap;
   color: var(--text-dim);
-  text-decoration: none;
-  padding: 6px 12px;
-  border-radius: 999px;
-  border: 1px solid #000;
-  background: linear-gradient(180deg, #3a444e, #1b2026);
-  box-shadow: var(--bevel);
-  transition: color 0.15s, box-shadow 0.15s, transform 0.15s;
 }
-.main-nav a:hover,
-.main-nav a[aria-current='page'],
-.chip-btn:hover {
-  color: #fff;
-  box-shadow: var(--bevel), 0 0 12px color-mix(in srgb, var(--accent) 55%, transparent);
+.main-nav .chip:hover {
+  --stripe: 3px;
+  --stripe-color: var(--accent);
 }
-.main-nav a[aria-current='page'] {
+.main-nav .chip[aria-current='page'] {
+  --edge: color-mix(in srgb, var(--accent-2) 75%, #fff);
+  --fill-a: var(--accent-2);
+  --fill-b: var(--accent);
+  --stripe-color: rgb(26 13 2 / 0.55);
   color: var(--accent-ink);
-  background: linear-gradient(180deg, var(--accent-2), var(--accent));
 }
-.chip-btn {
-  display: inline-flex;
-  gap: 6px;
-  align-items: center;
-  cursor: pointer;
+.main-nav .chip[aria-current='page']:hover {
+  color: #000;
 }
 .chip-btn [data-sound-label] {
   color: var(--blood);
@@ -166,7 +169,8 @@ html[data-sound='on'] .chip-btn [data-sound-label] {
   .site-header {
     flex-wrap: wrap;
     padding: 10px 16px;
-    position: static;
+    /* not sticky on phones, but still the anchor of the Games menu */
+    position: relative;
   }
   .main-nav {
     margin-left: 0;
@@ -207,56 +211,145 @@ html[data-sound='on'] .chip-btn [data-sound-label] {
   }
 }
 
-/* --- buttons --------------------------------------------------------------- */
-.btn {
-  --btn-a: #4a5560;
-  --btn-b: #1c2228;
+/* --- buttons ----------------------------------------------------------------
+   Black Ops III style: chamfered corners (top-left and bottom-right), an
+   accent stripe on the left edge and condensed uppercase labels. The shape
+   is drawn by two clipped layers, so the element itself stays unclipped and
+   can glow (drop-shadow) and show a focus ring.
+
+   Hierarchy, one look per role:
+     .btn--primary  the main action of a screen: solid 115 orange
+     .btn           secondary: gunmetal, accent edge and stripe
+     .btn--ghost    tertiary: transparent, quiet until hovered
+     .btn--danger   destructive or irreversible: blood red
+   Orange always means "main action / you are here"; yellow is the focus ring. */
+@property --stripe {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 3px;
+}
+.btn,
+.chip {
+  --cut: 10px;
+  --edge: color-mix(in srgb, var(--map-accent) 38%, #05070a);
+  --fill-a: #2e3842;
+  --fill-b: #12171c;
+  --stripe-color: var(--map-accent);
+  position: relative;
+  isolation: isolate;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  min-height: 40px;
-  padding: 8px 18px;
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  transition:
+    color 0.15s,
+    filter 0.2s,
+    transform 0.1s,
+    --stripe 0.2s var(--ease-out);
+}
+.btn::before,
+.btn::after,
+.chip::before,
+.chip::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  clip-path: polygon(var(--cut) 0, 100% 0, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%, 0 var(--cut));
+}
+/* edge (1px "border" that follows the chamfer) */
+.btn::before,
+.chip::before {
+  inset: 0;
+  background: var(--edge);
+}
+/* fill, top sheen and accent stripe */
+.btn::after,
+.chip::after {
+  inset: 1px;
+  background:
+    linear-gradient(90deg, var(--stripe-color) 0 var(--stripe), transparent var(--stripe)),
+    linear-gradient(180deg, rgb(255 255 255 / 0.1), transparent 46%),
+    linear-gradient(180deg, var(--fill-a), var(--fill-b));
+}
+.btn {
+  min-height: 44px;
+  padding: 10px 22px 10px 24px;
   font-family: var(--font-cond);
   font-weight: 700;
   font-size: 1rem;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  text-decoration: none;
   color: var(--text);
-  border: 1px solid #000;
-  border-radius: var(--radius);
-  background: linear-gradient(180deg, var(--btn-a), var(--btn-b));
-  box-shadow: var(--bevel), 0 2px 0 #000;
-  transition: transform 0.1s, box-shadow 0.15s, filter 0.15s;
 }
-.btn:hover {
+.btn:hover,
+.chip:hover {
+  --edge: var(--map-accent);
+  --stripe: 6px;
   color: #fff;
-  filter: brightness(1.15);
-  box-shadow: var(--bevel), 0 2px 0 #000, 0 0 16px color-mix(in srgb, var(--map-accent) 50%, transparent);
+  filter: drop-shadow(0 0 10px color-mix(in srgb, var(--map-accent) 45%, transparent));
 }
-.btn:active {
-  transform: translateY(2px);
-  box-shadow: var(--bevel);
+.btn:active,
+.chip:active {
+  transform: translateY(1px);
+  filter: none;
 }
+/* Keyboard focus follows the chamfered shape: the edge turns 115 yellow and
+   glows, instead of a rectangular outline around the button. */
+.btn:focus-visible,
+.chip:focus-visible {
+  --edge: var(--accent-2);
+  outline: none;
+  filter: drop-shadow(0 0 0 var(--accent-2)) drop-shadow(0 0 8px color-mix(in srgb, var(--accent-2) 70%, transparent));
+}
+
 .btn--primary {
-  --btn-a: var(--accent-2);
-  --btn-b: var(--accent);
+  --edge: color-mix(in srgb, var(--accent-2) 75%, #fff);
+  --fill-a: var(--accent-2);
+  --fill-b: var(--accent);
+  --stripe-color: rgb(26 13 2 / 0.55);
   color: var(--accent-ink);
 }
 .btn--primary:hover {
+  --edge: #fff3c4;
   color: #000;
+  filter: brightness(1.06) drop-shadow(0 0 14px color-mix(in srgb, var(--accent) 70%, transparent));
 }
 .btn--danger {
-  --btn-a: #ff4d5e;
-  --btn-b: #8f0f1f;
+  --edge: #ff8a96;
+  --fill-a: #ff4d5e;
+  --fill-b: #8f0f1f;
+  --stripe-color: rgb(0 0 0 / 0.4);
   color: #fff;
 }
+.btn--danger:hover {
+  --edge: #ffd0d5;
+  filter: drop-shadow(0 0 12px color-mix(in srgb, var(--blood) 70%, transparent));
+}
 .btn--ghost {
-  --btn-a: transparent;
-  --btn-b: transparent;
-  border-color: var(--line-hi);
-  box-shadow: none;
+  /* Opaque, page-coloured fill: the edge layer underneath must not show through. */
+  --edge: var(--line-hi);
+  --fill-a: #10151a;
+  --fill-b: #0a0d10;
+  --stripe-color: transparent;
+  color: var(--text-dim);
+}
+.btn--ghost:hover {
+  --stripe-color: var(--map-accent);
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .chip {
+    transition: none;
+  }
+  .btn:active,
+  .chip:active {
+    transform: none;
+  }
 }
 
 /* --- HUD panel ------------------------------------------------------------ */

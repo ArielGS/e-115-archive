@@ -12,6 +12,17 @@ describe('Home page', () => {
     cy.get('[data-intro]').should('not.exist');
   });
 
+  it('focuses "enter without sound" for the keyboard, without a rectangular focus box', () => {
+    cy.visitPage('/', { intro: true });
+    cy.get('[data-intro-enter="off"]', { timeout: 10000 }).should('be.visible');
+    // Enter still works: the default choice has focus…
+    cy.focused().should('have.attr', 'data-intro-enter', 'off');
+    // …but no rectangle is drawn around the chamfered button.
+    cy.get('[data-intro-enter="off"]').should(($b) => {
+      expect(getComputedStyle($b[0]).outlineStyle).to.eq('none');
+    });
+  });
+
   it('can skip the intro and enter with sound', () => {
     cy.visitPage('/', { intro: true });
     cy.get('[data-intro-skip]').click();
@@ -89,7 +100,8 @@ describe('Home page', () => {
       cy.get('#panel-bo1 .map-card:not(.is-stub)').should('have.length', 1).and('contain.text', 'Kino der Toten');
       cy.get('#tab-bo2').click();
       cy.get('#panel-bo2 .map-card:not(.is-stub)').should('have.length', 1).and('contain.text', 'TranZit');
-      cy.get('.main-nav').contains('a', 'WaW').click();
+      cy.get('[data-games-toggle]').click();
+      cy.get('[data-games-menu]').contains('a', 'World at War').click();
       cy.get('#tab-waw').should('have.attr', 'aria-selected', 'true');
     });
 
@@ -120,10 +132,67 @@ describe('Home page', () => {
       cy.get('#panel-bo2').should('be.visible');
     });
 
-    it('header links switch eras', () => {
+    it('the header has one "Juegos" chip whose menu switches eras', () => {
       cy.visitPage('/');
-      cy.get('.main-nav').contains('a', 'BO1').click();
+      // No chip per game any more: one menu for all of them.
+      cy.get('.main-nav').should('not.contain.text', 'BO1');
+      cy.get('[data-games-toggle]').should('have.attr', 'role', 'button').and('have.attr', 'aria-expanded', 'false').and('contain.text', 'Juegos');
+      cy.get('[data-games-menu]').should('not.be.visible');
+      cy.get('[data-games-toggle]').click();
+      cy.get('[data-games-toggle]').should('have.attr', 'aria-expanded', 'true');
+      cy.get('[data-games-menu] a').should('have.length', 5).first().should('contain.text', 'WaW');
+      cy.get('[data-games-menu]').contains('a', 'Black Ops').click();
       cy.get('#tab-bo1').should('have.attr', 'aria-selected', 'true');
+      cy.get('[data-games-menu]').should('not.be.visible');
+      cy.get('[data-games-toggle]').should('have.attr', 'aria-expanded', 'false');
+    });
+
+    it('the Games menu closes with Escape and with a click outside, and works from the keyboard', () => {
+      cy.visitPage('/');
+      cy.get('[data-games-toggle]').click();
+      cy.get('[data-games-menu]').should('be.visible');
+      cy.get('body').type('{esc}');
+      cy.get('[data-games-menu]').should('not.be.visible');
+      cy.focused().should('have.attr', 'data-games-toggle');
+
+      cy.get('[data-games-toggle]').click();
+      cy.get('h1').click({ force: true });
+      cy.get('[data-games-menu]').should('not.be.visible');
+
+      // Keyboard: arrow down opens it and focuses the first game; arrows move.
+      cy.get('[data-games-toggle]').focus().type('{downArrow}');
+      cy.get('[data-games-menu]').should('be.visible');
+      cy.focused().should('have.attr', 'data-game', 'waw').type('{downArrow}');
+      cy.focused().should('have.attr', 'data-game', 'bo1').type('{upArrow}{upArrow}');
+      cy.focused().should('have.attr', 'data-game', 'bo4');
+    });
+
+    it('on a map page the Games chip is the current one and the menu marks that game', () => {
+      cy.visitPage('/bo2/tranzit/');
+      cy.get('[data-games-toggle]').should('have.attr', 'aria-current', 'page');
+      cy.get('[data-games-toggle]').click();
+      cy.get('[data-games-menu] a[aria-current="true"]').should('have.attr', 'data-game', 'bo2');
+      cy.get('[data-games-menu]').contains('a', 'Black Ops III').click();
+      cy.location('pathname').should('eq', '/');
+      cy.location('hash').should('eq', '#bo3');
+      cy.get('#tab-bo3').should('have.attr', 'aria-selected', 'true');
+    });
+
+    it('buttons follow one hierarchy: orange main action, secondary, quiet ghost', () => {
+      cy.visitPage('/');
+      const fill = (el: Element) => getComputedStyle(el, '::after').backgroundImage;
+      cy.get('.hero-actions .btn--primary').then(($p) => {
+        cy.get('.hero-actions .btn:not(.btn--primary):not(.btn--ghost)').first().then(($s) => {
+          cy.get('.hero-actions .btn--ghost').then(($g) => {
+            // Three different looks, and the primary one is the site orange.
+            const looks = new Set([fill($p[0]), fill($s[0]), fill($g[0])]);
+            expect(looks.size).to.eq(3);
+            expect(fill($p[0])).to.contain('rgb(255, 122, 24)');
+          });
+        });
+      });
+      // The page you are on is the one orange chip in the header.
+      cy.get('.main-nav .chip[aria-current="page"]').should('have.length', 1).and('contain.text', 'Inicio');
     });
 
     it('map cards lead to their guide', () => {

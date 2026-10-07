@@ -56,6 +56,19 @@ describe('screens', () => {
     cy.wait(400);
     cy.screenshot('narrator-minimised', { capture: 'viewport', overwrite: true });
   });
+  it('games menu', () => {
+    cy.visitPage('/bo2/tranzit/');
+    settle();
+    cy.get('[data-games-toggle]').click();
+    cy.wait(500);
+    cy.screenshot('games-menu', { capture: 'viewport', overwrite: true });
+    cy.viewport(390, 844);
+    cy.visitPage('/');
+    settle();
+    cy.get('[data-games-toggle]').scrollIntoView().click();
+    cy.wait(500);
+    cy.screenshot('mobile-games-menu', { capture: 'viewport', overwrite: true });
+  });
   it('quest checklist', () => {
     cy.visitPage('/misiones/');
     settle();

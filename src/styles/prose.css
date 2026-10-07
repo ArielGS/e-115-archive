@@ -451,25 +451,55 @@ section.spoiler > .spoiler-body {
 }
 
 /* eye button */
+/* Same chamfered shape as .btn / .chip; the edge and stripe take the colour
+   of the spoiler level (red boss, purple lore…). */
 .eye-btn {
+  --cut: 7px;
+  --edge: color-mix(in srgb, var(--lvl) 45%, #05070a);
+  position: relative;
+  isolation: isolate;
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 6px 14px 6px 8px;
+  min-height: 34px;
+  padding: 6px 16px 6px 10px;
   font-family: var(--font-pixel);
   font-size: 0.7rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text);
-  background: linear-gradient(180deg, #2b333b, #12161a);
-  border: 1px solid #000;
-  border-radius: 999px;
-  box-shadow: var(--bevel);
-  transition: box-shadow 0.2s, color 0.2s;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  transition: color 0.2s, filter 0.2s;
+}
+.eye-btn::before,
+.eye-btn::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  clip-path: polygon(var(--cut) 0, 100% 0, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%, 0 var(--cut));
+}
+.eye-btn::before {
+  inset: 0;
+  background: var(--edge);
+}
+.eye-btn::after {
+  inset: 1px;
+  background:
+    linear-gradient(90deg, var(--lvl) 0 3px, transparent 3px),
+    linear-gradient(180deg, rgb(255 255 255 / 0.08), transparent 46%),
+    linear-gradient(180deg, #2b333b, #12161a);
 }
 .eye-btn:hover {
+  --edge: var(--lvl);
   color: #fff;
-  box-shadow: var(--bevel), 0 0 14px color-mix(in srgb, var(--lvl) 70%, transparent);
+  filter: drop-shadow(0 0 10px color-mix(in srgb, var(--lvl) 55%, transparent));
+}
+.eye-btn:focus-visible {
+  --edge: var(--accent-2);
+  outline: none;
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--accent-2) 70%, transparent));
 }
 .eye {
   position: relative;

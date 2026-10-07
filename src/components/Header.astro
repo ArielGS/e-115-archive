@@ -1,5 +1,7 @@
 ---
+import { getCollection } from 'astro:content';
 import { url } from '../lib/site';
+import { baseId, byOrder, entryLang } from '../lib/maps';
 import { LANGS, localePath, pagePath, t, tList, type Lang } from '../i18n/ui';
 
 interface Props {
@@ -9,15 +11,16 @@ interface Props {
 }
 const { lang, current, alternates } = Astro.props;
 
-const links = [
+// One "Games" chip opens a menu with every era, instead of one chip per game.
+const eras = (await getCollection('eras', (e) => entryLang(e) === lang)).sort(byOrder);
+const inGame = eras.some((e) => baseId(e) === current);
+
+const before = [
   { id: 'home', href: localePath(lang, '/'), label: t(lang, 'nav.home') },
   { id: 'story', href: pagePath(lang, 'story'), label: t(lang, 'nav.story') },
   { id: 'quests', href: pagePath(lang, 'quests'), label: t(lang, 'nav.quests') },
-  { id: 'waw', href: localePath(lang, '/#waw'), label: 'WaW' },
-  { id: 'bo1', href: localePath(lang, '/#bo1'), label: 'BO1' },
-  { id: 'bo2', href: localePath(lang, '/#bo2'), label: 'BO2' },
-  { id: 'bo3', href: localePath(lang, '/#bo3'), label: 'BO3' },
-  { id: 'bo4', href: localePath(lang, '/#bo4'), label: 'BO4' },
+];
+const after = [
   { id: 'contribute', href: pagePath(lang, 'contribute'), label: t(lang, 'nav.contribute') },
   { id: 'credits', href: pagePath(lang, 'credits'), label: t(lang, 'nav.credits') },
 ];
@@ -48,16 +51,59 @@ const ticker = tList(lang, 'ticker');
   </div>
   <nav class="main-nav" aria-label={t(lang, 'nav.label')}>
     {
-      links.map((l) => (
-        <a href={url(l.href)} data-sfx aria-current={current === l.id ? 'page' : undefined}>
+      before.map((l) => (
+        <a class="chip" href={url(l.href)} data-sfx aria-current={current === l.id ? 'page' : undefined}>
           {l.label}
         </a>
       ))
     }
-    <button type="button" class="chip-btn" data-sound-toggle data-sfx aria-pressed="false">
+    <!-- Without JavaScript this is a plain link to the game tabs; the script
+         turns it into a button that opens the menu below. -->
+    <a
+      class="chip nav-games"
+      href={url(localePath(lang, '/#eras'))}
+      data-games-toggle
+      aria-controls="games-menu"
+      aria-expanded="false"
+      aria-current={inGame ? 'page' : undefined}
+      data-sfx
+    >
+      {t(lang, 'nav.games')} <span class="caret" aria-hidden="true">▾</span>
+    </a>
+    {
+      after.map((l) => (
+        <a class="chip" href={url(l.href)} data-sfx aria-current={current === l.id ? 'page' : undefined}>
+          {l.label}
+        </a>
+      ))
+    }
+    <button type="button" class="chip chip-btn" data-sound-toggle data-sfx aria-pressed="false">
       {t(lang, 'nav.sound')}: <span data-sound-label>OFF</span>
     </button>
   </nav>
+  <div class="games-menu" id="games-menu" data-games-menu hidden>
+    <span class="label">{t(lang, 'nav.gamesLabel')}</span>
+    <ul>
+      {
+        eras.map((e) => (
+          <li>
+            <a
+              class="chip"
+              href={url(localePath(lang, `/#${baseId(e)}`))}
+              data-game={baseId(e)}
+              style={`--t:${e.data.accent}`}
+              aria-current={current === baseId(e) ? 'true' : undefined}
+              data-sfx
+            >
+              <span class="code">{e.data.code}</span>
+              <span class="title">{e.data.title}</span>
+              <span class="year">{e.data.year}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </header>
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track">
