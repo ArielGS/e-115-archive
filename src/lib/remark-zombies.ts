@@ -9,6 +9,7 @@
 //   :::grid / :::card[Title]{img=…}      card grid
 //   :::quote{by="Shadowman"}             in-world quote
 //   ::figure{src=… caption=…}            credited image
+//   :::checklist[Title]{id="quest"}      ordered list → tickable steps (saved per id)
 //
 // Every directive maps to plain HTML + CSS classes, so contributors never
 // touch components. Unknown directives fail the build with a clear message.
@@ -43,6 +44,9 @@ export interface Credit {
 
 const CREDITS = credits as Record<string, Credit>;
 
+/** The only external links content may add: Call of Duty Wiki articles. */
+export const WIKI_URL = /^https:\/\/callofduty\.fandom\.com\/wiki\/\S+$/;
+
 const LABELS = {
   es: {
     levels: { lore: 'Lore', boss: 'Jefe', enemy: 'Enemigo', quest: 'Misión', ee: 'Easter egg', weapon: 'Arma' },
@@ -56,6 +60,10 @@ const LABELS = {
     file: 'Expediente',
     threat: (n: number) => `Amenaza ${n} de 5`,
     image: 'Imagen: ',
+    progress: 'Progreso',
+    wiki: 'Más en la Call of Duty Wiki ↗',
+    reset: 'Reiniciar',
+    step: (n: number, text: string) => `Paso ${n}: ${text}`,
   },
   en: {
     levels: { lore: 'Lore', boss: 'Boss', enemy: 'Enemy', quest: 'Quest', ee: 'Easter egg', weapon: 'Weapon' },
@@ -69,6 +77,10 @@ const LABELS = {
     file: 'File',
     threat: (n: number) => `Threat ${n} of 5`,
     image: 'Image: ',
+    progress: 'Progress',
+    wiki: 'More on the Call of Duty Wiki ↗',
+    reset: 'Reset',
+    step: (n: number, text: string) => `Step ${n}: ${text}`,
   },
 } as const;
 type Labels = (typeof LABELS)[Lang];
@@ -181,7 +193,7 @@ function threatMeter(level: number, L: Labels): Node {
 
 // --- directive handlers ---------------------------------------------------
 
-type Ctx = { base: string; file?: { path?: string }; ids: Set<string>; dossiers: number; L: Labels };
+type Ctx = { base: string; file?: { path?: string }; ids: Set<string>; checklists: Set<string>; dossiers: number; L: Labels };
 
 function uniqueId(ctx: Ctx, wanted: string, node: Node): string {
   const id = slugify(wanted);
@@ -277,11 +289,22 @@ const handlers: Record<string, (node: Node, attrs: Attrs, ctx: Ctx) => Node> = {
 
   card(node, attrs, ctx) {
     const title = takeLabel(node) || need(attrs, 'title', node, ctx.file);
+    // href: the whole card links out (character cards → their wiki article).
+    const href = attrs.href;
+    if (href && !WIKI_URL.test(href)) {
+      throw new Error(`[archivo-115] card links may only point to the Call of Duty Wiki (${where(node, ctx.file)})`);
+    }
     const children: Node[] = [];
     if (attrs.img) children.push(el('div', { className: ['card-media'] }, [image(attrs.img, attrs.alt || title, ctx.base)]));
     children.push(el('p', { className: ['card-title'] }, [text(title)]));
     children.push(el('div', { className: ['card-body'] }, node.children ?? []));
-    return el('div', { className: ['card', ...(attrs.tag ? ['card--tagged'] : [])], ...(attrs.tag ? { dataTag: attrs.tag } : {}) }, children);
+    const className = ['card', ...(attrs.tag ? ['card--tagged'] : []), ...(href ? ['card--link'] : [])];
+    const tagProps = attrs.tag ? { dataTag: attrs.tag } : {};
+    if (href) {
+      children.push(el('span', { className: ['card-link'] }, [text(ctx.L.wiki)]));
+      return el('a', { className, ...tagProps, href, target: '_blank', rel: 'noopener', ariaLabel: `${title}: ${ctx.L.wiki}` }, children);
+    }
+    return el('div', { className, ...tagProps }, children);
   },
 
   quote(node, attrs) {
@@ -290,6 +313,38 @@ const handlers: Record<string, (node: Node, attrs: Attrs, ctx: Ctx) => Node> = {
       ...(node.children ?? []),
       ...(by ? [el('p', { className: ['lore-quote-by'] }, [text(`— ${by}`)])] : []),
     ]);
+  },
+
+  /**
+   * Turns the first list inside into tickable steps. Each step gets a stable
+   * id ("<checklist id>:<n>"), so progress is shared by both languages as long
+   * as both files keep the same id and the same number of steps.
+   */
+  checklist(node, attrs, ctx) {
+    const title = takeLabel(node);
+    const id = slugify(need(attrs, 'id', node, ctx.file));
+    if (ctx.checklists.has(id)) throw new Error(`[archivo-115] duplicate checklist id "${id}" (${where(node, ctx.file)})`);
+    ctx.checklists.add(id);
+    const list = (node.children ?? []).find((c) => c.type === 'list');
+    if (!list?.children?.length) throw new Error(`[archivo-115] checklist "${id}" needs a list of steps (${where(node, ctx.file)})`);
+    const total = list.children.length;
+    list.children.forEach((item, i) => {
+      const step = `${id}:${i + 1}`;
+      const label = ctx.L.step(i + 1, toPlain(item.children?.[0] ?? item).replace(/s+/g, ' ').trim().slice(0, 120));
+      item.data = { ...item.data, hProperties: { className: ['checklist-step'], dataStep: step } };
+      item.children = [
+        el('input', { type: 'checkbox', className: ['checklist-box'], dataCheck: step, ariaLabel: label }),
+        el('div', { className: ['checklist-text'] }, item.children ?? []),
+      ];
+    });
+    const head = el('div', { className: ['checklist-head'] }, [
+      ...(title ? [el('p', { className: ['checklist-title'] }, [text(title)])] : []),
+      el('span', { className: ['label'] }, [text(ctx.L.progress)]),
+      el('span', { className: ['counter'], dataChecklistCount: '' }, [text(`0/${total}`)]),
+      el('span', { className: ['progress-bar'], dataChecklistProgress: '', ariaHidden: 'true' }),
+      el('button', { type: 'button', className: ['btn', 'btn--ghost'], dataChecklistReset: '' }, [text(ctx.L.reset)]),
+    ]);
+    return el('div', { className: ['checklist'], dataChecklist: id, dataTotal: String(total), id: `checklist-${id}` }, [head, ...(node.children ?? [])]);
   },
 
   figure(node, attrs, ctx) {
@@ -309,7 +364,7 @@ export default function remarkZombies(options: Options = {}) {
   const base = options.base ?? '/';
   return (tree: Node, file?: { path?: string }) => {
     const lang = options.lang ?? langFromPath(file?.path ?? (file as { history?: string[] } | undefined)?.history?.[0]);
-    const ctx: Ctx = { base, file, ids: new Set(), dossiers: 0, L: LABELS[lang] };
+    const ctx: Ctx = { base, file, ids: new Set(), checklists: new Set(), dossiers: 0, L: LABELS[lang] };
 
     // Process outer directives first; handlers keep their children, which
     // are visited afterwards because we return the new node in place.

@@ -9,7 +9,7 @@ const DEVICES: [string, number, number][] = [
   ['iPad Pro portrait', 1024, 1366],
 ];
 
-const PAGES = ['/', '/historia/', '/bo3/shadows-of-evil/', '/en/bo3/der-eisendrache/', '/waw/nacht-der-untoten/', '/bo2/tranzit/', '/bo2/origins/', '/creditos/'];
+const PAGES = ['/', '/historia/', '/misiones/', '/bo4/blood-of-the-dead/', '/bo3/shadows-of-evil/', '/en/bo3/der-eisendrache/', '/waw/nacht-der-untoten/', '/bo2/tranzit/', '/bo2/origins/', '/creditos/'];
 
 const lang = (path: string) => (path.startsWith('/en/') ? 'en' : 'es');
 

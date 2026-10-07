@@ -10,15 +10,19 @@ crew:
   - name: Tank Dempsey
     note: Marine estadounidense. Mucha bravuconería y poca paciencia.
     img: /images/characters/ultimis/dempsey.webp
+    wiki: https://callofduty.fandom.com/wiki/%22Tank%22_Dempsey_(Ultimis)
   - name: Nikolai Belinski
     note: Soldado soviético. Vive pegado a su vodka.
     img: /images/characters/ultimis/nikolai.webp
+    wiki: https://callofduty.fandom.com/wiki/Nikolai_Belinski_(Ultimis)
   - name: Takeo Masaki
     note: Oficial imperial japonés. Habla de honor en mitad del caos.
     img: /images/characters/ultimis/takeo.webp
+    wiki: https://callofduty.fandom.com/wiki/Takeo_Masaki_(Ultimis)
   - name: Edward Richtofen
     note: Científico del Grupo 935. Sabe mucho más de lo que dice.
     img: /images/characters/ultimis/richtofen.webp
+    wiki: https://callofduty.fandom.com/wiki/Edward_Richtofen_(Ultimis)
 ---
 
 ## Lo que tienes que saber

@@ -1,0 +1,105 @@
+---
+// Interactive checklists for the main quest of every documented map, fed by
+// src/content/pages/<lang>/quests.md. Steps are ticked and saved by
+// src/scripts/checklist.ts; quests stay locked behind spoilers.
+import { getEntry, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { url, editUrl } from '../lib/site';
+import { breadcrumbs } from '../lib/seo';
+import { localePath, pagePath, t, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const page = await getEntry('pages', `${lang}/quests`);
+if (!page) throw new Error(`src/content/pages/${lang}/quests.md is missing`);
+const { Content, headings } = await render(page);
+const d = page.data;
+const hero = d.hero ?? '/images/eras/bo3.webp';
+const toc = headings.filter((h) => h.depth === 2);
+const edit = editUrl(`src/content/pages/${lang}/quests.md`);
+// Counted from the Markdown so the numbers never drift from the content.
+const body = page.body ?? '';
+const lists = (body.match(/^:::checklist/gm) ?? []).length;
+const steps = [...body.matchAll(/^:::checklist[^\n]*\n([\s\S]*?)^:::$/gm)].reduce((n, m) => n + (m[1].match(/^\d+\. /gm) ?? []).length, 0);
+const facts = [
+  { label: t(lang, 'quests.lists'), value: String(lists) },
+  { label: t(lang, 'quests.steps'), value: String(steps) },
+  { label: t(lang, 'quests.saved'), value: t(lang, 'quests.savedValue') },
+];
+const abs = (p: string) => new URL(url(p), Astro.site).href;
+const structured = [
+  breadcrumbs([
+    { name: t(lang, 'site.name'), url: abs(localePath(lang, '/')) },
+    { name: d.title, url: abs(pagePath(lang, 'quests')) },
+  ]),
+];
+---
+
+<Base lang={lang} title={d.title} description={d.description} page="quests" nav="quests" path={pagePath(lang, 'quests')} image={hero} structured={structured}>
+  <section class="hero map-hero" aria-labelledby="quests-title">
+    <div class="hero-bg">
+      <img src={url(hero)} alt="" data-parallax="0.25" fetchpriority="high" />
+    </div>
+    <div class="hero-inner">
+      <div>
+        <div class="hero-kicker">
+          <span class="dot" aria-hidden="true"></span>
+          <span class="label">{t(lang, 'quests.kicker')}</span>
+        </div>
+        <h1 id="quests-title" class="hero-title glitch" data-text={d.title}>{d.title}</h1>
+        {d.description && <p class="hero-sub">{d.description}</p>}
+        <div class="hero-actions">
+          <div class="progress-row">
+            <span class="label">{t(lang, 'map.revealed')}</span>
+            <span class="counter" data-spoiler-count>0/0</span>
+            <span class="progress-bar" data-spoiler-progress aria-hidden="true"></span>
+            <button type="button" class="btn btn--ghost" data-spoiler-reset data-sfx>
+              {t(lang, 'map.hideAll')}
+            </button>
+          </div>
+        </div>
+      </div>
+      <dl class="facts hud">
+        {
+          facts.map((f) => (
+            <div>
+              <dt>{f.label}</dt>
+              <dd data-fact={f.label}>{f.value}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <div class="guide-layout">
+    <nav class="toc" data-toc aria-label={t(lang, 'map.sectionsLabel')}>
+      <span class="label">{t(lang, 'map.sections')}</span>
+      <ol>
+        {
+          toc.map((h) => (
+            <li>
+              <a href={`#${h.slug}`} data-sfx>
+                {h.text}
+              </a>
+            </li>
+          ))
+        }
+      </ol>
+      {
+        edit && (
+          <p style="margin:6px 0 0;font-size:.9rem">
+            <a href={edit} rel="noopener">
+              {t(lang, 'map.edit')}
+            </a>
+          </p>
+        )
+      }
+    </nav>
+    <article class="prose">
+      <Content />
+    </article>
+  </div>
+</Base>

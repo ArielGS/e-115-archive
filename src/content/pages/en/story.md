@@ -1,13 +1,13 @@
 ---
 title: The full story
-description: The Aether Saga of Call of Duty Zombies told in order, from Nacht der Untoten to Revelations, with every twist locked until you want it.
+description: The Aether Saga of Call of Duty Zombies told in order, from Nacht der Untoten to Tag der Toten, with every twist locked until you want it.
 hero: /images/story/hero.webp
-intro: "Archive 115 transmission. Master file: the Aether Saga. Four games, three teams of heroes and one scientist who ties it all together. Get comfortable. This is a long one."
+intro: "Archive 115 transmission. Master file: the Aether Saga. Five games, three teams of heroes and one scientist who ties it all together. Get comfortable. This is a long one."
 ---
 
 ## Before you start
 
-Zombies maps tell their story in pieces: a hidden radio here, a character's line there, a cutscene if you finish the secret quest. This page puts those pieces together **in order**, from *World at War* (2008) to *Black Ops III* (2015). It is known as the **Aether Saga**.
+Zombies maps tell their story in pieces: a hidden radio here, a character's line there, a cutscene if you finish the secret quest. This page puts those pieces together **in order**, from *World at War* (2008) to *Black Ops 4* (2018), where it ends. It is known as the **Aether Saga**.
 
 What is out in the open is the context the game gives you without effort. Everything else (twists, deaths, endings) is **locked behind the eye**. Open it once you have played that map, or when you no longer care.
 
@@ -126,19 +126,19 @@ The Earth of **2035** is a cracked wasteland of lava and fog. Four survivors who
 - **Richtofen**, now master of the zombies, wants the pylons to **complete his power**. He can only talk to someone who has eaten zombie meat: Stuhlinger.
 
 ::::grid
-:::card[Samuel J. Stuhlinger]{img="/images/characters/victis/stuhlinger.webp"}
+:::card[Samuel J. Stuhlinger]{img="/images/characters/victis/stuhlinger.webp" href="https://callofduty.fandom.com/wiki/Samuel_J._Stuhlinger"}
 Former member of a cult that ate zombie meat. The only one who hears Richtofen.
 :::
 
-:::card[Misty Briarton]{img="/images/characters/victis/misty.webp"}
+:::card[Misty Briarton]{img="/images/characters/victis/misty.webp" href="https://callofduty.fandom.com/wiki/Abigail_%22Misty%22_Briarton"}
 Tough, straight-talking cowgirl.
 :::
 
-:::card[Marlton Johnson]{img="/images/characters/victis/marlton.webp"}
+:::card[Marlton Johnson]{img="/images/characters/victis/marlton.webp" href="https://callofduty.fandom.com/wiki/Marlton_Johnson"}
 Kind-hearted nerd, survivor of Nuketown.
 :::
 
-:::card[Russman]{img="/images/characters/victis/russman.webp"}
+:::card[Russman]{img="/images/characters/victis/russman.webp" href="https://callofduty.fandom.com/wiki/Russman"}
 Former Broken Arrow agent, his mind damaged by 115.
 :::
 ::::
@@ -214,13 +214,50 @@ But Monty finds a problem. Primis should be fading out of existence, because the
 
 ::figure{src="/images/story/the-house.webp" caption="The House, in Agartha."}
 
+## Black Ops 4: the end of the Aether
+
+:::narration
+Fifth and final game. The cycle is broken. Now come the consequences.
+:::
+
+*Black Ops 4* (2018) closes the saga over four maps:
+
+- **Blood of the Dead** (Alcatraz, 1941): Primis reach Richtofen's lab under the prison and get trapped on the island.
+- **Classified** (the Pentagon, 1963): Ultimis, passing through the Pentagon on their way to the Moon. It is a reimagining of "Five".
+- **Alpha Omega** (Nuketown, 2025): for the first time, Primis and Ultimis play together.
+- **Tag der Toten** (Siberia): Victis return for the last map.
+
+::figure{src="/images/story/primis-and-ultimis.webp" caption="Primis and Ultimis, together at last."}
+
+:::spoiler[The Great War and a new Richtofen]{level="lore" id="la-gran-guerra-y-un-richtofen-nuevo"}
+In **1294**, in the middle of the Great War, the Primis Richtofen saves **Pablo Marinus** and realises something: Monty **lied** to him. Going to the Great War does not break the cycle, it **closes** it. With help from Pablo, who gives him the gem of the **Staff of Fire**, he teleports to the Alcatraz pocket dimension. From then on he is known as the **Great War Richtofen**.
+:::
+
+:::spoiler[Alcatraz: the Richtofen left behind]{level="ee" id="alcatraz-el-richtofen-que-se-queda-atras"}
+At Alcatraz, Primis find an earlier version of their Richtofen, who gives them the blood vials and a **Kronorium whose pages have changed**. The Warden shuts their way out. Once he is beaten, the **Great War Richtofen** steps out of a cryogenic pod: he kills the Warden, gives the Kronorium to **Nikolai** ("your soul will be needed to defeat Doctor Monty"), announces that **the cycle is broken**, smashes the vials and leaves with Dempsey, Nikolai and Takeo. **The Primis Richtofen** is left behind, bleeding to death.
+:::
+
+:::spoiler[Nikolai's plan]{level="lore" id="el-plan-de-nikolai"}
+**Nikolai is in charge** now. Primis travel to **Hangar 4 at Area 51**, in 1963, where Ultimis had been held prisoner since the end of *Moon*, and free them. Nikolai warns them: there will be a war, **a great war**.
+
+In **Alpha Omega**, the two crews recover an **elemental shard** hidden in a pyramid under Nuketown. Maxis appears to say **it is too late**: he gets Samantha and Eddie out of the House just before **Monty devours him**. Samantha arrives furious and swears they will fight the Great War, kill Monty and burn the House to the ground.
+:::
+
+:::spoiler[The end of everything]{level="ee" id="el-final-de-todo"}
+Around a campfire in a forest, the heroes celebrate their future victory. Nikolai explains that the Great War, the Keepers, the Apothicons, the Shadowman and Monty are legends from the Kronorium, and that the greatest war is **the one they fight against themselves**. He has **poisoned their drinks**: everyone dies except Nikolai, the Ultimis Richtofen, Samantha and Eddie. Without the young Richtofen, the Ultimis one turns back into **Undead Richtofen**.
+
+In **Tag der Toten**, Undead Richtofen wakes **Victis**, who leave their pods and reach a Group 935 facility in Siberia. There, **Pablo Marinus** builds the **Agarthan Device** with their help. With it, Nikolai **destroys the Summoning Key** and kills Undead Richtofen.
+
+Reality collapses. Everything that came out of the Aether (the zombies, the Apothicons, Element 115 and Monty himself) is **banished to the Dark Aether**, Victis included. Nikolai asks Samantha to end him. Only **Samantha and Eddie** walk towards the light, into a new universe: **"a better tomorrow"**.
+:::
+
 ## Richtofen: the thread that ties it all
 
 :::narration
 If one character connects the whole saga, it is Edward Richtofen. But he is not just one man. There are several. And each one has his own file.
 :::
 
-Richtofen is in all four games: as a hero in *World at War*, *Black Ops* and *Black Ops III*, and as the voice ruling the zombies in *Black Ops II*. The trick is that **it is not always the same Richtofen**. Open his files in order.
+Richtofen is in all five games: as a hero in *World at War*, *Black Ops*, *Black Ops III* and *Black Ops 4*, and as the voice ruling the zombies in *Black Ops II*. The trick is that **it is not always the same Richtofen**. Open his files in order.
 
 :::dossier[Ultimis Richtofen]{kind="character" threat="5" codename="File R-1" teaser="The scientist who started it all." img="/images/story/richtofen-ultimis.webp" id="richtofen-de-los-ultimis"}
 The original Richtofen. He joins Group 935 at Maxis's invitation (while secretly working for the **Illuminati**). In 1940 he touches the pyramid on the Moon and starts **hearing voices**: from then on all he wants is to reach Agartha.
@@ -229,6 +266,7 @@ The original Richtofen. He joins Group 935 at Maxis's invitation (while secretly
 - **1963-2025 (Black Ops):** he leads Ultimis through time to the Moon, where he **swaps his soul with Samantha's** and takes over the zombies.
 - **2035 (Black Ops II):** he is the voice speaking to Stuhlinger. In the official ending, Maxis strips him of his power and **traps his soul in a zombie**: **Undead Richtofen**, with blue eyes. His body is left in a coma.
 - **Black Ops III:** in 1945, right after locking Maxis and Samantha away, he **dies at the hands of his younger self**, who keeps his soul in the Key.
+- **Black Ops 4:** his body, reunited with his soul, is freed at Area 51 and goes with the others to the end. Without the young Richtofen he turns back into Undead Richtofen, and Nikolai finishes him in *Tag der Toten*.
 :::
 
 :::dossier[Primis Richtofen]{kind="character" threat="4" codename="File R-2" teaser="Younger, kinder… and with a plan of his own." img="/images/story/richtofen-primis.webp" id="richtofen-de-los-primis"}
@@ -238,6 +276,7 @@ The Richtofen of **Dimension 63**. In **1914** an older version of himself visit
 - **After Origins:** from the House, with Maxis, he prepares the plan: find the **Summoning Key** with the help of a book, the **Kronorium**. He discovers his connection with **Stuhlinger** and uses it to get Victis to fetch the book. In return, he rescues them from the doomed Earth and **freezes** them in his lab under Alcatraz.
 - **Black Ops III:** he steals the Key in Morg City, brings the soul of an innocent child (**Eddie**) to the House, kills his other self at The Giant and **gathers the souls** of Ultimis.
 - **Revelations:** his suggestion ends with Primis sent to the Great War.
+- **Black Ops 4:** in the Great War he discovers Monty lied to him and becomes the **Great War Richtofen**, who breaks the cycle. An earlier version of him bleeds to death at Alcatraz; this one is poisoned by the campfire.
 :::
 
 :::dossier[Eddie]{kind="character" threat="1" codename="File R-3" teaser="The boy playing with action figures in Samantha's room." id="eddie"}
@@ -271,9 +310,3 @@ There are gaps not even the wiki can close, because the game does not give the a
 - **Why Ultimis return to Nacht der Untoten and Verrückt** in the *Black Ops* versions: the wiki says the reason is unknown.
 - **Misty's and Marlton's past**: almost everything we know about them comes from their lines during matches, and it is still very little.
 - **What happened to the Nacht Marines**: the official timeline only says they held out until they fell. No names, no story.
-
-:::spoiler[What comes next: Black Ops 4]{level="ee" id="lo-que-viene-despues-black-ops-4"}
-The Aether Saga **does not end in Revelations**: it closes in *Call of Duty: Black Ops 4*, which is outside this archive. There, Primis Richtofen realises that Monty has lied to him and that the Great War only closes the loop, and he decides to **break the cycle**.
-
-In the final map, *Tag der Toten*, Primis Nikolai destroys the Summoning Key. Reality collapses and everything that came out of the Aether, zombies, Apothicons, Element 115 and Monty himself, is **banished to the Dark Aether**, Victis included. Only **Samantha and Eddie** walk towards the light, into a new universe: "a better tomorrow".
-:::

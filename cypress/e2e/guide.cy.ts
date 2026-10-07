@@ -5,6 +5,7 @@ const GUIDES = [
   { path: '/waw/nacht-der-untoten/', title: 'Nacht der Untoten' },
   { path: '/bo1/kino-der-toten/', title: 'Kino der Toten' },
   { path: '/bo2/tranzit/', title: 'TranZit' },
+  { path: '/bo4/blood-of-the-dead/', title: 'Blood of the Dead' },
 ];
 
 describe('Map guides', () => {
@@ -28,6 +29,7 @@ describe('Map guides', () => {
       ['/bo1/kino-der-toten/', 'ultimis'],
       ['/bo2/tranzit/', 'victis'],
       ['/bo3/the-giant/', 'primis'],
+      ['/bo4/blood-of-the-dead/', 'primis'],
     ].forEach(([path, crew]) => {
       cy.visitPage(path);
       cy.get(`.prose .card img[src*="/characters/${crew}/"]`).should('have.length', 4).each(($img) => {
@@ -48,6 +50,7 @@ describe('Map guides', () => {
     cy.visitPage('/bo3/shadows-of-evil/');
     cy.get('#margwa').as('file');
     cy.get('@file').find('.dossier-head').should('not.contain.text', 'Margwa').and('contain.text', 'Expediente 01');
+    cy.get('@file').find('.dossier-head').then(($h) => expect(getComputedStyle($h[0], '::before').content).to.eq('"CLASIFICADO"'));
     cy.get('@file').find('[data-spoiler-toggle]').click();
     cy.get('@file').find('.spoiler-confirm').should('be.visible').and('contain.text', '¿Lo abres?');
     cy.get('@file').find('[data-spoiler-cancel]').click();

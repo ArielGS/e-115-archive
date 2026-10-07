@@ -37,6 +37,10 @@ Si es tu primera vez en Morg City, no te agobies. Vamos por partes: primero dón
 
 ## Dónde estás y quién eres
 
+::figure{src="/images/maps/bo3/shadows-of-evil/overhead.webp" caption="Morg City desde los tejados." wide}
+
+::figure{src="/images/maps/bo3/shadows-of-evil/mark.webp" caption="La marca en la mano (aquí, la de Jessica)."}
+
 **Morg City** es una ciudad inventada de Estados Unidos con la estética del cine negro de los años 40: neones, clubes nocturnos, policías corruptos y lluvia. Aquí no hay soldados ni científicos: los protagonistas son **cuatro personas corrientes con un pasado turbio**.
 
 ::::grid
@@ -117,6 +121,8 @@ Por el camino puedes construir un escudo, llamar a un robot policía, fabricar u
 
 ## Tus primeras rondas
 
+::figure{src="/images/maps/bo3/shadows-of-evil/train.webp" caption="Arte conceptual del tranvía que une los distritos."}
+
 :::steps
 1. **Rondas 1 y 2: ahorra.** Mata con la pistola y a cuchillo. **Quick Revive** está junto a la camioneta de la zona inicial (en solitario cuesta solo 500).
 2. **Mira bien la camioneta del callejón inicial.** Hay una caja de madera que solo la Bestia puede romper. Lo que hay dentro lo recoges después en forma humana: es la **Llave de Invocación**.
@@ -132,6 +138,8 @@ Un consejo antes de seguir: si juegan en pareja, repártanse la Bestia. Como cad
 :::
 
 ## Los rituales y el Pack-a-Punch
+
+::figure{src="/images/maps/bo3/shadows-of-evil/ruby-rabbit.webp" caption="Arte conceptual del Ruby Rabbit, uno de los lugares de ritual."}
 
 Cada personaje tiene un **lugar de ritual** ligado a su historia. En cada uno hay que dejar un **objeto personal** que está escondido por el mapa y que solo se consigue con la Bestia.
 
@@ -172,6 +180,10 @@ Cada ritual sacrifica a una persona cercana al personaje: el **abogado** de Nero
 :::
 
 :::spoiler[Qué pasa al terminar el último ritual]{level="lore"}
+
+::figure{src="/images/maps/bo3/shadows-of-evil/sacred-place.webp" caption="El Lugar Sagrado, bajo la ciudad."}
+
+::figure{src="/images/maps/bo3/shadows-of-evil/pack-a-punch.webp" caption="El Pack-a-Punch de Morg City."}
 El Shadowman se quita la máscara: da las gracias, se lleva la Llave de Invocación y se marcha. El cielo se vuelve rojo y una criatura descomunal de tentáculos aparece flotando sobre la ciudad. Los cuatro han hecho exactamente lo que él necesitaba. El Pack-a-Punch, eso sí, queda abierto.
 :::
 
@@ -284,6 +296,8 @@ Forman parte de la misión secreta. En resumen:
 ## La historia completa
 
 :::spoiler[La misión secreta: Apocalypse Averted]{level="ee"}
+
+::figure{src="/images/maps/bo3/shadows-of-evil/shadowman-key.webp" caption="El Shadowman y la Llave de Invocación."}
 La misión principal del mapa se llama **Apocalypse Averted**. La parte "obligatoria" son los rituales y el Pack-a-Punch. Lo que sigue es opcional, largo y difícil:
 
 1. **Espadas.** Cada jugador consigue y mejora su espada Apothicon (ver la sección de armas especiales).
@@ -310,6 +324,8 @@ Para los cuatro de Morg City la historia termina mal: su dimensión no sobrevive
 :::
 
 ## Consejos para jugar en pareja
+
+::figure{src="/images/maps/bo3/shadows-of-evil/cast.webp" caption="Las voces del mapa: Jeff Goldblum (Nero), Heather Graham (Jessica), Neal McDonough (Jack), Ron Perlman (Floyd) y Robert Picardo (el Shadowman)."}
 
 - **Repártanse la Bestia.** Cada uno tiene un uso por ronda: uno enciende perks y el otro rompe cajas o hace de "taxi" revividor.
 - **Recuerden el color de la botella** del Cruce antes de gastar en puertas.

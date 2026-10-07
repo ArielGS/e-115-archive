@@ -12,10 +12,12 @@ const { lang, current, alternates } = Astro.props;
 const links = [
   { id: 'home', href: localePath(lang, '/'), label: t(lang, 'nav.home') },
   { id: 'story', href: pagePath(lang, 'story'), label: t(lang, 'nav.story') },
+  { id: 'quests', href: pagePath(lang, 'quests'), label: t(lang, 'nav.quests') },
   { id: 'waw', href: localePath(lang, '/#waw'), label: 'WaW' },
   { id: 'bo1', href: localePath(lang, '/#bo1'), label: 'BO1' },
   { id: 'bo2', href: localePath(lang, '/#bo2'), label: 'BO2' },
   { id: 'bo3', href: localePath(lang, '/#bo3'), label: 'BO3' },
+  { id: 'bo4', href: localePath(lang, '/#bo4'), label: 'BO4' },
   { id: 'contribute', href: pagePath(lang, 'contribute'), label: t(lang, 'nav.contribute') },
   { id: 'credits', href: pagePath(lang, 'credits'), label: t(lang, 'nav.credits') },
 ];

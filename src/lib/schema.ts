@@ -7,8 +7,11 @@ const imagePath = z.string().regex(/^\/images\/.+\.(webp|png|jpe?g|svg)$/, 'must
 
 const hexColor = z.string().regex(/^#[0-9a-fA-F]{6}$/);
 
-/** World at War first, then the three Black Ops games: story order. */
-export const ERA_IDS = ['waw', 'bo1', 'bo2', 'bo3'] as const;
+/** A Call of Duty Wiki article: the only external reference the guides link to. */
+export const wikiUrl = z.string().regex(/^https:\/\/callofduty\.fandom\.com\/wiki\/\S+$/, 'must be a callofduty.fandom.com/wiki/ article');
+
+/** World at War first, then the Black Ops games: story order. */
+export const ERA_IDS = ['waw', 'bo1', 'bo2', 'bo3', 'bo4'] as const;
 
 export const eraSchema = z.object({
   title: z.string(),
@@ -19,7 +22,7 @@ export const eraSchema = z.object({
   hero: imagePath,
   accent: hexColor,
   crew: z
-    .array(z.object({ name: z.string(), note: z.string(), img: imagePath.optional() }))
+    .array(z.object({ name: z.string(), note: z.string(), img: imagePath.optional(), wiki: wikiUrl.optional() }))
     .default([]),
 });
 

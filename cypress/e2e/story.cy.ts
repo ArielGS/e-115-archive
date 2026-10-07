@@ -15,7 +15,7 @@ describe('Story page', () => {
   it('walks through every game with its twists locked', () => {
     cy.visitPage('/historia/');
     cy.get('[data-toc] a').should('have.length.at.least', 8);
-    ['World at War', 'Black Ops II', 'Black Ops III', 'Richtofen'].forEach((chapter) => cy.get('[data-toc]').contains('a', chapter));
+    ['World at War', 'Black Ops II', 'Black Ops III', 'Black Ops 4', 'Richtofen'].forEach((chapter) => cy.get('[data-toc]').contains('a', chapter));
     cy.get('[data-spoiler]').should('have.length.at.least', 10).each(($b) => {
       cy.wrap($b).should('not.have.class', 'is-open');
       cy.wrap($b).find('.spoiler-body').should('not.be.visible');

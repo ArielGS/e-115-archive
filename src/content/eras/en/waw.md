@@ -10,18 +10,23 @@ crew:
   - name: Unnamed Marines
     note: The first survivors, in Nacht der Untoten. Nobody knows who they were.
     img: /images/maps/waw/nacht-der-untoten/marines.webp
+    wiki: https://callofduty.fandom.com/wiki/Marines_(Zombies)
   - name: Tank Dempsey
     note: US Marine. Comes to Verrückt to rescue a spy… and ends up a prisoner.
     img: /images/characters/ultimis/dempsey.webp
+    wiki: https://callofduty.fandom.com/wiki/%22Tank%22_Dempsey_(Ultimis)
   - name: Nikolai Belinski
     note: Soviet soldier captured at Stalingrad and used as a test subject.
     img: /images/characters/ultimis/nikolai.webp
+    wiki: https://callofduty.fandom.com/wiki/Nikolai_Belinski_(Ultimis)
   - name: Takeo Masaki
     note: Imperial Japanese officer, captured by Group 935 on the Emperor's own orders.
     img: /images/characters/ultimis/takeo.webp
+    wiki: https://callofduty.fandom.com/wiki/Takeo_Masaki_(Ultimis)
   - name: Edward Richtofen
     note: Group 935 scientist. Experimented on the other three before leading them.
     img: /images/characters/ultimis/richtofen.webp
+    wiki: https://callofduty.fandom.com/wiki/Edward_Richtofen_(Ultimis)
 ---
 
 ## What you need to know

@@ -11,6 +11,9 @@ const PAGES = [
   '/bo1/moon/',
   '/bo2/mob-of-the-dead/',
   '/historia/',
+  '/misiones/',
+  '/bo4/blood-of-the-dead/',
+  '/bo4/tag-der-toten/',
   '/waw/nacht-der-untoten/',
   '/waw/der-riese/',
   '/bo1/kino-der-toten/',
@@ -23,6 +26,8 @@ const PAGES = [
   '/en/bo3/der-eisendrache/',
   '/en/bo1/moon/',
   '/en/story/',
+  '/en/quests/',
+  '/en/bo4/blood-of-the-dead/',
   '/en/waw/nacht-der-untoten/',
   '/en/bo1/kino-der-toten/',
   '/en/bo2/tranzit/',
@@ -60,7 +65,7 @@ describe('Site integrity', () => {
   (['es', 'en'] as const).forEach((lang) => {
     it(`every map in the ${lang} tabs has a working page in the same language`, () => {
       cy.visitPage(lang === 'en' ? '/en/' : '/', { lang });
-      cy.get('.map-card').should('have.length', 22).each(($a) => {
+      cy.get('.map-card').should('have.length', 30).each(($a) => {
         cy.request(($a[0] as HTMLAnchorElement).href).its('body').should('contain', `<html lang="${lang}"`);
       });
     });

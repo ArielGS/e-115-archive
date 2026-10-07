@@ -60,9 +60,9 @@ function imagesIn(file: (typeof files)[number]): string[] {
 describe('content files', () => {
   it('there is content to test, in both languages', () => {
     for (const lang of ['es', 'en']) {
-      expect(maps.filter((m) => m.lang === lang).length).toBeGreaterThanOrEqual(22);
-      expect(eras.filter((e) => e.lang === lang).map((e) => basename(e.path, '.md')).sort()).toEqual(['bo1', 'bo2', 'bo3', 'waw']);
-      expect(pages.filter((p) => p.lang === lang).map((p) => basename(p.path, '.md')).sort()).toEqual(['basics', 'contribute', 'story']);
+      expect(maps.filter((m) => m.lang === lang).length).toBeGreaterThanOrEqual(30);
+      expect(eras.filter((e) => e.lang === lang).map((e) => basename(e.path, '.md')).sort()).toEqual(['bo1', 'bo2', 'bo3', 'bo4', 'waw']);
+      expect(pages.filter((p) => p.lang === lang).map((p) => basename(p.path, '.md')).sort()).toEqual(['basics', 'contribute', 'quests', 'story']);
     }
     expect(files.every((f) => f.lang === 'es' || f.lang === 'en'), 'every file lives in an es/ or en/ folder').toBe(true);
   });
@@ -112,7 +112,7 @@ describe('maps', () => {
   });
 
   it('every era has maps', () => {
-    for (const era of ['waw', 'bo1', 'bo2', 'bo3']) expect(maps.filter((m) => m.data.era === era).length).toBeGreaterThan(0);
+    for (const era of ['waw', 'bo1', 'bo2', 'bo3', 'bo4']) expect(maps.filter((m) => m.data.era === era).length).toBeGreaterThan(0);
   });
 
   it('the first three Black Ops III maps have full guides in both languages', () => {
@@ -129,6 +129,13 @@ describe('maps', () => {
       expect(first('bo1').inner, lang).toBe('bo1/kino-der-toten.md');
       expect(first('bo2').inner, lang).toBe('bo2/tranzit.md');
       for (const era of ['waw', 'bo1', 'bo2']) expect(first(era).data.status, `${lang} ${era}`).toBe('guide');
+    }
+  });
+
+  it('Black Ops 4 has a full guide for its first Aether map, Blood of the Dead', () => {
+    for (const lang of ['es', 'en']) {
+      const botd = maps.find((m) => m.lang === lang && m.inner === 'bo4/blood-of-the-dead.md');
+      expect(botd?.data.status, lang).toBe('guide');
     }
   });
 
@@ -151,13 +158,66 @@ describe('maps', () => {
   });
 });
 
+describe('characters', () => {
+  const WIKI = /^https:\/\/callofduty\.fandom\.com\/wiki\/\S+$/;
+
+  it('every playable character in the era tabs has a picture and links to its wiki article', () => {
+    for (const era of eras) {
+      for (const member of era.data.crew as { name: string; img?: string; wiki?: string }[]) {
+        expect(member.img, `${era.rel}: ${member.name} picture`).toBeTruthy();
+        expect(member.wiki, `${era.rel}: ${member.name} wiki link`).toMatch(WIKI);
+      }
+    }
+  });
+
+  it('every portrait card in the guides and the story links to the wiki', async () => {
+    for (const file of [...maps, ...pages]) {
+      const root = dom(await md(file.body, { lang: file.lang }));
+      for (const img of root.querySelectorAll('.card img[src*="/images/characters/"]')) {
+        const card = img.closest('.card')!;
+        expect(card.tagName, `${file.rel}: ${img.getAttribute('src')}`).toBe('A');
+        expect(card.getAttribute('href')).toMatch(WIKI);
+      }
+    }
+  });
+});
+
+describe('quest checklists', () => {
+  const quests = pages.filter((p) => basename(p.path, '.md') === 'quests');
+
+  it.each(quests.map((q) => [q.rel, q] as const))('%s has a locked checklist for every map with a guide', async (_rel, page) => {
+    const root = dom(await md(page.body, { lang: page.lang }));
+    const sections = [...root.querySelectorAll('h2')].map((h) => h.textContent ?? '');
+    const guides = maps.filter((m) => m.lang === page.lang && m.data.status === 'guide').map((m) => String(m.data.title));
+    for (const title of guides) expect(sections.some((s) => s.startsWith(title)), title).toBe(true);
+    const lists = [...root.querySelectorAll('[data-checklist]')];
+    expect(lists.length).toBeGreaterThanOrEqual(guides.length);
+    for (const list of lists) {
+      expect(list.closest('[data-spoiler]'), `${list.id} is behind a spoiler`).not.toBeNull();
+      expect(list.querySelectorAll('input[type="checkbox"][data-check]').length, list.id).toBeGreaterThanOrEqual(5);
+    }
+  });
+
+  it('Spanish and English checklists share ids and step counts, so progress carries over', async () => {
+    const shape = async (f: (typeof files)[number]) =>
+      [...dom(await md(f.body, { lang: f.lang })).querySelectorAll('[data-checklist]')].map((c) => [
+        c.getAttribute('data-checklist'),
+        [...c.querySelectorAll('[data-check]')].map((b) => b.getAttribute('data-check')),
+      ]);
+    for (const esFile of files.filter((f) => f.lang === 'es')) {
+      const enFile = files.find((f) => f.lang === 'en' && f.collection === esFile.collection && f.inner === esFile.inner)!;
+      expect(await shape(enFile), esFile.rel).toEqual(await shape(esFile));
+    }
+  });
+});
+
 describe('story page', () => {
   describe.each(pages.filter((p) => basename(p.path, '.md') === 'story').map((p) => [p.rel, p] as const))('%s', (_rel, page) => {
     it('is a narrated, spoiler-safe walk through every game', async () => {
       const root = dom(await md(page.body, { lang: page.lang }));
       const sections = [...root.querySelectorAll('h2')].map((h) => h.textContent ?? '');
       expect(sections.length, 'enough chapters').toBeGreaterThanOrEqual(8);
-      for (const game of ['World at War', 'Black Ops II', 'Black Ops III']) {
+      for (const game of ['World at War', 'Black Ops II', 'Black Ops III', 'Black Ops 4']) {
         expect(sections.some((t) => t.includes(game)), `a chapter for ${game}`).toBe(true);
       }
       expect(page.data.intro, 'narrator intro').toBeTruthy();

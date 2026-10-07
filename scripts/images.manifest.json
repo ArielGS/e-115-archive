@@ -798,5 +798,165 @@
   "out": "characters/victis/russman.webp",
   "file": "Russman close up Buried BOII.png",
   "width": 400
+ },
+ {
+  "out": "eras/bo4.webp",
+  "file": "Blood of the Dead Reveal Image BO4Z.jpg",
+  "width": 1280
+ },
+ {
+  "out": "maps/bo4/ix/thumb.webp",
+  "file": "IX Loading Screen BO4.jpg",
+  "width": 800
+ },
+ {
+  "out": "maps/bo4/voyage-of-despair/thumb.webp",
+  "file": "Voyage loading screen.jpg",
+  "width": 800
+ },
+ {
+  "out": "maps/bo4/blood-of-the-dead/thumb.webp",
+  "file": "BOTD Loading Screen BO4.jpg",
+  "width": 800
+ },
+ {
+  "out": "maps/bo4/classified/thumb.webp",
+  "file": "Classified Loading Screen.jpg",
+  "width": 800
+ },
+ {
+  "out": "maps/bo4/dead-of-the-night/thumb.webp",
+  "file": "Dead of the Night BO4.jpg",
+  "width": 800
+ },
+ {
+  "out": "maps/bo4/ancient-evil/thumb.webp",
+  "file": "AncientEvil LoadingScreen Zombies BO4.jpg",
+  "width": 800
+ },
+ {
+  "out": "maps/bo4/alpha-omega/thumb.webp",
+  "file": "AlphaOmega LoadingScreen BO4.png",
+  "width": 800
+ },
+ {
+  "out": "maps/bo4/tag-der-toten/thumb.webp",
+  "file": "TagDerToten LoadingScreen BO4.png",
+  "width": 800
+ },
+ {
+  "out": "maps/bo4/blood-of-the-dead/hero.webp",
+  "file": "BOTD Loading Screen BO4.jpg",
+  "width": 1280
+ },
+ {
+  "out": "maps/bo4/blood-of-the-dead/lab.webp",
+  "file": "Blood of the Dead Victis.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo4/blood-of-the-dead/warden.webp",
+  "file": "Brutus Cinematic BO4.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo4/blood-of-the-dead/warden-ingame.webp",
+  "file": "BO4 Brutus.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo4/blood-of-the-dead/spectral-shield.webp",
+  "file": "Spectral Shield BO4.jpg",
+  "width": 900
+ },
+ {
+  "out": "maps/bo4/blood-of-the-dead/kronorium.webp",
+  "file": "Kronorium BO4.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo4/blood-of-the-dead/pack-a-punch.webp",
+  "file": "PAPSpirit BO4.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo4/blood-of-the-dead/catwalk.webp",
+  "file": "BloodOfTheDead CatWalk ConceptArt BO4.jpg",
+  "width": 900
+ },
+ {
+  "out": "maps/bo4/blood-of-the-dead/new-industries.webp",
+  "file": "BloodOfTheDead NewIndustries ConceptArt BO4.jpg",
+  "width": 900
+ },
+ {
+  "out": "maps/bo4/blood-of-the-dead/warden-house.webp",
+  "file": "Blood of the Dead WardenHouse.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo4/blood-of-the-dead/docks.webp",
+  "file": "PrimisDocks BOTD BO4.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo4/blood-of-the-dead/vials.webp",
+  "file": "TwoForEachOfThem BOTD BO4.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo4/blood-of-the-dead/portal.webp",
+  "file": "Brutus destorys teleport.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo4/blood-of-the-dead/ending.webp",
+  "file": "Richtofen Death BOTD BO4.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo4/blood-of-the-dead/blundergat.webp",
+  "file": "Blundergat BO4.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo4/blood-of-the-dead/map.webp",
+  "file": "BO4 - BOTD Layout.png",
+  "width": 1280
+ },
+ {
+  "out": "basics/bo4-perks.webp",
+  "file": "Perk-a-Cola machines BO4.jpg",
+  "width": 900
+ },
+ {
+  "out": "basics/elixirs.webp",
+  "file": "Elixirs and Talisman BO4.jpg",
+  "width": 900
+ },
+ {
+  "out": "story/primis-and-ultimis.webp",
+  "file": "Primis and Ultimis BO4.png",
+  "width": 900
+ },
+ {
+  "out": "characters/chaos/scarlett.webp",
+  "file": "ScarlettRhodes VOD Intro BO4.png",
+  "width": 400
+ },
+ {
+  "out": "characters/chaos/diego.webp",
+  "file": "Diego Infobox BO4.png",
+  "width": 400
+ },
+ {
+  "out": "characters/chaos/shaw.webp",
+  "file": "StantonShaw IX Intro BO4.png",
+  "width": 400
+ },
+ {
+  "out": "characters/chaos/bruno.webp",
+  "file": "Bruno Delacroix Infobox Portrait BO4.png",
+  "width": 400
  }
 ]

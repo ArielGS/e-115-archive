@@ -51,6 +51,12 @@ El contenedor lleva a **Tank Dempsey congelado**: no el de los Primis, sino el *
 
 ## El castillo
 
+::figure{src="/images/maps/bo3/der-eisendrache/castle.webp" caption="Arte conceptual del castillo Griffin." wide}
+
+::figure{src="/images/maps/bo3/der-eisendrache/view-2.webp" caption="Una de las dos góndolas de la sala de inicio."}
+
+::figure{src="/images/maps/bo3/der-eisendrache/undercroft.webp" caption="Arte conceptual del Undercroft."}
+
 - **Teleféricos:** hay dos en la sala inicial. Los zombis sueltan a veces un **fusible**; con él llamas a un teleférico, que llega con un potenciador o un arma (y a veces con un zombi dentro).
 - **Patios (inferior y superior):** las zonas exteriores centrales del castillo.
 - **Bastión:** zona exterior con el **rayo de la muerte**, una trampa enorme.
@@ -186,6 +192,8 @@ En el combate usa los poderes de los **cuatro arcos**: lluvia de calaveras, esqu
 ## La historia completa
 
 :::spoiler[La misión secreta: My Brother's Keeper]{level="ee"}
+
+::figure{src="/images/maps/bo3/der-eisendrache/boss-concept.webp" caption="Arte conceptual del combate final."}
 La misión principal se llama **My Brother's Keeper** ("El guardián de mi hermano") y se puede completar **con cualquier número de jugadores**, también en solitario. Necesitas: un arco mejorado por jugador, el Ragnarok DG-4 construido y haber usado el rayo de la muerte al menos una vez.
 
 1. **Las balizas:** con el arco normal, dispara a las varillas electrificadas del teletransportador del Undercroft.

@@ -47,19 +47,19 @@ Es **2035**, diez años después de que la Tierra quedara destrozada al final de
 Los protagonistas son los **Victis**, cuatro supervivientes que se encontraron por casualidad:
 
 ::::grid
-:::card[Samuel J. Stuhlinger]{img="/images/characters/victis/stuhlinger.webp"}
+:::card[Samuel J. Stuhlinger]{img="/images/characters/victis/stuhlinger.webp" href="https://callofduty.fandom.com/wiki/Samuel_J._Stuhlinger"}
 Antiguo miembro de **la Carne** (*The Flesh*), una secta que comía carne de zombi. Oye una voz en su cabeza… y no está loco.
 :::
 
-:::card[Abigail "Misty" Briarton]{img="/images/characters/victis/misty.webp"}
+:::card[Abigail "Misty" Briarton]{img="/images/characters/victis/misty.webp" href="https://callofduty.fandom.com/wiki/Abigail_%22Misty%22_Briarton"}
 Una vaquera dura y directa.
 :::
 
-:::card[Marlton Johnson]{img="/images/characters/victis/marlton.webp"}
+:::card[Marlton Johnson]{img="/images/characters/victis/marlton.webp" href="https://callofduty.fandom.com/wiki/Marlton_Johnson"}
 Un cerebrito de buen corazón, único superviviente de un desastre nuclear en Camp Edward (el mapa *Nuketown Zombies*).
 :::
 
-:::card[Russman]{img="/images/characters/victis/russman.webp"}
+:::card[Russman]{img="/images/characters/victis/russman.webp" href="https://callofduty.fandom.com/wiki/Russman"}
 Antiguo agente de **Broken Arrow**, una división de investigación secreta de Estados Unidos. Años de exposición al Elemento 115 le dejaron la mente muy tocada.
 :::
 ::::

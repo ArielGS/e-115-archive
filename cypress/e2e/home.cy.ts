@@ -41,15 +41,26 @@ describe('Home page', () => {
   });
 
   describe('era tabs', () => {
-    it('defaults to Black Ops III with its three guides', () => {
+    it('defaults to the newest game, Black Ops 4, with its Aether guide', () => {
       cy.visitPage('/');
-      cy.get('[role="tab"][aria-selected="true"]').should('have.attr', 'data-tab', 'bo3');
+      cy.get('[role="tab"]').should('have.length', 5);
+      cy.get('[role="tab"][aria-selected="true"]').should('have.attr', 'data-tab', 'bo4');
+      cy.get('#panel-bo4').should('be.visible').within(() => {
+        cy.get('.map-card').should('have.length', 8);
+        cy.get('.map-card:not(.is-stub)').should('have.length', 1).and('contain.text', 'Blood of the Dead');
+        // Same order as the game: Voyage of Despair is the first map.
+        cy.get('.map-card-title').first().should('have.text', 'Voyage of Despair');
+      });
+      cy.get('#panel-bo1').should('not.be.visible');
+    });
+
+    it('Black Ops III keeps its three guides', () => {
+      cy.visitPage('/#bo3');
       cy.get('#panel-bo3').should('be.visible').within(() => {
         cy.get('.map-card').should('have.length', 6);
         cy.get('.map-card:not(.is-stub)').should('have.length', 3);
         cy.contains('.map-card-title', 'Shadows of Evil');
       });
-      cy.get('#panel-bo1').should('not.be.visible');
     });
 
     it('switches with clicks and the keyboard, updating the URL', () => {
@@ -62,7 +73,7 @@ describe('Home page', () => {
       cy.focused().should('have.attr', 'data-tab', 'bo2');
       cy.get('#panel-bo2').should('be.visible').and('contain.text', 'Victis');
       cy.focused().type('{end}');
-      cy.focused().should('have.attr', 'data-tab', 'bo3');
+      cy.focused().should('have.attr', 'data-tab', 'bo4');
     });
 
     it('starts the story with a World at War tab and the first guide of each older game', () => {
@@ -91,6 +102,18 @@ describe('Home page', () => {
       cy.get('#panel-bo2 .crew-card img').should('have.length', 4).first().should('have.attr', 'src').and('contain', '/characters/victis/');
     });
 
+    it('each character card opens its Call of Duty Wiki article in a new tab', () => {
+      cy.visitPage('/');
+      cy.get('.crew-card').each(($card) => {
+        expect($card.prop('tagName'), 'card is a link').to.eq('A');
+        expect($card.attr('href')).to.match(/^https:\/\/callofduty\.fandom\.com\/wiki\//);
+        expect($card.attr('target')).to.eq('_blank');
+        expect($card.attr('rel')).to.contain('noopener');
+      });
+      cy.get('#tab-bo2').click();
+      cy.get('#panel-bo2').contains('a.crew-card', 'Russman').should('have.attr', 'href', 'https://callofduty.fandom.com/wiki/Russman').and('contain.text', 'Call of Duty Wiki');
+    });
+
     it('opens the tab from a deep link', () => {
       cy.visitPage('/#bo2');
       cy.get('#tab-bo2').should('have.attr', 'aria-selected', 'true');
@@ -104,7 +127,7 @@ describe('Home page', () => {
     });
 
     it('map cards lead to their guide', () => {
-      cy.visitPage('/');
+      cy.visitPage('/#bo3');
       cy.get('#panel-bo3').contains('.map-card', 'The Giant').click();
       cy.location('pathname').should('match', /\/bo3\/the-giant\/?$/);
       cy.get('h1').should('contain.text', 'The Giant');

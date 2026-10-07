@@ -9,6 +9,8 @@ const shots: [string, string, (() => void)?][] = [
   ['/bo2/origins/', 'stub'],
   ['/#waw', 'home-waw'],
   ['/#bo2', 'home-bo2'],
+  ['/#bo4', 'home-bo4'],
+  ['/bo4/blood-of-the-dead/', 'botd'],
   ['/historia/', 'story'],
   ['/waw/nacht-der-untoten/', 'nacht'],
   ['/bo1/kino-der-toten/', 'kino'],
@@ -53,6 +55,15 @@ describe('screens', () => {
     cy.get('[data-n-min]').click();
     cy.wait(400);
     cy.screenshot('narrator-minimised', { capture: 'viewport', overwrite: true });
+  });
+  it('quest checklist', () => {
+    cy.visitPage('/misiones/');
+    settle();
+    cy.get('#most-escape-alive [data-spoiler-toggle]').click();
+    cy.get('#most-escape-alive [data-spoiler-accept]').click();
+    cy.get('#checklist-botd-escape input[data-check]').eq(0).check();
+    cy.get('#checklist-botd-escape input[data-check]').eq(1).check();
+    cy.get('#checklist-botd-escape').scrollIntoView().wait(600).screenshot('quests-checklist', { overwrite: true });
   });
   it('character portraits', () => {
     cy.visitPage('/#bo2');
