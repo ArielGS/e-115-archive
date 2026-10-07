@@ -1,0 +1,23 @@
+---
+import { t, tList, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+---
+
+<div class="intro" data-intro hidden data-lines={tList(lang, 'intro.lines').join('|')} role="dialog" aria-modal="true" aria-label={t(lang, 'intro.label')}>
+  <div class="intro-box">
+    <div class="intro-atom" aria-hidden="true"><i></i><i></i><i></i><b>115</b></div>
+    <p class="intro-title">{t(lang, 'intro.title')}</p>
+    <div class="intro-bar" data-intro-bar role="progressbar" aria-label={t(lang, 'intro.loading')}></div>
+    <div class="intro-pct" data-intro-pct aria-hidden="true">000</div>
+    <ul class="intro-log" data-intro-log aria-live="polite"></ul>
+    <div class="intro-enter">
+      <button type="button" class="btn btn--primary" data-intro-enter="on">{t(lang, 'intro.sound')}</button>
+      <button type="button" class="btn" data-intro-enter="off">{t(lang, 'intro.nosound')}</button>
+    </div>
+  </div>
+  <button type="button" class="intro-skip" data-intro-skip>{t(lang, 'intro.skip')}</button>
+</div>

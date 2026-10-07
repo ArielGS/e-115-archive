@@ -1,0 +1,188 @@
+// @vitest-environment jsdom
+// Validates every Markdown file in src/content the way CI should: schema,
+// images (exist + credited), spoiler safety rules and guide completeness.
+import { describe, expect, it } from 'vitest';
+import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
+import { join, relative, basename, dirname, sep } from 'node:path';
+import { parse as parseYaml } from 'yaml';
+import { eraSchema, mapSchema, pageSchema } from '../../src/lib/schema';
+import credits from '../../src/data/image-credits.json';
+import manifest from '../../scripts/images.manifest.json';
+import { md, dom } from './helpers';
+
+const ROOT = join(__dirname, '../..');
+const CONTENT = join(ROOT, 'src/content');
+const PUBLIC = join(ROOT, 'public');
+const CREDITS = credits as Record<string, { file: string; page: string }>;
+
+function walk(dir: string): string[] {
+  return readdirSync(dir).flatMap((name) => {
+    const full = join(dir, name);
+    return statSync(full).isDirectory() ? walk(full) : name.endsWith('.md') && !name.startsWith('_') ? [full] : [];
+  });
+}
+
+function split(file: string): { data: Record<string, unknown>; body: string } {
+  // Normalize CRLF so checkouts with Windows line endings parse the same way.
+  const raw = readFileSync(file, 'utf8').replace(/\r\n/g, '\n');
+  const m = raw.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
+  if (!m) throw new Error(`${file}: missing front matter`);
+  return { data: parseYaml(m[1]) ?? {}, body: m[2] };
+}
+
+/** src/content/<collection>/<lang>/… */
+const langOf = (rel: string) => rel.split('/')[3] as 'es' | 'en';
+/** Path inside the language folder: "bo3/the-giant.md". */
+const innerOf = (rel: string) => rel.split('/').slice(4).join('/');
+
+const files = walk(CONTENT).map((path) => {
+  // POSIX separators on every OS (path.relative uses "\" on Windows).
+  const rel = relative(ROOT, path).split(sep).join('/');
+  return { path, rel, lang: langOf(rel), inner: innerOf(rel), collection: rel.split('/')[2], ...split(path) };
+});
+const maps = files.filter((f) => f.rel.startsWith('src/content/maps/'));
+const eras = files.filter((f) => f.rel.startsWith('src/content/eras/'));
+const pages = files.filter((f) => f.rel.startsWith('src/content/pages/'));
+
+/** Every /images/... path mentioned in front matter or in directive attributes. */
+function imagesIn(file: (typeof files)[number]): string[] {
+  const found = new Set<string>();
+  const scan = (v: unknown) => {
+    if (typeof v === 'string' && v.startsWith('/images/')) found.add(v);
+    else if (Array.isArray(v)) v.forEach(scan);
+    else if (v && typeof v === 'object') Object.values(v).forEach(scan);
+  };
+  scan(file.data);
+  for (const m of file.body.matchAll(/(?:img|src)="(\/images\/[^"]+)"/g)) found.add(m[1]);
+  return [...found];
+}
+
+describe('content files', () => {
+  it('there is content to test, in both languages', () => {
+    for (const lang of ['es', 'en']) {
+      expect(maps.filter((m) => m.lang === lang).length).toBeGreaterThanOrEqual(18);
+      expect(eras.filter((e) => e.lang === lang).map((e) => basename(e.path, '.md')).sort()).toEqual(['bo1', 'bo2', 'bo3']);
+      expect(pages.filter((p) => p.lang === lang).map((p) => basename(p.path, '.md')).sort()).toEqual(['basics', 'contribute']);
+    }
+    expect(files.every((f) => f.lang === 'es' || f.lang === 'en'), 'every file lives in an es/ or en/ folder').toBe(true);
+  });
+
+  describe.each(files.map((f) => [f.rel, f] as const))('%s', (_rel, file) => {
+    it('has valid front matter', () => {
+      const schema = file.rel.includes('/maps/') ? mapSchema : file.rel.includes('/eras/') ? eraSchema : pageSchema;
+      const result = schema.safeParse(file.data);
+      expect(result.success, JSON.stringify(!result.success && result.error.issues)).toBe(true);
+    });
+
+    it('only uses images that exist and are credited', () => {
+      for (const img of imagesIn(file)) {
+        expect(existsSync(join(PUBLIC, img)), `${img} missing in public/`).toBe(true);
+        expect(CREDITS[img], `${img} has no entry in src/data/image-credits.json`).toBeDefined();
+      }
+    });
+
+    it('renders, and keeps spoilers safe', async () => {
+      const root = dom(await md(file.body, { lang: file.lang }));
+      // Section headings inside a spoiler would leak through the table of contents.
+      expect(root.querySelectorAll('[data-spoiler] h2'), 'no ## headings inside spoilers').toHaveLength(0);
+      // A locked block must not put the secret in its visible header.
+      for (const block of root.querySelectorAll('[data-spoiler]')) {
+        expect(block.querySelector('.spoiler-body')).not.toBeNull();
+        const head = block.querySelector('.spoiler-head, .dossier-head')!;
+        const name = block.querySelector('.dossier-name')?.textContent;
+        if (name) expect(head.textContent).not.toContain(name);
+      }
+    });
+
+    it('does not link to videos', () => {
+      expect(file.body).not.toMatch(/youtube\.com|youtu\.be|twitch\.tv/i);
+    });
+  });
+});
+
+describe('maps', () => {
+  it('live in the folder of their era and have unique order per era', () => {
+    const seen = new Set<string>();
+    for (const m of maps) {
+      expect(basename(dirname(m.path)), m.rel).toBe(m.data.era);
+      const key = `${m.lang}:${m.data.era}:${m.data.order}`;
+      expect(seen.has(key), `duplicate order ${key}`).toBe(false);
+      seen.add(key);
+    }
+  });
+
+  it('every era has maps', () => {
+    for (const era of ['bo1', 'bo2', 'bo3']) expect(maps.filter((m) => m.data.era === era).length).toBeGreaterThan(0);
+  });
+
+  it('the first three Black Ops III maps have full guides in both languages', () => {
+    for (const lang of ['es', 'en']) {
+      const guides = maps.filter((m) => m.lang === lang && m.data.era === 'bo3' && m.data.status === 'guide').map((m) => basename(m.path, '.md'));
+      expect(guides.sort(), lang).toEqual(['der-eisendrache', 'shadows-of-evil', 'the-giant']);
+    }
+  });
+
+  describe.each(maps.filter((m) => m.data.status === 'guide').map((m) => [m.rel, m] as const))('guide %s', (_rel, m) => {
+    it('has the expected structure', async () => {
+      const root = dom(await md(m.body, { lang: m.lang }));
+      const sections = [...root.querySelectorAll('h2')].map((h) => h.textContent);
+      expect(sections.length).toBeGreaterThanOrEqual(6);
+      const required = {
+        es: ['Antes de empezar', 'Dónde estás y quién eres', 'El objetivo', 'Enemigos y jefes'],
+        en: ['Before you start', 'Where you are and who you are', 'The objective', 'Enemies and bosses'],
+      };
+      expect(sections).toEqual(expect.arrayContaining(required[m.lang]));
+      expect(root.querySelectorAll('.dossier.spoiler').length, 'at least one locked dossier').toBeGreaterThan(0);
+      expect(root.querySelectorAll('section.spoiler--ee').length, 'easter egg behind a spoiler').toBeGreaterThan(0);
+      expect(root.querySelectorAll('.narration').length, 'narration-only lines').toBeGreaterThan(0);
+      expect(m.data.intro, 'narrator intro').toBeTruthy();
+      expect(m.data.hero, 'hero image').toBeTruthy();
+    });
+  });
+});
+
+describe('images', () => {
+  it('every manifest entry was downloaded and credited', () => {
+    for (const { out } of manifest as { out: string }[]) {
+      expect(existsSync(join(PUBLIC, 'images', out)), out).toBe(true);
+      expect(CREDITS[`/images/${out}`], out).toBeDefined();
+    }
+  });
+
+  it('every credit points to a wiki file page', () => {
+    for (const [path, c] of Object.entries(CREDITS)) {
+      expect(c.page, path).toMatch(/^https:\/\/callofduty\.fandom\.com\/wiki\/File:/);
+      expect(existsSync(join(PUBLIC, path)), path).toBe(true);
+    }
+  });
+});
+
+describe('Spanish and English stay in sync', () => {
+  const es = files.filter((f) => f.lang === 'es');
+  const en = files.filter((f) => f.lang === 'en');
+  const key = (f: (typeof files)[number]) => `${f.collection}/${f.inner}`;
+
+  it('every file exists in both languages', () => {
+    expect(en.map(key).sort()).toEqual(es.map(key).sort());
+  });
+
+  // Facts that must not drift between translations.
+  const SHARED = ['era', 'order', 'status', 'released', 'thumb', 'hero', 'accent', 'ambient', 'difficulty', 'code', 'year'];
+
+  describe.each(es.map((f) => [key(f), f] as const))('%s', (_k, esFile) => {
+    const enFile = en.find((f) => key(f) === key(esFile))!;
+
+    it('shares the same data and images', () => {
+      expect(enFile, 'English twin').toBeDefined();
+      for (const field of SHARED) expect(enFile.data[field], field).toEqual(esFile.data[field]);
+      expect((enFile.data.facts as unknown[] | undefined)?.length).toEqual((esFile.data.facts as unknown[] | undefined)?.length);
+      expect(imagesIn(enFile).sort()).toEqual(imagesIn(esFile).sort());
+    });
+
+    it('has the same spoilers and dossiers (same ids, so progress carries over)', async () => {
+      const ids = async (f: typeof esFile) =>
+        [...dom(await md(f.body, { lang: f.lang })).querySelectorAll('[data-spoiler], .dossier')].map((b) => b.id);
+      expect(await ids(enFile)).toEqual(await ids(esFile));
+    });
+  });
+});

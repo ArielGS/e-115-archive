@@ -1,0 +1,467 @@
+{
+  "/images/basics/apothicons.webp": {
+    "file": "ApothiconsAlphaOmegaIntro.png",
+    "page": "https://callofduty.fandom.com/wiki/File:ApothiconsAlphaOmegaIntro.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/basics/element-115.webp": {
+    "file": "ShiNoNumaMeteor.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:ShiNoNumaMeteor.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/basics/gobblegum.webp": {
+    "file": "GobbleGum Machine 1 BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:GobbleGum_Machine_1_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/basics/juggernog.webp": {
+    "file": "Juggernog Machine Render.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Juggernog_Machine_Render.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/basics/keeper.webp": {
+    "file": "KeepersAlphaOmegaIntro.png",
+    "page": "https://callofduty.fandom.com/wiki/File:KeepersAlphaOmegaIntro.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/basics/mystery-box.webp": {
+    "file": "Mystery Box BOIII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Mystery_Box_BOIII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/basics/pack-a-punch.webp": {
+    "file": "Pack-a-Punch machine BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Pack-a-Punch_machine_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/basics/primis.webp": {
+    "file": "Primis Picture BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Primis_Picture_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/basics/summoning-key.webp": {
+    "file": "Summoning Key BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Summoning_Key_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/basics/ultimis.webp": {
+    "file": "Ultimis.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Ultimis.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/eras/bo1.webp": {
+    "file": "Kino Der Toten Loading Screen.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Kino_Der_Toten_Loading_Screen.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/eras/bo2.webp": {
+    "file": "Origins ConceptArt Zombies BO2.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:Origins_ConceptArt_Zombies_BO2.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/eras/bo3.webp": {
+    "file": "Shadows of Evil Morg City Reveal Image BOIII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Shadows_of_Evil_Morg_City_Reveal_Image_BOIII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo1/ascension/thumb.webp": {
+    "file": "Ascension Menu Selection BO.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Ascension_Menu_Selection_BO.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo1/call-of-the-dead/thumb.webp": {
+    "file": "Call of the Dead Menu Selection BO.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Call_of_the_Dead_Menu_Selection_BO.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo1/five/thumb.webp": {
+    "file": "Five Menu Selection BO.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Five_Menu_Selection_BO.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo1/kino-der-toten/thumb.webp": {
+    "file": "Kino Der Toten Menu Selection BO.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Kino_Der_Toten_Menu_Selection_BO.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo1/moon/thumb.webp": {
+    "file": "Moon Menu Selection BO.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Moon_Menu_Selection_BO.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo1/shangri-la/thumb.webp": {
+    "file": "Shangri-La Menu Selection BO.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Shangri-La_Menu_Selection_BO.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo2/buried/thumb.webp": {
+    "file": "Buried menu BOII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Buried_menu_BOII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo2/die-rise/thumb.webp": {
+    "file": "Die Rise menu selection BO2.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Die_Rise_menu_selection_BO2.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo2/mob-of-the-dead/thumb.webp": {
+    "file": "Mob of the Dead menu selection BO2.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Mob_of_the_Dead_menu_selection_BO2.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo2/nuketown-zombies/thumb.webp": {
+    "file": "Nuketown menu selection BO2.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Nuketown_menu_selection_BO2.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo2/origins/thumb.webp": {
+    "file": "Origins Lobby Icon BO2.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Origins_Lobby_Icon_BO2.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo2/tranzit/thumb.webp": {
+    "file": "TranZit lobby BOII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:TranZit_lobby_BOII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/der-eisendrache/approach.webp": {
+    "file": "Heading to the Castle BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Heading_to_the_Castle_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/der-eisendrache/boss-concept.webp": {
+    "file": "DerEisendrache BossFight ConceptArt BOIII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:DerEisendrache_BossFight_ConceptArt_BOIII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/der-eisendrache/bow.webp": {
+    "file": "Wrath of the Ancients third person BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Wrath_of_the_Ancients_third_person_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/der-eisendrache/castle.webp": {
+    "file": "DerEisendrache Castle ConceptArt BOIII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:DerEisendrache_Castle_ConceptArt_BOIII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/der-eisendrache/corrupted-keeper.webp": {
+    "file": "MPD Corrupted Keeper BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:MPD_Corrupted_Keeper_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/der-eisendrache/death-ray.webp": {
+    "file": "Death Ray Active BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Death_Ray_Active_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/der-eisendrache/dempsey-capsule.webp": {
+    "file": "Preserving WWII Dempsey BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Preserving_WWII_Dempsey_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/der-eisendrache/fire-bow.webp": {
+    "file": "Kreeaho'ahm nal Ahmhogaroc BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Kreeaho%27ahm_nal_Ahmhogaroc_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/der-eisendrache/groph.webp": {
+    "file": "Groph DerEisendrache BO3.PNG",
+    "page": "https://callofduty.fandom.com/wiki/File:Groph_DerEisendrache_BO3.PNG",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/der-eisendrache/hero.webp": {
+    "file": "Der Eisendrache Loading Screen BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Der_Eisendrache_Loading_Screen_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/der-eisendrache/keeper-protector.webp": {
+    "file": "Keeper Protector BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Keeper_Protector_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/der-eisendrache/panzersoldat.webp": {
+    "file": "Der esiendrache panzer soldat.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:Der_esiendrache_panzer_soldat.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/der-eisendrache/ragnarok.webp": {
+    "file": "Ragnarok DG-4 built BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Ragnarok_DG-4_built_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/der-eisendrache/rocket-shield.webp": {
+    "file": "Rocket Shield Der Eisendrache BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Rocket_Shield_Der_Eisendrache_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/der-eisendrache/storm-bow.webp": {
+    "file": "Kreema'ahm la Ahmahm BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Kreema%27ahm_la_Ahmahm_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/der-eisendrache/thumb.webp": {
+    "file": "Der Eisendrache Menu Selection BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Der_Eisendrache_Menu_Selection_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/der-eisendrache/undercroft.webp": {
+    "file": "DerEisendrache Undercroft ConceptArt BOIII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:DerEisendrache_Undercroft_ConceptArt_BOIII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/der-eisendrache/view-0.webp": {
+    "file": "Der Eisendrache View 0 BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Der_Eisendrache_View_0_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/der-eisendrache/view-1.webp": {
+    "file": "Der Eisendrache View 1 BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Der_Eisendrache_View_1_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/der-eisendrache/view-2.webp": {
+    "file": "Der Eisendrache View 2 BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Der_Eisendrache_View_2_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/der-eisendrache/view-3.webp": {
+    "file": "Der Eisendrache View 3 BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Der_Eisendrache_View_3_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/der-eisendrache/void-bow.webp": {
+    "file": "Kreegakaleet lu Gosata'ahm BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Kreegakaleet_lu_Gosata%27ahm_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/der-eisendrache/wolf-bow.webp": {
+    "file": "Kreeholo lu Kreemasaleet BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Kreeholo_lu_Kreemasaleet_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/gorod-krovi/thumb.webp": {
+    "file": "Gorod Krovi Menu Selection BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Gorod_Krovi_Menu_Selection_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/revelations/thumb.webp": {
+    "file": "Revelations Menu Selection BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Revelations_Menu_Selection_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/shadows-of-evil/apothicon-servant.webp": {
+    "file": "Apothicon Servant BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Apothicon_Servant_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/shadows-of-evil/beast.webp": {
+    "file": "Beast ShadowsOfEvil BO3.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:Beast_ShadowsOfEvil_BO3.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/shadows-of-evil/bridge.webp": {
+    "file": "Shadows of Evil View 1 BOIII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Shadows_of_Evil_View_1_BOIII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/shadows-of-evil/cast.webp": {
+    "file": "ShadowsofEvil Cast BOIII.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:ShadowsofEvil_Cast_BOIII.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/shadows-of-evil/civil-protector.webp": {
+    "file": "Civil Protector BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Civil_Protector_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/shadows-of-evil/floyd.webp": {
+    "file": "Floyd Portrait BOIII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Floyd_Portrait_BOIII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/shadows-of-evil/gobblegum.webp": {
+    "file": "GobbleGum Shadows of Evil BO3.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:GobbleGum_Shadows_of_Evil_BO3.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/shadows-of-evil/hero.webp": {
+    "file": "Shadows of Evil Loading Screen BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Shadows_of_Evil_Loading_Screen_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/shadows-of-evil/insanity-elemental.webp": {
+    "file": "R.A.P.S. Zombies BOIII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:R.A.P.S._Zombies_BOIII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/shadows-of-evil/jack.webp": {
+    "file": "Jackie Portrait BOIII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Jackie_Portrait_BOIII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/shadows-of-evil/jessica.webp": {
+    "file": "Jessica Portrait BOIII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Jessica_Portrait_BOIII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/shadows-of-evil/keeper.webp": {
+    "file": "Keeper ShadowsOfEvil BO3.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:Keeper_ShadowsOfEvil_BO3.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/shadows-of-evil/margwa.webp": {
+    "file": "Margwa BOIII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Margwa_BOIII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/shadows-of-evil/mark.webp": {
+    "file": "Jessica Mark BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Jessica_Mark_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/shadows-of-evil/morg-city.webp": {
+    "file": "MorgCity ConceptArt ShadowsOfEvil BOIII.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:MorgCity_ConceptArt_ShadowsOfEvil_BOIII.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/shadows-of-evil/nero.webp": {
+    "file": "Nero Portrait BOIII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Nero_Portrait_BOIII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/shadows-of-evil/overhead.webp": {
+    "file": "Shadows of Evil Overhead BOIII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Shadows_of_Evil_Overhead_BOIII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/shadows-of-evil/pack-a-punch.webp": {
+    "file": "Pack-a-Punch Shadows of Evil BO3.PNG",
+    "page": "https://callofduty.fandom.com/wiki/File:Pack-a-Punch_Shadows_of_Evil_BO3.PNG",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/shadows-of-evil/parasite.webp": {
+    "file": "Parasite BOIII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Parasite_BOIII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/shadows-of-evil/rocket-shield.webp": {
+    "file": "Rocket Shield BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Rocket_Shield_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/shadows-of-evil/ruby-rabbit.webp": {
+    "file": "RubyRabbit ConceptArt ShadowsOfEvil BOIII.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:RubyRabbit_ConceptArt_ShadowsOfEvil_BOIII.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/shadows-of-evil/sacred-place.webp": {
+    "file": "Sacred Place Ritual BOIII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Sacred_Place_Ritual_BOIII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/shadows-of-evil/shadowman-key.webp": {
+    "file": "Shadow Man with Summoning Key BO3.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:Shadow_Man_with_Summoning_Key_BO3.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/shadows-of-evil/shadowman.webp": {
+    "file": "Shadowman ConceptArt BOIII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Shadowman_ConceptArt_BOIII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/shadows-of-evil/street.webp": {
+    "file": "Shadows of Evil View 2 BOIII.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Shadows_of_Evil_View_2_BOIII.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/shadows-of-evil/summoning-key.webp": {
+    "file": "Summoning Key BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Summoning_Key_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/shadows-of-evil/thumb.webp": {
+    "file": "Shadows of Evil Menu Selection BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Shadows_of_Evil_Menu_Selection_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/shadows-of-evil/train.webp": {
+    "file": "Train ConceptArt ShadowsOfEvil BOIII.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:Train_ConceptArt_ShadowsOfEvil_BOIII.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/the-giant/annihilator.webp": {
+    "file": "Annihilator Furnace BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Annihilator_Furnace_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/the-giant/cast.webp": {
+    "file": "TheGiant Cast BOIII.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:TheGiant_Cast_BOIII.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/the-giant/concept.webp": {
+    "file": "TheGiant ConceptArt Zombies BO3.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:TheGiant_ConceptArt_Zombies_BO3.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/the-giant/der-riese.webp": {
+    "file": "Der Riese Loading Screen WaW.jpg",
+    "page": "https://callofduty.fandom.com/wiki/File:Der_Riese_Loading_Screen_WaW.jpg",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/the-giant/hellhound.webp": {
+    "file": "Hellhound BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Hellhound_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/the-giant/hero.webp": {
+    "file": "The Giant Loading Screen BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:The_Giant_Loading_Screen_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/the-giant/pack-a-punch.webp": {
+    "file": "PAP TheGiant BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:PAP_TheGiant_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/the-giant/primis.webp": {
+    "file": "Primis Picture BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Primis_Picture_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/the-giant/thumb.webp": {
+    "file": "The Giant Menu Selection BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:The_Giant_Menu_Selection_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/the-giant/ultimis.webp": {
+    "file": "Ultimis.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Ultimis.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/the-giant/view-1.webp": {
+    "file": "The Giant View 1 BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:The_Giant_View_1_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/the-giant/view-2.webp": {
+    "file": "The Giant View 2 BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:The_Giant_View_2_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/the-giant/view-3.webp": {
+    "file": "The Giant View 3 BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:The_Giant_View_3_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/the-giant/wunderwaffe.webp": {
+    "file": "Wunderwaffe-DG-2 BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Wunderwaffe-DG-2_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  },
+  "/images/maps/bo3/zetsubou-no-shima/thumb.webp": {
+    "file": "Zetsubou No Shima Menu Selection BO3.png",
+    "page": "https://callofduty.fandom.com/wiki/File:Zetsubou_No_Shima_Menu_Selection_BO3.png",
+    "source": "Call of Duty Wiki (Fandom)"
+  }
+}

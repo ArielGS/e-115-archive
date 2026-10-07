@@ -1,0 +1,54 @@
+---
+import Base from '../layouts/Base.astro';
+import credits from '../data/image-credits.json';
+import { url } from '../lib/site';
+import { pagePath, t, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const rows = Object.entries(credits as Record<string, { file: string; page: string; source: string }>);
+---
+
+<Base lang={lang} title={t(lang, 'credits.title')} page="credits" nav="credits" path={pagePath(lang, 'credits')}>
+  <section class="section">
+    <div class="sec-head">
+      <span class="label">Sec.∞</span>
+      <h1 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:2.4rem">{t(lang, 'credits.title')}</h1>
+    </div>
+    <div class="prose">
+      <p>{t(lang, 'credits.p1')}</p>
+      <p>{t(lang, 'credits.p2')}</p>
+      <p>{t(lang, 'credits.p3')}</p>
+    </div>
+    <div class="hud" style="margin-top:28px;overflow-x:auto">
+      <table class="credits-table">
+        <thead>
+          <tr><th>{t(lang, 'credits.image')}</th><th>{t(lang, 'credits.local')}</th><th>{t(lang, 'credits.original')}</th></tr>
+        </thead>
+        <tbody>
+          {
+            rows.map(([path, c]) => (
+              <tr>
+                <td>
+                  <img src={url(path)} alt="" loading="lazy" />
+                </td>
+                <td>
+                  <code>{path}</code>
+                </td>
+                <td>
+                  <a href={c.page} rel="noopener">
+                    {c.file}
+                  </a>
+                  <br />
+                  <span class="credit">{c.source}</span>
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+</Base>

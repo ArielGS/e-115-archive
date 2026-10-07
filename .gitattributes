@@ -1,0 +1,18 @@
+# Store text with LF in the repository and check it out with LF on every OS,
+# so Windows clones (core.autocrlf=true) do not break shell scripts, the
+# Docker build or front matter parsing.
+* text=auto eol=lf
+
+# Windows-only launchers need CRLF.
+*.cmd text eol=crlf
+*.bat text eol=crlf
+
+# Binary assets.
+*.webp binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary

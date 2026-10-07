@@ -1,0 +1,18 @@
+// Single entry point for all client-side behaviour.
+import { initIntro } from './intro';
+import { initSfx } from './sfx';
+import { initTabs } from './tabs';
+import { initSpoilers } from './spoilers';
+import { initNarrator } from './narrator';
+import { initFx } from './fx';
+import { initLang } from './lang';
+
+export function boot(): void {
+  initLang();
+  initIntro();
+  initSfx();
+  initTabs();
+  initSpoilers();
+  initNarrator();
+  initFx();
+}

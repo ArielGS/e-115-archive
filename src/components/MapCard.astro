@@ -1,0 +1,32 @@
+---
+import { url } from '../lib/site';
+import { mapPath, mapKey, type MapEntry } from '../lib/maps';
+import { t, type Lang } from '../i18n/ui';
+
+interface Props {
+  map: MapEntry;
+  lang: Lang;
+}
+const { map, lang } = Astro.props;
+const { title, thumb, setting, released, tagline, status, accent } = map.data;
+const isGuide = status === 'guide';
+---
+
+<a
+  class:list={['map-card', { 'is-stub': !isGuide }]}
+  href={url(mapPath(map))}
+  style={`--map-accent:${accent}`}
+  data-tilt
+  data-sfx
+  data-map={mapKey(map)}
+>
+  <div class="map-card-media">
+    <span class="map-card-badge">{isGuide ? t(lang, 'card.guide') : t(lang, 'card.stub')}</span>
+    <img src={url(thumb)} alt={t(lang, 'card.alt', { title })} loading="lazy" decoding="async" width="800" height="450" />
+  </div>
+  <div class="map-card-body">
+    <span class="map-card-meta">{released.slice(0, 4)} · {setting}</span>
+    <h3 class="map-card-title">{title}</h3>
+    <p class="map-card-text">{tagline}</p>
+  </div>
+</a>

@@ -1,0 +1,467 @@
+[
+ {
+  "out": "eras/bo1.webp",
+  "file": "Kino Der Toten Loading Screen.png",
+  "width": 1280
+ },
+ {
+  "out": "eras/bo2.webp",
+  "file": "Origins ConceptArt Zombies BO2.jpg",
+  "width": 1280
+ },
+ {
+  "out": "eras/bo3.webp",
+  "file": "Shadows of Evil Morg City Reveal Image BOIII.png",
+  "width": 1280
+ },
+ {
+  "out": "maps/bo1/kino-der-toten/thumb.webp",
+  "file": "Kino Der Toten Menu Selection BO.png",
+  "width": 800
+ },
+ {
+  "out": "maps/bo1/five/thumb.webp",
+  "file": "Five Menu Selection BO.png",
+  "width": 800
+ },
+ {
+  "out": "maps/bo1/ascension/thumb.webp",
+  "file": "Ascension Menu Selection BO.png",
+  "width": 800
+ },
+ {
+  "out": "maps/bo1/call-of-the-dead/thumb.webp",
+  "file": "Call of the Dead Menu Selection BO.png",
+  "width": 800
+ },
+ {
+  "out": "maps/bo1/shangri-la/thumb.webp",
+  "file": "Shangri-La Menu Selection BO.png",
+  "width": 800
+ },
+ {
+  "out": "maps/bo1/moon/thumb.webp",
+  "file": "Moon Menu Selection BO.png",
+  "width": 800
+ },
+ {
+  "out": "maps/bo2/tranzit/thumb.webp",
+  "file": "TranZit lobby BOII.png",
+  "width": 800
+ },
+ {
+  "out": "maps/bo2/nuketown-zombies/thumb.webp",
+  "file": "Nuketown menu selection BO2.png",
+  "width": 800
+ },
+ {
+  "out": "maps/bo2/die-rise/thumb.webp",
+  "file": "Die Rise menu selection BO2.png",
+  "width": 800
+ },
+ {
+  "out": "maps/bo2/mob-of-the-dead/thumb.webp",
+  "file": "Mob of the Dead menu selection BO2.png",
+  "width": 800
+ },
+ {
+  "out": "maps/bo2/buried/thumb.webp",
+  "file": "Buried menu BOII.png",
+  "width": 800
+ },
+ {
+  "out": "maps/bo2/origins/thumb.webp",
+  "file": "Origins Lobby Icon BO2.png",
+  "width": 800
+ },
+ {
+  "out": "maps/bo3/shadows-of-evil/thumb.webp",
+  "file": "Shadows of Evil Menu Selection BO3.png",
+  "width": 800
+ },
+ {
+  "out": "maps/bo3/the-giant/thumb.webp",
+  "file": "The Giant Menu Selection BO3.png",
+  "width": 800
+ },
+ {
+  "out": "maps/bo3/der-eisendrache/thumb.webp",
+  "file": "Der Eisendrache Menu Selection BO3.png",
+  "width": 800
+ },
+ {
+  "out": "maps/bo3/zetsubou-no-shima/thumb.webp",
+  "file": "Zetsubou No Shima Menu Selection BO3.png",
+  "width": 800
+ },
+ {
+  "out": "maps/bo3/gorod-krovi/thumb.webp",
+  "file": "Gorod Krovi Menu Selection BO3.png",
+  "width": 800
+ },
+ {
+  "out": "maps/bo3/revelations/thumb.webp",
+  "file": "Revelations Menu Selection BO3.png",
+  "width": 800
+ },
+ {
+  "out": "basics/element-115.webp",
+  "file": "ShiNoNumaMeteor.jpg",
+  "width": 900
+ },
+ {
+  "out": "basics/mystery-box.webp",
+  "file": "Mystery Box BOIII.png",
+  "width": 900
+ },
+ {
+  "out": "basics/pack-a-punch.webp",
+  "file": "Pack-a-Punch machine BO3.png",
+  "width": 900
+ },
+ {
+  "out": "basics/gobblegum.webp",
+  "file": "GobbleGum Machine 1 BO3.png",
+  "width": 900
+ },
+ {
+  "out": "basics/juggernog.webp",
+  "file": "Juggernog Machine Render.png",
+  "width": 900
+ },
+ {
+  "out": "basics/primis.webp",
+  "file": "Primis Picture BO3.png",
+  "width": 900
+ },
+ {
+  "out": "basics/ultimis.webp",
+  "file": "Ultimis.png",
+  "width": 900
+ },
+ {
+  "out": "basics/summoning-key.webp",
+  "file": "Summoning Key BO3.png",
+  "width": 900
+ },
+ {
+  "out": "basics/keeper.webp",
+  "file": "KeepersAlphaOmegaIntro.png",
+  "width": 900
+ },
+ {
+  "out": "basics/apothicons.webp",
+  "file": "ApothiconsAlphaOmegaIntro.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo3/shadows-of-evil/hero.webp",
+  "file": "Shadows of Evil Loading Screen BO3.png",
+  "width": 1600
+ },
+ {
+  "out": "maps/bo3/shadows-of-evil/morg-city.webp",
+  "file": "MorgCity ConceptArt ShadowsOfEvil BOIII.jpg",
+  "width": 1280
+ },
+ {
+  "out": "maps/bo3/shadows-of-evil/overhead.webp",
+  "file": "Shadows of Evil Overhead BOIII.png",
+  "width": 1280
+ },
+ {
+  "out": "maps/bo3/shadows-of-evil/street.webp",
+  "file": "Shadows of Evil View 2 BOIII.png",
+  "width": 1280
+ },
+ {
+  "out": "maps/bo3/shadows-of-evil/bridge.webp",
+  "file": "Shadows of Evil View 1 BOIII.png",
+  "width": 1280
+ },
+ {
+  "out": "maps/bo3/shadows-of-evil/cast.webp",
+  "file": "ShadowsofEvil Cast BOIII.jpg",
+  "width": 1280
+ },
+ {
+  "out": "maps/bo3/shadows-of-evil/train.webp",
+  "file": "Train ConceptArt ShadowsOfEvil BOIII.jpg",
+  "width": 1280
+ },
+ {
+  "out": "maps/bo3/shadows-of-evil/ruby-rabbit.webp",
+  "file": "RubyRabbit ConceptArt ShadowsOfEvil BOIII.jpg",
+  "width": 1280
+ },
+ {
+  "out": "maps/bo3/shadows-of-evil/nero.webp",
+  "file": "Nero Portrait BOIII.png",
+  "width": 600
+ },
+ {
+  "out": "maps/bo3/shadows-of-evil/jessica.webp",
+  "file": "Jessica Portrait BOIII.png",
+  "width": 600
+ },
+ {
+  "out": "maps/bo3/shadows-of-evil/jack.webp",
+  "file": "Jackie Portrait BOIII.png",
+  "width": 600
+ },
+ {
+  "out": "maps/bo3/shadows-of-evil/floyd.webp",
+  "file": "Floyd Portrait BOIII.png",
+  "width": 600
+ },
+ {
+  "out": "maps/bo3/shadows-of-evil/beast.webp",
+  "file": "Beast ShadowsOfEvil BO3.jpg",
+  "width": 1000
+ },
+ {
+  "out": "maps/bo3/shadows-of-evil/mark.webp",
+  "file": "Jessica Mark BO3.png",
+  "width": 800
+ },
+ {
+  "out": "maps/bo3/shadows-of-evil/margwa.webp",
+  "file": "Margwa BOIII.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo3/shadows-of-evil/parasite.webp",
+  "file": "Parasite BOIII.png",
+  "width": 800
+ },
+ {
+  "out": "maps/bo3/shadows-of-evil/insanity-elemental.webp",
+  "file": "R.A.P.S. Zombies BOIII.png",
+  "width": 800
+ },
+ {
+  "out": "maps/bo3/shadows-of-evil/keeper.webp",
+  "file": "Keeper ShadowsOfEvil BO3.jpg",
+  "width": 900
+ },
+ {
+  "out": "maps/bo3/shadows-of-evil/shadowman.webp",
+  "file": "Shadowman ConceptArt BOIII.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo3/shadows-of-evil/shadowman-key.webp",
+  "file": "Shadow Man with Summoning Key BO3.jpg",
+  "width": 900
+ },
+ {
+  "out": "maps/bo3/shadows-of-evil/civil-protector.webp",
+  "file": "Civil Protector BO3.png",
+  "width": 800
+ },
+ {
+  "out": "maps/bo3/shadows-of-evil/apothicon-servant.webp",
+  "file": "Apothicon Servant BO3.png",
+  "width": 800
+ },
+ {
+  "out": "maps/bo3/shadows-of-evil/rocket-shield.webp",
+  "file": "Rocket Shield BO3.png",
+  "width": 800
+ },
+ {
+  "out": "maps/bo3/shadows-of-evil/gobblegum.webp",
+  "file": "GobbleGum Shadows of Evil BO3.jpg",
+  "width": 900
+ },
+ {
+  "out": "maps/bo3/shadows-of-evil/pack-a-punch.webp",
+  "file": "Pack-a-Punch Shadows of Evil BO3.PNG",
+  "width": 900
+ },
+ {
+  "out": "maps/bo3/shadows-of-evil/sacred-place.webp",
+  "file": "Sacred Place Ritual BOIII.png",
+  "width": 1000
+ },
+ {
+  "out": "maps/bo3/shadows-of-evil/summoning-key.webp",
+  "file": "Summoning Key BO3.png",
+  "width": 700
+ },
+ {
+  "out": "maps/bo3/the-giant/hero.webp",
+  "file": "The Giant Loading Screen BO3.png",
+  "width": 1600
+ },
+ {
+  "out": "maps/bo3/the-giant/view-1.webp",
+  "file": "The Giant View 1 BO3.png",
+  "width": 1280
+ },
+ {
+  "out": "maps/bo3/the-giant/view-2.webp",
+  "file": "The Giant View 2 BO3.png",
+  "width": 1280
+ },
+ {
+  "out": "maps/bo3/the-giant/view-3.webp",
+  "file": "The Giant View 3 BO3.png",
+  "width": 1280
+ },
+ {
+  "out": "maps/bo3/the-giant/cast.webp",
+  "file": "TheGiant Cast BOIII.jpg",
+  "width": 1280
+ },
+ {
+  "out": "maps/bo3/the-giant/concept.webp",
+  "file": "TheGiant ConceptArt Zombies BO3.jpg",
+  "width": 1280
+ },
+ {
+  "out": "maps/bo3/the-giant/hellhound.webp",
+  "file": "Hellhound BO3.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo3/the-giant/wunderwaffe.webp",
+  "file": "Wunderwaffe-DG-2 BO3.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo3/the-giant/pack-a-punch.webp",
+  "file": "PAP TheGiant BO3.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo3/the-giant/annihilator.webp",
+  "file": "Annihilator Furnace BO3.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo3/the-giant/primis.webp",
+  "file": "Primis Picture BO3.png",
+  "width": 1000
+ },
+ {
+  "out": "maps/bo3/the-giant/ultimis.webp",
+  "file": "Ultimis.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo3/the-giant/der-riese.webp",
+  "file": "Der Riese Loading Screen WaW.jpg",
+  "width": 1000
+ },
+ {
+  "out": "maps/bo3/der-eisendrache/hero.webp",
+  "file": "Der Eisendrache Loading Screen BO3.png",
+  "width": 1600
+ },
+ {
+  "out": "maps/bo3/der-eisendrache/castle.webp",
+  "file": "DerEisendrache Castle ConceptArt BOIII.png",
+  "width": 1280
+ },
+ {
+  "out": "maps/bo3/der-eisendrache/undercroft.webp",
+  "file": "DerEisendrache Undercroft ConceptArt BOIII.png",
+  "width": 1280
+ },
+ {
+  "out": "maps/bo3/der-eisendrache/view-0.webp",
+  "file": "Der Eisendrache View 0 BO3.png",
+  "width": 1280
+ },
+ {
+  "out": "maps/bo3/der-eisendrache/view-1.webp",
+  "file": "Der Eisendrache View 1 BO3.png",
+  "width": 1280
+ },
+ {
+  "out": "maps/bo3/der-eisendrache/view-2.webp",
+  "file": "Der Eisendrache View 2 BO3.png",
+  "width": 1280
+ },
+ {
+  "out": "maps/bo3/der-eisendrache/view-3.webp",
+  "file": "Der Eisendrache View 3 BO3.png",
+  "width": 1280
+ },
+ {
+  "out": "maps/bo3/der-eisendrache/approach.webp",
+  "file": "Heading to the Castle BO3.png",
+  "width": 1280
+ },
+ {
+  "out": "maps/bo3/der-eisendrache/panzersoldat.webp",
+  "file": "Der esiendrache panzer soldat.jpg",
+  "width": 900
+ },
+ {
+  "out": "maps/bo3/der-eisendrache/bow.webp",
+  "file": "Wrath of the Ancients third person BO3.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo3/der-eisendrache/storm-bow.webp",
+  "file": "Kreema'ahm la Ahmahm BO3.png",
+  "width": 800
+ },
+ {
+  "out": "maps/bo3/der-eisendrache/fire-bow.webp",
+  "file": "Kreeaho'ahm nal Ahmhogaroc BO3.png",
+  "width": 800
+ },
+ {
+  "out": "maps/bo3/der-eisendrache/void-bow.webp",
+  "file": "Kreegakaleet lu Gosata'ahm BO3.png",
+  "width": 800
+ },
+ {
+  "out": "maps/bo3/der-eisendrache/wolf-bow.webp",
+  "file": "Kreeholo lu Kreemasaleet BO3.png",
+  "width": 800
+ },
+ {
+  "out": "maps/bo3/der-eisendrache/ragnarok.webp",
+  "file": "Ragnarok DG-4 built BO3.png",
+  "width": 800
+ },
+ {
+  "out": "maps/bo3/der-eisendrache/rocket-shield.webp",
+  "file": "Rocket Shield Der Eisendrache BO3.png",
+  "width": 800
+ },
+ {
+  "out": "maps/bo3/der-eisendrache/keeper-protector.webp",
+  "file": "Keeper Protector BO3.png",
+  "width": 800
+ },
+ {
+  "out": "maps/bo3/der-eisendrache/corrupted-keeper.webp",
+  "file": "MPD Corrupted Keeper BO3.png",
+  "width": 1000
+ },
+ {
+  "out": "maps/bo3/der-eisendrache/boss-concept.webp",
+  "file": "DerEisendrache BossFight ConceptArt BOIII.png",
+  "width": 1280
+ },
+ {
+  "out": "maps/bo3/der-eisendrache/groph.webp",
+  "file": "Groph DerEisendrache BO3.PNG",
+  "width": 800
+ },
+ {
+  "out": "maps/bo3/der-eisendrache/death-ray.webp",
+  "file": "Death Ray Active BO3.png",
+  "width": 900
+ },
+ {
+  "out": "maps/bo3/der-eisendrache/dempsey-capsule.webp",
+  "file": "Preserving WWII Dempsey BO3.png",
+  "width": 1000
+ }
+]

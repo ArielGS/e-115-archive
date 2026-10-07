@@ -1,0 +1,61 @@
+@import '@fontsource/black-ops-one/400.css';
+@import '@fontsource/silkscreen/400.css';
+@import '@fontsource/silkscreen/700.css';
+@import '@fontsource/barlow/400.css';
+@import '@fontsource/barlow/500.css';
+@import '@fontsource/barlow/600.css';
+@import '@fontsource/barlow/400-italic.css';
+@import '@fontsource/barlow-condensed/500.css';
+@import '@fontsource/barlow-condensed/600.css';
+@import '@fontsource/barlow-condensed/700.css';
+
+:root {
+  color-scheme: dark;
+
+  /* surfaces */
+  --bg: #050607;
+  --bg-2: #0a0c0f;
+  --panel: #101419;
+  --panel-2: #161b21;
+  --panel-3: #1d242c;
+  --line: #2a333d;
+  --line-hi: #44505c;
+  --chrome-hi: #6b7784;
+  --chrome-mid: #303942;
+  --chrome-lo: #12161b;
+
+  /* ink */
+  --text: #dfe4ea;
+  --text-dim: #a3adb8;
+  --text-faint: #6f7a86;
+
+  /* signal colours */
+  --accent: #ff7a18; /* zombies orange */
+  --accent-2: #ffd23f; /* 115 yellow */
+  --toxic: #9cff4f;
+  --electric: #39d0ff;
+  --blood: #d7263d;
+  --void: #a66bff;
+  --accent-ink: #1a0d02;
+
+  /* per-page override (map accent) */
+  --map-accent: var(--accent);
+  --era-accent: var(--accent);
+
+  /* type */
+  --font-display: 'Black Ops One', 'Impact', system-ui, sans-serif;
+  --font-pixel: 'Silkscreen', ui-monospace, monospace;
+  --font-body: 'Barlow', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-cond: 'Barlow Condensed', 'Arial Narrow', system-ui, sans-serif;
+
+  /* geometry */
+  --stage: 1180px;
+  --gutter: clamp(16px, 3vw, 32px);
+  --radius: 4px;
+  --bevel: inset 0 1px 0 rgb(255 255 255 / 0.14), inset 0 -1px 0 rgb(0 0 0 / 0.6);
+  --glow: 0 0 0 1px color-mix(in srgb, var(--map-accent) 70%, transparent),
+    0 0 18px color-mix(in srgb, var(--map-accent) 45%, transparent);
+
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-snap: cubic-bezier(0.7, 0, 0.2, 1);
+}

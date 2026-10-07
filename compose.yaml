@@ -1,0 +1,32 @@
+# Easiest: ./deployment/deploy.sh  (Windows: deployment\deploy.cmd)
+# Or by hand: docker compose up --build  |  podman compose up --build
+# Then open http://localhost:8080 (change it with PORT=9000)
+#
+# Functional tests against the container:
+#   docker compose --profile test run --rm e2e
+#   podman compose --profile test run --rm e2e
+services:
+  web:
+    build:
+      context: .
+      args:
+        BASE_PATH: /
+        SITE_URL: http://localhost:${PORT:-8080}
+        PUBLIC_REPO_URL: ${PUBLIC_REPO_URL:-}
+    image: localhost/archivo-115:latest
+    ports:
+      - "${PORT:-8080}:80"
+    restart: unless-stopped
+
+  e2e:
+    profiles: ["test"]
+    image: docker.io/cypress/included:16.1.1
+    depends_on:
+      - web
+    working_dir: /e2e
+    environment:
+      CYPRESS_BASE_URL: http://web
+    volumes:
+      - ./cypress:/e2e/cypress:z
+      - ./cypress.config.ts:/e2e/cypress.config.ts:z
+      - ./cypress/e2e.package.json:/e2e/package.json:z

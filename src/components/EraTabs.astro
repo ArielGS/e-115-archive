@@ -1,0 +1,106 @@
+---
+import { getCollection, render } from 'astro:content';
+import MapCard from './MapCard.astro';
+import { url } from '../lib/site';
+import { byOrder, baseId, entryLang } from '../lib/maps';
+import { t, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+
+const eras = (await getCollection('eras', (e) => entryLang(e) === lang)).sort(byOrder);
+const maps = await getCollection('maps', (m) => entryLang(m) === lang);
+const fallback = baseId(eras.at(-1)!);
+
+const panels = await Promise.all(
+  eras.map(async (era) => ({
+    era,
+    id: baseId(era),
+    Content: (await render(era)).Content,
+    maps: maps.filter((m) => m.data.era === baseId(era)).sort(byOrder),
+  })),
+);
+---
+
+<div class="tabs" role="tablist" aria-label={t(lang, 'tabs.label')} data-tabs data-default={fallback}>
+  {
+    panels.map(({ era, id }) => (
+      <button
+        type="button"
+        role="tab"
+        class="tab"
+        id={`tab-${id}`}
+        aria-controls={`panel-${id}`}
+        aria-selected={id === fallback ? 'true' : 'false'}
+        tabindex={id === fallback ? 0 : -1}
+        data-tab={id}
+        data-accent={era.data.accent}
+        style={`--t:${era.data.accent}`}
+        data-sfx
+      >
+        <span class="tab-led" aria-hidden="true" />
+        <span class="tab-code">{era.data.code}</span>
+        <span class="tab-meta">
+          {era.data.year} · {era.data.title}
+        </span>
+      </button>
+    ))
+  }
+</div>
+
+{
+  panels.map(({ era, id, Content, maps }) => (
+    <section
+      class="era-panel"
+      id={`panel-${id}`}
+      role="tabpanel"
+      aria-labelledby={`tab-${id}`}
+      hidden={id !== fallback}
+      style={`--era-accent:${era.data.accent}`}
+    >
+      <div class="era-banner">
+        <img src={url(era.data.hero)} alt="" loading="lazy" decoding="async" data-parallax="0.12" />
+        <div>
+          <span class="label" style={`color:${era.data.accent}`}>
+            Call of Duty · {era.data.year}
+          </span>
+          <h2 class="era-title">{era.data.title}</h2>
+          <p class="era-tagline">{era.data.tagline}</p>
+        </div>
+      </div>
+      <div class="era-content">
+        <div class="prose">
+          <Content />
+        </div>
+        {era.data.crew.length > 0 && (
+          <div>
+            <p class="label">{t(lang, 'era.crew')}</p>
+            <div class="crew" style="margin-top:12px">
+              {era.data.crew.map((c) => (
+                <div class="crew-card">
+                  {c.img ? <img src={url(c.img)} alt={c.name} loading="lazy" /> : <span class="ph">{c.name.charAt(0)}</span>}
+                  <div>
+                    <b>{c.name}</b>
+                    <span>{c.note}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+        <div>
+          <div class="sec-head">
+            <h3 style="font-size:1.8rem">{t(lang, 'era.maps', { code: era.data.code })}</h3>
+          </div>
+          <div class="map-grid">
+            {maps.map((m) => (
+              <MapCard map={m} lang={lang} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  ))
+}

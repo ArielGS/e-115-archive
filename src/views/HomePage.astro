@@ -1,0 +1,60 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Intro from '../components/Intro.astro';
+import EraTabs from '../components/EraTabs.astro';
+import { entryLang } from '../lib/maps';
+import { url } from '../lib/site';
+import { localePath, t, tList, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+
+const basics = await getEntry('pages', `${lang}/basics`);
+if (!basics) throw new Error(`src/content/pages/${lang}/basics.md is missing`);
+const { Content: Basics } = await render(basics);
+const guides = (await getCollection('maps', (m) => entryLang(m) === lang)).filter((m) => m.data.status === 'guide').length;
+---
+
+<Base lang={lang} page="home" nav="home" path={localePath(lang, '/')} image="/images/eras/bo3.webp">
+  <Intro slot="intro" lang={lang} />
+
+  <section class="hero" aria-labelledby="home-title">
+    <div class="hero-bg hero-slides" data-parallax="0.25">
+      {['bo1', 'bo2', 'bo3'].map((era, i) => (
+        <img src={url(`/images/eras/${era}.webp`)} alt="" fetchpriority={i === 0 ? 'high' : 'low'} />
+      ))}
+    </div>
+    <div class="hero-inner">
+      <div>
+        <div class="hero-kicker"><span class="dot" aria-hidden="true"></span><span class="label">{t(lang, 'home.kicker')}</span></div>
+        <h1 id="home-title" class="hero-title glitch" data-text={`${t(lang, 'site.word')} 115`}>{t(lang, 'site.word')} <span class="accent">115</span></h1>
+        <p class="hero-sub">{t(lang, 'home.sub')}</p>
+        <div class="hero-actions">
+          <a class="btn btn--primary" href="#manual" data-sfx>{t(lang, 'home.cta.basics')}</a>
+          <a class="btn" href="#eras" data-sfx>{t(lang, 'home.cta.games')}</a>
+          <a class="btn btn--ghost" href="#bo3" data-sfx>{t(lang, 'home.cta.guides')}</a>
+        </div>
+      </div>
+      <div class="console" aria-label={t(lang, 'home.console.label')}>
+        {tList(lang, 'home.console', { guides }).map((line) => <p>{line}</p>)}
+        <p class="cursor">{t(lang, 'home.console.wait')}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section basics" id="manual" aria-labelledby="manual-title">
+    <div class="sec-head"><span class="label">Sec.01</span><h2 id="manual-title">{t(lang, 'home.basics')}</h2></div>
+    <div class="prose" style="max-width:none">
+      <Basics />
+    </div>
+  </section>
+
+  <section class="section" id="eras" aria-labelledby="eras-title">
+    <div class="sec-head"><span class="label">Sec.02</span><h2 id="eras-title">{t(lang, 'home.eras')}</h2></div>
+    <p style="margin:-8px 0 22px;max-width:65ch;color:var(--text-dim)">{t(lang, 'home.eras.sub')}</p>
+    <EraTabs lang={lang} />
+  </section>
+</Base>

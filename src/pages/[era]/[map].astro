@@ -1,0 +1,17 @@
+---
+import { getCollection } from 'astro:content';
+import MapPage from '../../views/MapPage.astro';
+import { splitId, entryLang, type MapEntry } from '../../lib/maps';
+
+export async function getStaticPaths() {
+  const maps = await getCollection('maps', (m) => entryLang(m) === 'es');
+  return maps.map((entry) => {
+    const { era, slug } = splitId(entry.id);
+    return { params: { era, map: slug }, props: { entry } };
+  });
+}
+
+const { entry } = Astro.props as { entry: MapEntry };
+---
+
+<MapPage entry={entry} />

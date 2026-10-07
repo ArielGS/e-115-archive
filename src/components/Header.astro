@@ -1,0 +1,62 @@
+---
+import { url } from '../lib/site';
+import { LANGS, localePath, pagePath, t, tList, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  current?: string;
+  alternates: Record<string, string>;
+}
+const { lang, current, alternates } = Astro.props;
+
+const links = [
+  { id: 'home', href: localePath(lang, '/'), label: t(lang, 'nav.home') },
+  { id: 'bo1', href: localePath(lang, '/#bo1'), label: 'BO1' },
+  { id: 'bo2', href: localePath(lang, '/#bo2'), label: 'BO2' },
+  { id: 'bo3', href: localePath(lang, '/#bo3'), label: 'BO3' },
+  { id: 'contribute', href: pagePath(lang, 'contribute'), label: t(lang, 'nav.contribute') },
+  { id: 'credits', href: pagePath(lang, 'credits'), label: t(lang, 'nav.credits') },
+];
+const ticker = tList(lang, 'ticker');
+---
+
+<header class="site-header">
+  <a class="logo" href={url(localePath(lang, '/'))} data-sfx aria-label={t(lang, 'logo.home')}>
+    <span class="logo-mark" aria-hidden="true">115</span>
+    <span class="logo-text">{t(lang, 'site.word')} <b>115</b></span>
+  </a>
+  <div class="lang-switch" role="group" aria-label={t(lang, 'nav.lang')}>
+    {
+      LANGS.map((l) => (
+        <a
+          href={alternates[l]}
+          hreflang={l}
+          lang={l}
+          data-lang-switch={l}
+          data-sfx
+          aria-current={l === lang ? 'true' : undefined}
+          title={l === 'es' ? 'Español' : 'English'}
+        >
+          {l.toUpperCase()}
+        </a>
+      ))
+    }
+  </div>
+  <nav class="main-nav" aria-label={t(lang, 'nav.label')}>
+    {
+      links.map((l) => (
+        <a href={url(l.href)} data-sfx aria-current={current === l.id ? 'page' : undefined}>
+          {l.label}
+        </a>
+      ))
+    }
+    <button type="button" class="chip-btn" data-sound-toggle data-sfx aria-pressed="false">
+      {t(lang, 'nav.sound')}: <span data-sound-label>OFF</span>
+    </button>
+  </nav>
+</header>
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    {[...ticker, ...ticker].map((line) => <span>{line}</span>)}
+  </div>
+</div>

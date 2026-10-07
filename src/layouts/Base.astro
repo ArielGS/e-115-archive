@@ -1,0 +1,74 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { url } from '../lib/site';
+import { LANGS, detectScript, switchPath, t, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  title?: string;
+  description?: string;
+  /** Unique page key, used to remember revealed spoilers (shared by both languages). */
+  page: string;
+  accent?: string;
+  ambient?: string;
+  image?: string;
+  nav?: string;
+  /** Localized root-relative path of this page (without base, with /en/ for English). */
+  path: string;
+  /** Redirect to the visitor's language. Off for pages shared by both languages (404). */
+  detect?: boolean;
+}
+
+const { lang, title, description = t(lang, 'site.description'), page, accent, ambient = 'default', image, nav, path, detect = true } = Astro.props;
+const siteName = t(lang, 'site.name');
+const fullTitle = title ? `${title} · ${siteName}` : `${siteName} — ${t(lang, 'site.tagline')}`;
+const ogImage = image ? new URL(url(image), Astro.site).href : undefined;
+const alternates = Object.fromEntries(LANGS.map((l) => [l, url(switchPath(path, l))]));
+---
+
+<!doctype html>
+<html lang={lang} data-sound="off">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0a0c0f" />
+    <link rel="icon" type="image/svg+xml" href={url('/favicon.svg')} />
+    {LANGS.map((l) => <link rel="alternate" hreflang={l} href={new URL(alternates[l], Astro.site).href} />)}
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'en_US'} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta name="generator" content={Astro.generator} />
+    <script is:inline set:html={detectScript({ lang, alternates, detect })}></script>
+    <script is:inline>
+      try {
+        if (localStorage.getItem('archivo115:sound') === 'on') document.documentElement.dataset.sound = 'on';
+        if (sessionStorage.getItem('archivo115:intro-seen') !== '1' && !matchMedia('(prefers-reduced-motion: reduce)').matches)
+          document.documentElement.classList.add('intro-pending');
+      } catch (e) {}
+    </script>
+  </head>
+  <body data-page={page} data-ambient={ambient} style={accent ? `--map-accent:${accent}` : undefined}>
+    <a class="skip-link" href="#main">{t(lang, 'skip')}</a>
+    <slot name="intro" />
+    <div class="stage">
+      <Header lang={lang} current={nav} alternates={alternates} />
+      <main id="main">
+        <slot />
+      </main>
+      <Footer lang={lang} />
+    </div>
+    <slot name="after" />
+    <div class="vignette" aria-hidden="true"></div>
+    <div class="crt" aria-hidden="true"></div>
+    <script>
+      import { boot } from '../scripts/main';
+      boot();
+    </script>
+  </body>
+</html>

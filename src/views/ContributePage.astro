@@ -1,0 +1,42 @@
+---
+import { getEntry, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { SITE } from '../lib/site';
+import { pagePath, t, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const page = await getEntry('pages', `${lang}/contribute`);
+if (!page) throw new Error(`src/content/pages/${lang}/contribute.md is missing`);
+const { Content } = await render(page);
+---
+
+<Base
+  lang={lang}
+  title={page.data.title}
+  description={page.data.description}
+  page="contribute"
+  nav="contribute"
+  path={pagePath(lang, 'contribute')}
+>
+  <section class="section">
+    <div class="sec-head">
+      <span class="label">Sec.∞</span>
+      <h1 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:2.4rem">{page.data.title}</h1>
+    </div>
+    <div class="prose">
+      <Content />
+      {
+        SITE.repo && (
+          <p>
+            <a class="btn btn--primary" href={SITE.repo} rel="noopener">
+              {t(lang, 'contribute.repo')}
+            </a>
+          </p>
+        )
+      }
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,27 @@
+---
+import { SITE, url } from '../lib/site';
+import { pagePath, t, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+---
+
+<footer class="site-footer">
+  <div class="row">
+    <div>
+      <p class="label">{t(lang, 'site.name')} // {SITE.version}</p>
+      <p>{t(lang, 'footer.fan')}</p>
+      <p>
+        {t(lang, 'footer.images')}{' '}
+        <a href={url(pagePath(lang, 'credits'))}>{t(lang, 'nav.credits')}</a>.
+      </p>
+    </div>
+    <div>
+      <p><a href={url(pagePath(lang, 'contribute'))}>{t(lang, 'footer.contribute')}</a></p>
+      {SITE.repo && <p><a href={SITE.repo} rel="noopener">{t(lang, 'footer.source')}</a></p>}
+      <p><span class="counter" aria-hidden="true">0011500</span></p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,155 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Narrator from '../components/Narrator.astro';
+import { url, editUrl } from '../lib/site';
+import { neighbours, mapPath, mapKey, entryLang, type MapEntry } from '../lib/maps';
+import { localePath, pagePath, t } from '../i18n/ui';
+
+interface Props {
+  entry: MapEntry;
+}
+const { entry } = Astro.props;
+const lang = entryLang(entry);
+const { Content, headings } = await render(entry);
+const era = await getEntry('eras', `${lang}/${entry.data.era}`);
+if (!era) throw new Error(`Unknown era "${entry.data.era}" in ${entry.id}`);
+const { prev, next } = neighbours(await getCollection('maps'), entry);
+const d = entry.data;
+const key = mapKey(entry);
+const isGuide = d.status === 'guide';
+const hero = d.hero ?? d.thumb;
+const toc = headings.filter((h) => h.depth === 2);
+const edit = editUrl(`src/content/maps/${entry.id}.md`);
+const eraHome = localePath(lang, `/#${d.era}`);
+const code = era.data.code;
+const facts = [
+  { label: t(lang, 'map.place'), value: d.setting },
+  { label: t(lang, 'map.released'), value: d.released },
+  ...d.facts,
+  ...(d.difficulty ? [{ label: t(lang, 'map.difficulty'), value: '★'.repeat(d.difficulty) + '☆'.repeat(5 - d.difficulty) }] : []),
+];
+---
+
+<Base
+  lang={lang}
+  title={d.title}
+  description={d.tagline}
+  page={`map:${key}`}
+  path={mapPath(entry)}
+  accent={d.accent}
+  ambient={d.ambient}
+  nav={d.era}
+  image={hero}
+>
+  <section class="hero map-hero" aria-labelledby="map-title">
+    <div class="hero-bg">
+      <img src={url(hero)} alt="" data-parallax="0.25" fetchpriority="high" />
+    </div>
+    <div class="hero-inner">
+      <div>
+        <div class="hero-kicker">
+          <span class="dot" aria-hidden="true"></span>
+          <a class="label" href={url(eraHome)} style="text-decoration:none">{code} // {era.data.title}</a>
+        </div>
+        <h1 id="map-title" class="hero-title glitch" data-text={d.title}>{d.title}</h1>
+        <p class="hero-sub">{d.tagline}</p>
+        {
+          isGuide && (
+            <div class="hero-actions">
+              <button type="button" class="btn btn--primary" data-narrator-open data-autoplay aria-controls="narrator" data-sfx>
+                {t(lang, 'map.listen')}
+              </button>
+              <div class="progress-row">
+                <span class="label">{t(lang, 'map.revealed')}</span>
+                <span class="counter" data-spoiler-count>
+                  0/0
+                </span>
+                <span class="progress-bar" data-spoiler-progress aria-hidden="true" />
+                <button type="button" class="btn btn--ghost" data-spoiler-reset data-sfx>
+                  {t(lang, 'map.hideAll')}
+                </button>
+              </div>
+            </div>
+          )
+        }
+      </div>
+      <dl class="facts hud">
+        {
+          facts.map((f) => (
+            <div>
+              <dt>{f.label}</dt>
+              <dd>{f.value}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  {
+    isGuide ? (
+      <div class="guide-layout">
+        <nav class="toc" data-toc aria-label={t(lang, 'map.sectionsLabel')}>
+          <span class="label">{t(lang, 'map.sections')}</span>
+          <ol>
+            {toc.map((h) => (
+              <li>
+                <a href={`#${h.slug}`} data-sfx>
+                  {h.text}
+                </a>
+              </li>
+            ))}
+          </ol>
+          <p style="margin:0;font-size:.9rem">
+            <a href={url(eraHome)}>{t(lang, 'map.back', { code })}</a>
+          </p>
+          {edit && (
+            <p style="margin:6px 0 0;font-size:.9rem">
+              <a href={edit} rel="noopener">
+                {t(lang, 'map.edit')}
+              </a>
+            </p>
+          )}
+        </nav>
+        <article class="prose" data-tts-root data-tts-intro={d.intro}>
+          <Content />
+          <nav class="map-nav" aria-label={t(lang, 'map.otherMaps')}>
+            {prev && (
+              <a href={url(mapPath(prev))} data-sfx>
+                <span class="label">{t(lang, 'map.prev')}</span>
+                <strong>{prev.data.title}</strong>
+              </a>
+            )}
+            {next && (
+              <a class="next" href={url(mapPath(next))} data-sfx>
+                <span class="label">{t(lang, 'map.next')}</span>
+                <strong>{next.data.title}</strong>
+              </a>
+            )}
+          </nav>
+        </article>
+      </div>
+    ) : (
+      <section class="section">
+        <div class="hud stub-box">
+          <p class="label">{t(lang, 'stub.label')}</p>
+          <div class="prose" style="margin-top:10px">
+            <Content />
+            <p>{t(lang, 'stub.text')}</p>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn--primary" href={url(pagePath(lang, 'contribute'))} data-sfx>
+              {t(lang, 'stub.cta')}
+            </a>
+            <a class="btn" href={url(eraHome)} data-sfx>
+              {t(lang, 'stub.back', { code })}
+            </a>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  {isGuide && <Narrator slot="after" title={d.title} lang={lang} />}
+</Base>
