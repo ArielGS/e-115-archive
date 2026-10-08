@@ -40,6 +40,48 @@ label,
   cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%23ffd23f' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='6'/%3E%3Cpath d='M12 0v7M12 17v7M0 12h7M17 12h7'/%3E%3C/g%3E%3Ccircle cx='12' cy='12' r='2' fill='%23ff7a18'/%3E%3C/svg%3E") 12 12, pointer;
 }
 
+/* Character cards: the system cursor is swapped for a drawn copy that widens
+   and turns its centre dot red (src/scripts/cursor.ts). */
+html.has-card-cursor :is(.crew-card--link, a.card--link) {
+  cursor: none;
+}
+.card-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 95;
+  width: 24px;
+  height: 24px;
+  margin: -12px 0 0 -12px;
+  pointer-events: none;
+  visibility: hidden;
+}
+.card-cursor.is-visible {
+  visibility: visible;
+}
+.card-cursor svg {
+  display: block;
+  overflow: visible;
+}
+.card-cursor-ring {
+  transform-origin: 12px 12px;
+  transition: transform 0.35s var(--ease-out), opacity 0.35s;
+}
+.card-cursor-dot {
+  fill: var(--accent);
+  transform-origin: 12px 12px;
+  transition: fill 0.45s ease, transform 0.35s var(--ease-out), filter 0.45s ease;
+}
+.card-cursor.is-hot .card-cursor-ring {
+  transform: scale(1.55);
+  opacity: 0.85;
+}
+.card-cursor.is-hot .card-cursor-dot {
+  fill: #ff1e2d;
+  transform: scale(1.35);
+  filter: drop-shadow(0 0 3px #ff1e2d);
+}
+
 img {
   max-width: 100%;
   height: auto;

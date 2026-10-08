@@ -18,6 +18,10 @@ declare global {
           /** Voices the fake speech engine offers. Defaults to one basic es-ES voice. */
           voices?: FakeVoice[];
           reducedMotion?: boolean;
+          /** Start with sound already switched on (as if chosen on an earlier visit). */
+          sound?: boolean;
+          /** Report a mouse (hover + fine pointer), whatever the test browser says. */
+          mouse?: boolean;
           /** Saved language choice. Defaults to "es"; null = none saved (auto-detect). */
           lang?: 'es' | 'en' | null;
           /** Fake navigator.languages, e.g. ["es-MX"] (see browserLanguages). */
@@ -124,10 +128,12 @@ Cypress.Commands.add('visitPage', (path, opts = {}) => {
       const lang = opts.lang === undefined ? 'es' : opts.lang;
       if (lang) win.localStorage.setItem('archivo115:lang', lang);
       if (opts.speech) installSpeech(win, opts.voices);
-      if (opts.reducedMotion) {
+      if (opts.sound) win.localStorage.setItem('archivo115:sound', 'on');
+      if (opts.reducedMotion || opts.mouse) {
         const real = win.matchMedia.bind(win);
+        const fake = (q: string) => ({ matches: true, media: q, addEventListener() {}, removeEventListener() {} }) as unknown as MediaQueryList;
         win.matchMedia = (q: string) =>
-          q.includes('prefers-reduced-motion') ? ({ matches: true, media: q, addEventListener() {}, removeEventListener() {} } as unknown as MediaQueryList) : real(q);
+          (opts.reducedMotion && q.includes('prefers-reduced-motion')) || (opts.mouse && q.includes('pointer: fine')) ? fake(q) : real(q);
       }
     },
   });

@@ -192,4 +192,16 @@ describe('Voice narrator', () => {
     cy.reload();
     cy.get('[data-n-rate]').should('have.value', '0.85');
   });
+
+  it('the background music drops 10% while the narrator speaks', () => {
+    cy.visitPage('/bo3/the-giant/', { speech: true, sound: true });
+    cy.get('audio[data-music]').should('have.attr', 'data-volume', '0.3').and('have.prop', 'loop', true);
+    cy.get('[data-n-ambient]').uncheck({ force: true });
+    cy.get('[data-n-follow]').uncheck({ force: true });
+    cy.get('.narrator-fab').click();
+    cy.get('[data-n-play]').click();
+    cy.get('audio[data-music]').should('have.attr', 'data-ducked', 'true').and('have.attr', 'data-volume', '0.27');
+    cy.get('[data-n-play]').click();
+    cy.get('audio[data-music]').should('have.attr', 'data-ducked', 'false').and('have.attr', 'data-volume', '0.3');
+  });
 });

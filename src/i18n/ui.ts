@@ -130,11 +130,10 @@ const es = {
   'intro.skip': 'Saltar intro >>',
   'home.kicker': 'Transmisión 115 // en vivo',
   'home.sub':
-    'Rondas sin fin, una historia escondida en cada mapa y nadie que te la explique. Aquí está el contexto de Call of Duty Zombies, de World at War a Black Ops 4: claro, visual y sin spoilers que no pidas. Empieza por lo básico y profundiza hasta donde quieras.',
+    'Archivo hecho por fans, con guías claras, visuales y con spoilers opcionales para tener la mejor experiencia posible a la hora de jugar Call of Duty Zombies.',
   'home.cta.basics': '¿Qué es Zombies?',
   'home.cta.story': 'La historia completa',
   'home.cta.games': 'Elegir juego',
-  'home.cta.guides': 'Ver guías',
   'home.console.label': 'Estado del archivo',
   'home.console': [
     'Jugadores: 1 a 4 (mejor en pareja)',
@@ -145,6 +144,7 @@ const es = {
   ],
   'home.console.wait': 'Esperando orden',
   'home.basics': 'Manual de supervivencia',
+  'modal.close': 'Cerrar',
   'home.eras': 'Elige tu juego',
   'home.eras.sub':
     'Cada juego cuenta una parte de la historia. Elige el tuyo para ver quiénes son los protagonistas, qué cambia en la jugabilidad y qué mapas tienen guía.',
@@ -271,11 +271,10 @@ const en: Dict = {
   'intro.skip': 'Skip intro >>',
   'home.kicker': 'Transmission 115 // live',
   'home.sub':
-    'Endless rounds, a story hidden in every map and nobody to explain it. Here is the context of Call of Duty Zombies, from World at War to Black Ops 4: clear, visual and with no spoilers you did not ask for. Start with the basics and go as deep as you want.',
+    'A fan-made archive with clear, visual guides and optional spoilers, for the best possible experience when you play Call of Duty Zombies.',
   'home.cta.basics': 'What is Zombies?',
   'home.cta.story': 'The full story',
   'home.cta.games': 'Pick a game',
-  'home.cta.guides': 'See the guides',
   'home.console.label': 'Archive status',
   'home.console': [
     'Players: 1 to 4 (best as a duo)',
@@ -286,6 +285,7 @@ const en: Dict = {
   ],
   'home.console.wait': 'Awaiting orders',
   'home.basics': 'Survival manual',
+  'modal.close': 'Close',
   'home.eras': 'Pick your game',
   'home.eras.sub':
     'Each game tells part of the story. Pick yours to meet its characters, see what changes in the gameplay and find which maps have a guide.',
