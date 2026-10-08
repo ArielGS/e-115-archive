@@ -870,12 +870,3 @@ a.card--link:hover,
 a.card--link:focus-visible {
   border-color: var(--map-accent, var(--accent));
 }
-.card-link {
-  display: block;
-  padding: 0 14px 12px;
-  font-family: var(--font-pixel);
-  font-size: 0.55rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--map-accent, var(--accent));
-}

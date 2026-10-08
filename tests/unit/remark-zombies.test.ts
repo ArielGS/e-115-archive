@@ -177,7 +177,10 @@ describe(':::card links', () => {
     expect(card.getAttribute('href')).toBe('https://callofduty.fandom.com/wiki/Russman');
     expect(card.getAttribute('target')).toBe('_blank');
     expect(card.getAttribute('rel')).toBe('noopener');
-    expect(card.querySelector('.card-link')!.textContent).toContain('Call of Duty Wiki');
+    // No visible "more on the wiki" line; screen readers still hear it.
+    expect(card.querySelector('.card-link')).toBeNull();
+    expect(card.textContent).not.toContain('Call of Duty Wiki');
+    expect(card.getAttribute('aria-label')).toBe('Russman: Más en la Call of Duty Wiki ↗');
   });
 
   it('refuses links anywhere else: the site is a guide, not a link list', async () => {

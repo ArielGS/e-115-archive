@@ -6,6 +6,7 @@ import { startAmbient, type Mood } from './ambient';
 import { startRecording } from './recording';
 import { SPOILER_EVENT } from './spoilers';
 import { blip } from './sfx';
+import { NARRATOR_EVENT } from './music';
 import { strings, pageLang } from '../i18n/client';
 import type { Lang } from '../i18n/ui';
 
@@ -261,6 +262,8 @@ export function initNarrator(): void {
   };
 
   const setPlaying = (on: boolean) => {
+    // The background music dips while the narrator speaks.
+    if (on !== playing) document.dispatchEvent(new CustomEvent(NARRATOR_EVENT, { detail: { playing: on } }));
     playing = on;
     panel.classList.toggle('is-playing', on);
     playBtn.setAttribute('aria-label', on ? L.pause : L.play);

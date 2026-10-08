@@ -1,6 +1,8 @@
 // The Flash-site preloader: a fake "LOADING" bar that runs once per browser
 // session, then asks "enter with sound / without sound" — exactly like 2004.
-import { setSound, audio, blip } from './sfx';
+// Entering with sound sets off an electric spark (and starts the music).
+import { setSound, soundEnabled, audio } from './sfx';
+import { playSample, preloadSample, ENTER_SPARK, SPARK } from './samples';
 
 const SEEN = 'archivo115:intro-seen';
 
@@ -39,13 +41,15 @@ export function initIntro(): void {
     } catch {
       /* ignore */
     }
-    if (withSound !== null) setSound(withSound);
-    if (withSound) {
-      audio();
-      blip('open');
-    }
+    // Lift the lock first: the music waits for it before starting.
     intro.classList.add('is-leaving');
     document.documentElement.classList.remove('intro-lock', 'intro-pending');
+    // Skipping keeps the sound setting from an earlier visit.
+    setSound(withSound ?? soundEnabled());
+    if (withSound) {
+      audio();
+      void playSample(SPARK, ENTER_SPARK);
+    }
     setTimeout(() => intro.remove(), 700);
   };
 
@@ -62,6 +66,7 @@ export function initIntro(): void {
     else {
       pct.textContent = '115';
       intro.classList.add('is-ready');
+      void preloadSample(SPARK);
       // Focus the default choice so Enter works, without drawing a focus ring
       // for mouse and touch users (keyboard users still get it on Tab).
       intro.querySelector<HTMLButtonElement>('[data-intro-enter="off"]')?.focus({ focusVisible: false } as FocusOptions);

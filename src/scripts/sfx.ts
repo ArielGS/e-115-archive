@@ -1,4 +1,5 @@
-// Flash-era UI sounds, synthesized with WebAudio (no audio files to ship).
+// Flash-era UI sounds, synthesized with WebAudio (the music and the spark are
+// recorded files: see music.ts and samples.ts).
 // Sound is opt-in: off until the visitor enables it, remembered per browser.
 
 const KEY = 'archivo115:sound';

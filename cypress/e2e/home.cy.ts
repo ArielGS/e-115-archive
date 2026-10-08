@@ -23,6 +23,86 @@ describe('Home page', () => {
     });
   });
 
+  it('entering with sound sets off the spark (60% → full) and starts the looping music', () => {
+    cy.visitPage('/', { intro: true });
+    cy.document().then((doc) => {
+      const played: { src: string; volume: number; from: number }[] = [];
+      doc.addEventListener('archivo115:sample', (e) => played.push((e as CustomEvent).detail));
+      cy.wrap(played).as('played');
+    });
+    cy.get('[data-intro-enter="on"]', { timeout: 10000 }).should('be.visible').click();
+    cy.get('@played').should('have.length', 1).its(0).should('deep.include', { src: '/sounds/faespencer-high-voltage-spark-486895.mp3', volume: 1, from: 0.6 });
+    cy.get('audio[data-music]')
+      .should('have.prop', 'loop', true)
+      .and('have.attr', 'src')
+      .and('match', /\/sounds\/nuclear-winter\.mp3$/);
+    cy.get('audio[data-music]').should('have.attr', 'data-volume', '0.3');
+    // Sound off: the music fades to silence.
+    cy.get('[data-sound-toggle]').click();
+    cy.get('audio[data-music]').should('have.attr', 'data-volume', '0');
+  });
+
+  it('no music and no spark without sound', () => {
+    cy.visitPage('/', { intro: true });
+    cy.get('[data-intro-enter="off"]', { timeout: 10000 }).should('be.visible').click();
+    cy.get('[data-intro]').should('not.exist');
+    cy.get('audio[data-music]').should('not.exist');
+  });
+
+  it('with sound on from an earlier visit, the music still waits for "enter with sound"', () => {
+    cy.visitPage('/', { intro: true, sound: true });
+    cy.get('[data-intro-enter="on"]', { timeout: 10000 }).should('be.visible');
+    cy.get('body').click('topLeft', { force: true });
+    cy.get('audio[data-music]').should('not.exist');
+    cy.get('[data-intro-enter="on"]').click();
+    cy.get('audio[data-music]').should('have.attr', 'data-volume', '0.3');
+  });
+
+  it('"enter without sound" never lets the music start, even if sound was on before', () => {
+    cy.visitPage('/', { intro: true, sound: true });
+    cy.get('[data-intro-enter="off"]', { timeout: 10000 }).should('be.visible').click();
+    cy.get('h1').click();
+    cy.get('html').should('have.attr', 'data-sound', 'off');
+    cy.get('audio[data-music]').should('not.exist');
+  });
+
+  it('the logo flickers like a neon tube within 30 seconds, then every 2 minutes', () => {
+    cy.clock();
+    cy.visitPage('/');
+    cy.get('.site-header .logo').should('not.have.class', 'is-flickering');
+    cy.tick(30_000);
+    cy.get('.site-header .logo').should('have.class', 'is-flickering');
+    // A slow flicker: still going after a second, over after 2.2 s.
+    cy.tick(1_200);
+    cy.get('.site-header .logo').should('have.class', 'is-flickering');
+    cy.tick(1_100);
+    cy.get('.site-header .logo').should('not.have.class', 'is-flickering');
+    // Next one two minutes later.
+    cy.tick(117_000);
+    cy.get('.site-header .logo').should('not.have.class', 'is-flickering');
+    cy.tick(1_000);
+    cy.get('.site-header .logo').should('have.class', 'is-flickering');
+  });
+
+  it('with sound on, the flicker buzzes like a fluorescent tube at 48%', () => {
+    cy.clock();
+    cy.visitPage('/', { sound: true });
+    cy.document().then((doc) => {
+      const played: { src: string; volume: number }[] = [];
+      doc.addEventListener('archivo115:sample', (e) => played.push((e as CustomEvent).detail));
+      cy.wrap(played).as('played');
+    });
+    cy.tick(30_000);
+    cy.get('@played').should('have.length', 1).its(0).should('deep.include', { src: 'neon-hum', volume: 0.48 });
+  });
+
+  it('the logo does not flicker with reduced motion', () => {
+    cy.clock();
+    cy.visitPage('/', { reducedMotion: true });
+    cy.tick(30_000);
+    cy.get('.site-header .logo').should('not.have.class', 'is-flickering');
+  });
+
   it('can skip the intro and enter with sound', () => {
     cy.visitPage('/', { intro: true });
     cy.get('[data-intro-skip]').click();
@@ -42,13 +122,49 @@ describe('Home page', () => {
     cy.get('h1').should('be.visible');
   });
 
-  it('shows the survival manual', () => {
+  it('a short, plain intro and three actions: story, what is Zombies, pick a game', () => {
     cy.visitPage('/');
-    cy.get('#manual').within(() => {
+    cy.get('.hero-sub').should(
+      'have.text',
+      'Archivo hecho por fans, con guías claras, visuales y con spoilers opcionales para tener la mejor experiencia posible a la hora de jugar Call of Duty Zombies.',
+    );
+    cy.get('.hero-actions .btn').should('have.length', 3).then(($b) => {
+      expect([...$b].map((b) => b.textContent!.trim())).to.deep.eq(['La historia completa', '¿Qué es Zombies?', 'Elegir juego']);
+    });
+    cy.get('.hero-actions .btn').first().should('have.class', 'btn--primary');
+    cy.get('.hero-actions').should('not.contain.text', 'Ver guías');
+    // The manual is no longer a section of the page.
+    cy.get('section#manual').should('not.exist');
+  });
+
+  it('"¿Qué es Zombies?" opens the survival manual in a window', () => {
+    cy.visitPage('/');
+    cy.get('#manual').should('not.be.visible');
+    cy.contains('.hero-actions button', '¿Qué es Zombies?').should('have.attr', 'aria-expanded', 'false').click();
+    cy.get('dialog#manual').should('have.attr', 'open');
+    cy.get('#manual').should('be.visible').within(() => {
       cy.contains('h2', 'Manual de supervivencia');
       cy.get('.card').should('have.length.at.least', 10);
       cy.contains('.card-title', 'Pack-a-Punch');
     });
+    cy.contains('.hero-actions button', '¿Qué es Zombies?').should('have.attr', 'aria-expanded', 'true');
+    // The close button, Escape and a click on the backdrop all close it.
+    cy.get('[data-modal-close]').click();
+    cy.get('#manual').should('not.be.visible');
+    cy.focused().should('contain.text', '¿Qué es Zombies?');
+    cy.contains('.hero-actions button', '¿Qué es Zombies?').click();
+    cy.get('#manual').should('be.visible');
+    cy.get('body').type('{esc}');
+    cy.get('#manual').should('not.be.visible');
+    cy.contains('.hero-actions button', '¿Qué es Zombies?').click();
+    cy.get('#manual').should('be.visible');
+    cy.get('#manual').then(($d) => $d[0].dispatchEvent(new MouseEvent('click', { bubbles: true })));
+    cy.get('#manual').should('not.be.visible');
+  });
+
+  it('old links to /#manual open the window', () => {
+    cy.visitPage('/#manual');
+    cy.get('#manual').should('be.visible').and('contain.text', 'Manual de supervivencia');
   });
 
   describe('era tabs', () => {
@@ -123,7 +239,25 @@ describe('Home page', () => {
         expect($card.attr('rel')).to.contain('noopener');
       });
       cy.get('#tab-bo2').click();
-      cy.get('#panel-bo2').contains('a.crew-card', 'Russman').should('have.attr', 'href', 'https://callofduty.fandom.com/wiki/Russman').and('contain.text', 'Call of Duty Wiki');
+      cy.get('#panel-bo2')
+        .contains('a.crew-card', 'Russman')
+        .should('have.attr', 'href', 'https://callofduty.fandom.com/wiki/Russman')
+        // No visible "more on the wiki" line; screen readers still hear it.
+        .and('not.contain.text', 'Call of Duty Wiki')
+        .and('have.attr', 'aria-label', 'Russman: Más en la Call of Duty Wiki ↗');
+    });
+
+    it('over a character card the cursor widens and its centre dot turns red', () => {
+      cy.visitPage('/#bo2', { mouse: true });
+      cy.get('.card-cursor').should('not.be.visible');
+      cy.get('#panel-bo2 a.crew-card').first().as('card');
+      cy.get('@card').should(($c) => expect(getComputedStyle($c[0]).cursor).to.eq('none'));
+      cy.get('@card').trigger('pointerover', { pointerType: 'mouse', clientX: 200, clientY: 300 });
+      cy.get('.card-cursor').should('be.visible').and('have.class', 'is-hot');
+      cy.get('.card-cursor-dot').should(($d) => expect(getComputedStyle($d[0]).fill).to.eq('rgb(255, 30, 45)'));
+      cy.get('.card-cursor-ring').should(($r) => expect(getComputedStyle($r[0]).transform).to.not.eq('none'));
+      cy.get('@card').trigger('pointerout', { pointerType: 'mouse', relatedTarget: null });
+      cy.get('.card-cursor').should('not.be.visible').and('not.have.class', 'is-hot');
     });
 
     it('opens the tab from a deep link', () => {

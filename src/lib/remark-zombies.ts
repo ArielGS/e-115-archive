@@ -301,7 +301,8 @@ const handlers: Record<string, (node: Node, attrs: Attrs, ctx: Ctx) => Node> = {
     const className = ['card', ...(attrs.tag ? ['card--tagged'] : []), ...(href ? ['card--link'] : [])];
     const tagProps = attrs.tag ? { dataTag: attrs.tag } : {};
     if (href) {
-      children.push(el('span', { className: ['card-link'] }, [text(ctx.L.wiki)]));
+      // No visible "more on the wiki" line: the cursor shows the card is a
+      // link, and screen readers hear where it goes from the label.
       return el('a', { className, ...tagProps, href, target: '_blank', rel: 'noopener', ariaLabel: `${title}: ${ctx.L.wiki}` }, children);
     }
     return el('div', { className, ...tagProps }, children);
