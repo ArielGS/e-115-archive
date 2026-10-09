@@ -130,19 +130,19 @@ describe('Zombie eye logo', () => {
     cy.get('.intro .intro-eye').should('be.visible').and('have.attr', 'data-asleep');
     cy.get('.intro .intro-eye').should(($e) => expect(Number($e[0].style.getPropertyValue('--wake-top'))).to.be.greaterThan(5));
     cy.get('.intro.is-ready', { timeout: 10000 }).should('exist');
-    cy.get('.intro .intro-eye')
-      .should('not.have.attr', 'data-asleep')
-      .and(($e) => expect($e[0].style.getPropertyValue('--wake-top')).to.eq('0'));
+    cy.get('.intro .intro-eye').should('not.have.attr', 'data-asleep');
+    cy.get('.intro .intro-eye').should(($e) => expect($e[0].style.getPropertyValue('--wake-top')).to.eq('0'));
     // It watches the pointer from the loading screen as well.
     cy.get('.intro .intro-eye').then(($e) => {
       const r = $e[0].getBoundingClientRect();
       cy.document().trigger('pointermove', { clientX: r.right + 600, clientY: r.top + r.height / 2 });
     });
     cy.get('.intro .intro-eye').should(($e) => expect(Number($e[0].style.getPropertyValue('--gx'))).to.be.greaterThan(6));
-    // Two eyes on the page, never two elements with the same id.
+    // Two eyes on the page, but each SVG id (gradients, clip) exists only once.
     cy.document().then((doc) => {
-      const ids = [...doc.querySelectorAll('[id]')].map((el) => el.id);
-      expect(ids.length).to.eq(new Set(ids).size);
+      const ids = [...doc.querySelectorAll('.zombie-eye [id]')].map((el) => el.id);
+      expect(ids).to.have.length.at.least(14);
+      for (const id of ids) expect(doc.querySelectorAll(`[id="${id}"]`), id).to.have.length(1);
     });
     cy.get('[data-intro-enter="off"]').click();
     cy.get('.intro').should('not.exist');
