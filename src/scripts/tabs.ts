@@ -10,7 +10,18 @@ export function resolveTab(hash: string, available: string[], fallback: string):
   return prefix ?? fallback;
 }
 
-export function initTabs(): void {
+type Place = Pick<Location, 'origin' | 'pathname'>;
+
+/**
+ * Pure: the tab a link opens on the page being read (the Games menu on the
+ * home page links to "/#bo2"), or null when it leads somewhere else.
+ */
+export function linkedTab(link: Place & { hash: string }, here: Place, available: string[]): string | null {
+  const id = decodeURIComponent(link.hash.replace(/^#/, '')).toLowerCase();
+  return link.origin === here.origin && link.pathname === here.pathname && available.includes(id) ? id : null;
+}
+
+export function initTabs(signal?: AbortSignal): void {
   const list = document.querySelector<HTMLElement>('[data-tabs]');
   if (!list) return;
   const tabs = [...list.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
@@ -54,13 +65,36 @@ export function initTabs(): void {
     });
   });
 
-  window.addEventListener('hashchange', () => {
-    const id = resolveTab(location.hash, ids, fallback);
-    if (ids.includes(location.hash.slice(1))) {
-      select(id, { animate: true });
-      document.getElementById('eras')?.scrollIntoView({ behavior: 'smooth' });
-    }
-  });
+  window.addEventListener(
+    'hashchange',
+    () => {
+      const id = resolveTab(location.hash, ids, fallback);
+      if (ids.includes(location.hash.slice(1))) {
+        select(id, { animate: true });
+        document.getElementById('eras')?.scrollIntoView({ behavior: 'smooth' });
+      }
+    },
+    { signal },
+  );
+  // A link to a tab of this same page: the client router would only update
+  // the address (no hashchange), so the browser follows the hash itself and
+  // the hashchange handler above switches the tab, as without the router.
+  document.addEventListener(
+    'click',
+    (e) => {
+      const link = (e.target as Element | null)?.closest?.('a[href*="#"]');
+      if (!(link instanceof HTMLAnchorElement) || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const id = linkedTab(link, location, ids);
+      if (!id) return;
+      e.preventDefault();
+      if (location.hash !== `#${id}`) location.hash = id;
+      else {
+        select(id, { animate: true });
+        document.getElementById('eras')?.scrollIntoView({ behavior: 'smooth' });
+      }
+    },
+    { capture: true, signal },
+  );
   select(resolveTab(location.hash, ids, fallback));
   if (ids.includes(location.hash.slice(1))) {
     requestAnimationFrame(() => document.getElementById('eras')?.scrollIntoView());

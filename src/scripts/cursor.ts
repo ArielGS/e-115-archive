@@ -15,7 +15,7 @@ const CROSSHAIR = `<svg viewBox="0 0 24 24" width="24" height="24">
   <circle class="card-cursor-dot" cx="12" cy="12" r="2"/>
 </svg>`;
 
-export function initCardCursor(): void {
+export function initCardCursor(signal?: AbortSignal): void {
   if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
   if (!document.querySelector(CURSOR_TARGETS)) return;
   const cursor = document.createElement('div');
@@ -44,21 +44,29 @@ export function initCardCursor(): void {
       follow(e);
       frame ||= requestAnimationFrame(place);
     },
-    { passive: true },
+    { passive: true, signal },
   );
-  document.addEventListener('pointerover', (e) => {
-    if (e.pointerType && e.pointerType !== 'mouse') return;
-    const card = (e.target as Element | null)?.closest?.(CURSOR_TARGETS);
-    if (!card || card.contains(e.relatedTarget as Node | null)) return;
-    follow(e);
-    place();
-    // Appear exactly like the system cursor, then ease into the hover look.
-    cursor.classList.add('is-visible');
-    requestAnimationFrame(() => requestAnimationFrame(() => cursor.classList.contains('is-visible') && cursor.classList.add('is-hot')));
-  });
-  document.addEventListener('pointerout', (e) => {
-    const card = (e.target as Element | null)?.closest?.(CURSOR_TARGETS);
-    if (!card || card.contains(e.relatedTarget as Node | null)) return;
-    cursor.classList.remove('is-visible', 'is-hot');
-  });
+  document.addEventListener(
+    'pointerover',
+    (e) => {
+      if (e.pointerType && e.pointerType !== 'mouse') return;
+      const card = (e.target as Element | null)?.closest?.(CURSOR_TARGETS);
+      if (!card || card.contains(e.relatedTarget as Node | null)) return;
+      follow(e);
+      place();
+      // Appear exactly like the system cursor, then ease into the hover look.
+      cursor.classList.add('is-visible');
+      requestAnimationFrame(() => requestAnimationFrame(() => cursor.classList.contains('is-visible') && cursor.classList.add('is-hot')));
+    },
+    { signal },
+  );
+  document.addEventListener(
+    'pointerout',
+    (e) => {
+      const card = (e.target as Element | null)?.closest?.(CURSOR_TARGETS);
+      if (!card || card.contains(e.relatedTarget as Node | null)) return;
+      cursor.classList.remove('is-visible', 'is-hot');
+    },
+    { signal },
+  );
 }

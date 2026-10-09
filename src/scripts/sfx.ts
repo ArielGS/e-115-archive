@@ -59,16 +59,27 @@ export function blip(kind: Blip): void {
   osc.stop(t + s.dur + 0.02);
 }
 
-/** Hover/click blips on anything marked data-sfx, plus the sound toggle. */
-export function initSfx(): void {
+/**
+ * Hover/click blips on anything marked data-sfx, plus the sound toggle.
+ * Runs on every page (a page change also resets the <html> attributes).
+ */
+export function initSfx(signal?: AbortSignal): void {
   document.documentElement.dataset.sound = soundEnabled() ? 'on' : 'off';
-  document.addEventListener('pointerover', (e) => {
-    const t = (e.target as Element | null)?.closest?.('[data-sfx]');
-    if (t && !t.contains(e.relatedTarget as Node | null)) blip('hover');
-  });
-  document.addEventListener('click', (e) => {
-    if ((e.target as Element | null)?.closest?.('[data-sfx]')) blip('click');
-  });
+  document.addEventListener(
+    'pointerover',
+    (e) => {
+      const t = (e.target as Element | null)?.closest?.('[data-sfx]');
+      if (t && !t.contains(e.relatedTarget as Node | null)) blip('hover');
+    },
+    { signal },
+  );
+  document.addEventListener(
+    'click',
+    (e) => {
+      if ((e.target as Element | null)?.closest?.('[data-sfx]')) blip('click');
+    },
+    { signal },
+  );
   document.querySelectorAll<HTMLButtonElement>('[data-sound-toggle]').forEach((btn) => {
     const sync = () => {
       const on = soundEnabled();
@@ -80,7 +91,7 @@ export function initSfx(): void {
       if (soundEnabled()) audio();
       sync();
     });
-    document.addEventListener('archivo115:sound', sync);
+    document.addEventListener('archivo115:sound', sync, { signal });
     sync();
   });
 }

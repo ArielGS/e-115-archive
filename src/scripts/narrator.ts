@@ -94,7 +94,7 @@ export function pickVoice(ranked: SpeechSynthesisVoice[], lang: Lang, saved: (st
   return ranked.find((v) => speaksLang(v, lang)) ?? ranked[0];
 }
 
-export function initNarrator(): void {
+export function initNarrator(signal?: AbortSignal): void {
   const lang = pageLang();
   const L = strings(lang);
   const panel = document.querySelector<HTMLElement>('[data-narrator]');
@@ -115,6 +115,8 @@ export function initNarrator(): void {
   const scope = $<HTMLCanvasElement>('[data-n-scope]');
 
   const minBtn = $<HTMLButtonElement>('[data-n-min]');
+  // Restarts the oscilloscope when it comes into view (see below).
+  let wakeScope = () => {};
   // Minimising only hides the panel's details: playback, ambience and the
   // recording effect carry on. Closing (✕) is what stops the narrator.
   const setMinimized = (min: boolean) => {
@@ -122,12 +124,14 @@ export function initNarrator(): void {
     minBtn.setAttribute('aria-expanded', String(!min));
     minBtn.setAttribute('aria-label', min ? L.expand : L.minimize);
     minBtn.title = min ? L.expand : L.minimize;
+    wakeScope();
   };
   minBtn.addEventListener('click', () => setMinimized(!panel.classList.contains('is-min')));
 
   const setOpen = (open: boolean) => {
     panel.classList.toggle('is-open', open);
     if (!open) setMinimized(false);
+    wakeScope();
     document.querySelectorAll('[data-narrator-open]').forEach((b) => b.setAttribute('aria-expanded', String(open)));
   };
   document.querySelectorAll('[data-narrator-open]').forEach((b) =>
@@ -177,7 +181,7 @@ export function initNarrator(): void {
     voiceTip.hidden = voices.length === 0 || (!!own[0] && voiceQuality(own[0]) === 'natural');
   };
   loadVoices();
-  synth.addEventListener?.('voiceschanged', loadVoices);
+  synth.addEventListener?.('voiceschanged', loadVoices, { signal });
   voiceSel.addEventListener('change', () => {
     const v = voices.find((x) => x.voiceURI === voiceSel.value);
     if (v && speaksLang(v, lang)) store.set(VOICE_KEY(lang), v.voiceURI);
@@ -340,17 +344,28 @@ export function initNarrator(): void {
     store.set(RECORDING_KEY, recordingChk.checked ? 'on' : 'off');
     if (playing) setRecording(recordingChk.checked);
   });
-  document.addEventListener(SPOILER_EVENT, () => segments.length && rebuild());
-  window.addEventListener('pagehide', () => synth.cancel());
+  document.addEventListener(SPOILER_EVENT, () => segments.length && rebuild(), { signal });
+  window.addEventListener('pagehide', () => synth.cancel(), { signal });
+  // Moving to another page: the voice, the ambience and the recording effect
+  // stop there, and the music comes back up.
+  signal?.addEventListener('abort', () => (playing ? pause() : synth.cancel()));
 
   // ---- oscilloscope -------------------------------------------------------
+  // It only animates while someone can see it: the panel open, not
+  // minimised (the canvas is hidden then) and the tab in the foreground.
   const g = scope.getContext('2d');
   let phase = 0;
+  let frame = 0;
+  let stroke = '';
+  const visible = () => panel.classList.contains('is-open') && !panel.classList.contains('is-min') && !document.hidden;
   const draw = () => {
+    frame = 0;
+    if (signal?.aborted || !visible()) return;
     if (g) {
       const { width: w, height: h } = scope;
       g.clearRect(0, 0, w, h);
-      g.strokeStyle = getComputedStyle(panel).getPropertyValue('--scope') || '#7cff4f';
+      stroke ||= getComputedStyle(panel).getPropertyValue('--scope') || '#7cff4f';
+      g.strokeStyle = stroke;
       g.lineWidth = 2;
       g.beginPath();
       const amp = playing ? h * 0.32 : h * 0.04;
@@ -361,9 +376,15 @@ export function initNarrator(): void {
       g.stroke();
       phase += playing ? 0.35 : 0.04;
     }
-    requestAnimationFrame(draw);
+    frame = requestAnimationFrame(draw);
   };
-  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) requestAnimationFrame(draw);
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    wakeScope = () => {
+      if (!frame && visible()) frame = requestAnimationFrame(draw);
+    };
+    document.addEventListener('visibilitychange', wakeScope, { signal });
+    wakeScope();
+  }
 
   rebuild();
   setPlaying(false);

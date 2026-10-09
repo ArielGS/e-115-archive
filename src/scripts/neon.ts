@@ -156,7 +156,7 @@ export function flicker(logo: HTMLElement): void {
   playFlickerSound();
 }
 
-export function initNeon(): void {
+export function initNeon(signal?: AbortSignal): void {
   const logo = document.querySelector<HTMLElement>('.site-header .logo');
   if (!logo || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const tick = () => {
@@ -164,8 +164,14 @@ export function initNeon(): void {
     if (document.hidden || document.documentElement.classList.contains('intro-lock')) return;
     flicker(logo);
   };
-  setTimeout(() => {
+  let every: ReturnType<typeof setInterval> | undefined;
+  const first = setTimeout(() => {
     tick();
-    setInterval(tick, FLICKER_EVERY);
+    every = setInterval(tick, FLICKER_EVERY);
   }, FIRST_FLICKER);
+  // Leaving the page: the next page starts its own clock.
+  signal?.addEventListener('abort', () => {
+    clearTimeout(first);
+    clearInterval(every);
+  });
 }

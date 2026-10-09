@@ -44,11 +44,10 @@ export function initLang(): void {
         e.preventDefault();
         return;
       }
-      // Keep the section the reader was looking at.
-      if (location.hash) {
-        e.preventDefault();
-        location.href = link.href + portableHash(location.hash);
-      }
+      // Keep the section the reader was looking at. The link itself carries
+      // it, so the client router still moves without a reload (and the music
+      // keeps playing).
+      if (location.hash) link.hash = portableHash(location.hash);
     });
   });
 }

@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { url, SEO } from '../lib/site';
@@ -83,6 +84,9 @@ const ogLocale = (l: Lang) => (l === 'es' ? 'es_ES' : 'en_US');
     {ogImage && <meta name="twitter:image" content={ogImage} />}
     {structured.map((data) => <script is:inline type="application/ld+json" set:html={jsonLd(data)} />)}
     <meta name="generator" content={Astro.generator} />
+    <!-- Pages change without a reload, so the music and sounds carry on (see src/scripts/main.ts).
+         The page wipe is the CSS ::view-transition in base.css; browsers without view transitions just swap. -->
+    <ClientRouter fallback="swap" />
     <script is:inline set:html={detectScript({ lang, alternates, detect })}></script>
     <script is:inline>
       try {
@@ -103,6 +107,7 @@ const ogLocale = (l: Lang) => (l === 'es' ? 'es_ES' : 'en_US');
       <Footer lang={lang} />
     </div>
     <slot name="after" />
+    <div data-music-host hidden transition:persist="music"></div>
     <div class="vignette" aria-hidden="true"></div>
     <div class="crt" aria-hidden="true"></div>
     <script>

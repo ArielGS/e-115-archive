@@ -142,8 +142,10 @@ a:hover {
   content: '';
   position: absolute;
   inset: 0;
+  /* Plain alpha, no mix-blend-mode: multiplying by black looks exactly the
+     same, and a full-screen blend made the browser re-blend the whole page
+     on every frame of the grain below. */
   background: repeating-linear-gradient(to bottom, rgb(0 0 0 / 0.18) 0 1px, transparent 1px 3px);
-  mix-blend-mode: multiply;
 }
 .crt::after {
   content: '';
