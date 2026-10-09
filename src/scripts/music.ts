@@ -5,8 +5,9 @@
 // (see main.ts) and the element lives in a host the client router carries
 // over (transition:persist in Base.astro), so the track never stops between
 // pages. After a real reload it resumes where it was. It dips while the
-// voice narrator speaks. On a first visit it stays silent while the Flash
-// intro is up and starts with "enter with sound".
+// voice narrator speaks and fades out (then pauses) while the tab is in the
+// background, fading back in on return. On a first visit it stays silent
+// while the Flash intro is up and starts with "enter with sound".
 import { audio, soundEnabled } from './sfx';
 import { url } from '../lib/site';
 
@@ -18,6 +19,10 @@ export const NARRATOR_DUCK = 0.9;
 /** Fired by the narrator when it starts or stops speaking (detail: { playing }). */
 export const NARRATOR_EVENT = 'archivo115:narrator';
 
+/** Seconds the music takes to fade out when the tab goes to the background, and back in. */
+export const AWAY_FADE = 2.5;
+export const RETURN_FADE = 1.5;
+
 /** Element the router keeps from page to page (Base.astro); the track plays inside it. */
 export const MUSIC_HOST = '[data-music-host]';
 
@@ -26,6 +31,11 @@ const POSITION_KEY = 'archivo115:music-at';
 /** Target volume of the music, given whether the narrator is speaking. */
 export function musicVolume(narrating: boolean, base = MUSIC_VOLUME): number {
   return Number((narrating ? base * NARRATOR_DUCK : base).toFixed(4));
+}
+
+/** What the music should sound like right now: silent with sound off or the tab hidden. */
+export function musicLevel({ sound, narrating, hidden }: { sound: boolean; narrating: boolean; hidden: boolean }): number {
+  return sound && !hidden ? musicVolume(narrating) : 0;
 }
 
 /** Where to resume after a page change: a saved time inside the track, or 0. */
@@ -41,7 +51,7 @@ export function initMusic(): void {
   let narrating = false;
   let waiting = false;
 
-  const target = () => (soundEnabled() ? musicVolume(narrating) : 0);
+  const target = () => musicLevel({ sound: soundEnabled(), narrating, hidden: document.hidden });
 
   const setLevel = (fade: number) => {
     if (!el || !gain) return;
@@ -117,6 +127,26 @@ export function initMusic(): void {
       if (!soundEnabled()) playing.pause();
     }, 700);
   };
+
+  // Another tab in front: fade out slowly, then pause (no point streaming a
+  // track nobody hears). Back on this tab: play on and fade back in.
+  let away: ReturnType<typeof setTimeout> | undefined;
+  document.addEventListener('visibilitychange', () => {
+    clearTimeout(away);
+    if (!el) return;
+    el.dataset.away = String(document.hidden);
+    if (document.hidden) {
+      if (el.paused) return;
+      setLevel(AWAY_FADE);
+      const playing = el;
+      away = setTimeout(() => {
+        if (document.hidden) playing.pause();
+      }, AWAY_FADE * 1000 + 200);
+    } else if (soundEnabled()) {
+      el.play().catch(waitForGesture);
+      setLevel(RETURN_FADE);
+    }
+  });
 
   document.addEventListener('archivo115:sound', (e) => ((e as CustomEvent<{ on: boolean }>).detail.on ? start() : stop()));
   document.addEventListener(NARRATOR_EVENT, (e) => {

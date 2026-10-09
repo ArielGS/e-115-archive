@@ -7,7 +7,7 @@ import { url } from '../lib/site';
 /** High-voltage spark: plays when the visitor enters with sound. */
 export const SPARK = '/sounds/faespencer-high-voltage-spark-486895.mp3';
 
-/** Fired on document each time a sample starts (detail: { src, volume, from }). */
+/** Fired on document each time a sample starts (detail: { src, volume, from, echo }). */
 export const SAMPLE_EVENT = 'archivo115:sample';
 
 const files = new Map<string, Promise<ArrayBuffer | null>>();
@@ -37,6 +37,24 @@ function load(ac: AudioContext, path: string): Promise<AudioBuffer | null> {
   return buffer;
 }
 
+/**
+ * A cave-like echo: each repeat comes back `delay` seconds later, `feedback`
+ * times as loud and a little darker (it goes through a low-pass at `tone` Hz
+ * every time). `wet` is the level of the first repeat.
+ */
+export interface Echo {
+  delay: number;
+  feedback: number;
+  wet: number;
+  tone?: number;
+}
+
+/** Seconds until the repeats fade below `floor` (−60 dB by default). */
+export function echoTail({ delay, feedback, wet }: Echo, floor = 0.001): number {
+  if (feedback <= 0 || wet <= floor) return delay;
+  return Math.ceil(Math.log(floor / wet) / Math.log(feedback)) * delay;
+}
+
 export interface SampleOptions {
   /** 0–1, relative to the file's own level. */
   volume?: number;
@@ -45,12 +63,14 @@ export interface SampleOptions {
   /** Start at this fraction of the volume and swell to full in `attack` seconds. */
   from?: number;
   attack?: number;
+  /** Repeats of the sound, fading out (see Echo). */
+  echo?: Echo;
 }
 
 /** Entering with sound: the spark starts at 60% and swells to full almost at once. */
 export const ENTER_SPARK: SampleOptions = { from: 0.6, attack: 0.12 };
 
-export async function playSample(path: string, { volume = 1, maxDuration, from = 1, attack = 0 }: SampleOptions = {}): Promise<void> {
+export async function playSample(path: string, { volume = 1, maxDuration, from = 1, attack = 0, echo }: SampleOptions = {}): Promise<void> {
   if (!soundEnabled()) return;
   const ac = audio();
   if (!ac) return;
@@ -63,11 +83,28 @@ export async function playSample(path: string, { volume = 1, maxDuration, from =
   gain.gain.setValueAtTime(volume * from, t);
   if (attack > 0 && from !== 1) gain.gain.linearRampToValueAtTime(volume, t + attack);
   source.connect(gain).connect(ac.destination);
+  if (echo) {
+    // gain → delay → low-pass → feedback ─┐   (each lap: later, quieter, darker)
+    //          ▲──────────────────────────┘   low-pass → wet → speakers
+    const delay = ac.createDelay(Math.max(1, echo.delay));
+    delay.delayTime.value = echo.delay;
+    const tone = ac.createBiquadFilter();
+    tone.type = 'lowpass';
+    tone.frequency.value = echo.tone ?? 2200;
+    const feedback = ac.createGain();
+    feedback.gain.value = echo.feedback;
+    const wet = ac.createGain();
+    wet.gain.value = echo.wet;
+    gain.connect(delay).connect(tone).connect(feedback).connect(delay);
+    tone.connect(wet).connect(ac.destination);
+    const ring = (maxDuration ?? buffer.duration) + echoTail(echo) + 0.2;
+    setTimeout(() => [delay, tone, feedback, wet].forEach((n) => n.disconnect()), ring * 1000);
+  }
   source.start(t);
   if (maxDuration && maxDuration < buffer.duration) {
     gain.gain.setValueAtTime(volume, t + maxDuration * 0.7);
     gain.gain.linearRampToValueAtTime(0, t + maxDuration);
     source.stop(t + maxDuration + 0.05);
   }
-  document.dispatchEvent(new CustomEvent(SAMPLE_EVENT, { detail: { src: path, volume, from } }));
+  document.dispatchEvent(new CustomEvent(SAMPLE_EVENT, { detail: { src: path, volume, from, echo: echo ?? null } }));
 }

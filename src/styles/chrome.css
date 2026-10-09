@@ -70,37 +70,200 @@
   color: var(--text);
   white-space: nowrap;
 }
-.logo-mark {
-  position: relative;
-  width: 34px;
-  height: 34px;
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* --- the zombie eye (logo) -------------------------------------------------
+   --gx/--gy (iris) and --lid-top/--lid-bottom are set by zombie-eye.ts, in
+   SVG units. Blink, shake and rage are classes on .zombie-eye (the header
+   button and the eye of the Flash intro). */
+.zombie-eye {
+  --gx: 0;
+  --gy: 0;
+  --lid-top: 0;
+  --lid-bottom: 0;
+  /* Extra lid offset while the eye is still waking up (the Flash intro). */
+  --wake-top: 0;
+  --wake-bottom: 0;
+}
+.logo-eye {
   display: grid;
   place-items: center;
-  font-family: var(--font-pixel);
-  font-size: 10px;
-  color: var(--accent-ink);
-  background: radial-gradient(circle at 40% 35%, var(--accent-2), var(--accent) 60%, #8a3200);
+  width: 42px;
+  height: 35px;
+  padding: 0;
+  border: 0;
   border-radius: 50%;
-  box-shadow: 0 0 14px color-mix(in srgb, var(--accent) 70%, transparent), inset 0 -3px 6px rgb(0 0 0 / 0.4);
+  background: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
-.logo-mark::before,
-.logo-mark::after {
-  content: '';
-  position: absolute;
-  inset: -6px;
-  border: 1px solid color-mix(in srgb, var(--accent-2) 60%, transparent);
-  border-radius: 50%;
-  transform: rotateX(70deg);
-  animation: orbit 3.2s linear infinite;
+.logo-eye:focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 3px;
 }
-.logo-mark::after {
-  transform: rotateY(70deg);
-  animation-duration: 4.1s;
-  animation-direction: reverse;
+.ze {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 0 5px rgb(255 122 24 / 0.45)) drop-shadow(0 2px 0 rgb(0 0 0 / 0.6));
+  transition: filter 0.3s;
 }
-@keyframes orbit {
-  to {
-    rotate: 360deg;
+.ze-scar,
+.ze-lashes {
+  fill: none;
+  stroke: #0d0402;
+  stroke-width: 0.7;
+  stroke-linecap: round;
+}
+.ze-scar {
+  stroke: #120a06;
+  stroke-opacity: 0.8;
+}
+.ze-veins {
+  fill: none;
+  stroke: #b0182b;
+  stroke-width: 0.7;
+  stroke-linecap: round;
+  stroke-opacity: 0.8;
+  transition: stroke 0.2s, stroke-width 0.2s, stroke-opacity 0.2s;
+}
+.ze-fibers {
+  fill: none;
+  stroke: #8a2600;
+  stroke-width: 0.45;
+  stroke-opacity: 0.55;
+}
+.ze-iris {
+  transform: translate(calc(var(--gx) * 1px), calc(var(--gy) * 1px));
+  transition: transform 0.12s ease-out;
+}
+.ze-pupil-wrap,
+.ze-pupil {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.ze-pupil-wrap {
+  transition: transform 0.25s var(--ease-out);
+}
+/* It notices you: the pupil widens while the pointer is on it. */
+.logo-eye:hover .ze-pupil-wrap,
+.logo-eye:focus-visible .ze-pupil-wrap {
+  transform: scale(1.25);
+}
+.ze-flare {
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.ze-lid-top {
+  transform: translateY(calc((var(--lid-top) + var(--wake-top)) * 1px));
+  transition: transform 0.18s ease-out;
+}
+.ze-lid-bottom {
+  transform: translateY(calc((var(--lid-bottom) + var(--wake-bottom)) * 1px));
+  transition: transform 0.18s ease-out;
+}
+
+/* Blink: the upper lid comes down to meet the lower one. */
+.zombie-eye.is-blinking .ze-lid-top {
+  animation: eye-blink-top 0.18s ease-in-out;
+}
+.zombie-eye.is-blinking .ze-lid-bottom {
+  animation: eye-blink-bottom 0.18s ease-in-out;
+}
+@keyframes eye-blink-top {
+  45%,
+  60% {
+    transform: translateY(11px);
+  }
+}
+@keyframes eye-blink-bottom {
+  45%,
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Woken up: wide open, pupil snaps open, veins and iris burn red. */
+.zombie-eye.is-raging .ze-lid-top {
+  transform: translateY(-4px);
+}
+.zombie-eye.is-raging .ze-lid-bottom {
+  transform: translateY(2px);
+}
+.zombie-eye.is-raging .ze-pupil {
+  animation: eye-dilate 1.1s var(--ease-out) both;
+}
+.zombie-eye.is-raging .ze-iris-core {
+  animation: eye-tremble 0.09s steps(2) infinite;
+}
+.zombie-eye.is-raging .ze-flare {
+  opacity: 0.85;
+  transition-duration: 0.05s;
+}
+.zombie-eye.is-raging .ze-veins {
+  stroke: #ff2a3d;
+  stroke-width: 1;
+  stroke-opacity: 1;
+}
+.zombie-eye.is-raging .ze {
+  filter: drop-shadow(0 0 9px rgb(255 30 45 / 0.75)) drop-shadow(0 2px 0 rgb(0 0 0 / 0.6));
+  transition-duration: 0.05s;
+}
+.zombie-eye.is-shaking .ze {
+  animation: eye-shake 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+@keyframes eye-dilate {
+  0% {
+    transform: scale(1);
+  }
+  12% {
+    transform: scale(1.9, 1.6);
+  }
+  30% {
+    transform: scale(0.55, 0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes eye-tremble {
+  50% {
+    transform: translate(0.5px, -0.4px);
+  }
+}
+@keyframes eye-shake {
+  10% {
+    transform: translate(-2px, 1px) rotate(-7deg);
+  }
+  20% {
+    transform: translate(3px, -1px) rotate(6deg) scale(1.08);
+  }
+  32% {
+    transform: translate(-3px, 0) rotate(-5deg) scale(1.08);
+  }
+  44% {
+    transform: translate(2px, 1px) rotate(4deg);
+  }
+  58% {
+    transform: translate(-1px, -1px) rotate(-2deg);
+  }
+  74% {
+    transform: translate(1px, 0) rotate(1deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ze-iris,
+  .ze-lid,
+  .ze-pupil-wrap {
+    transition: none;
+  }
+  .zombie-eye.is-raging .ze-iris-core,
+  .zombie-eye.is-raging .ze-pupil {
+    animation: none;
   }
 }
 .logo-text {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { MUSIC, MUSIC_VOLUME, NARRATOR_DUCK, musicVolume, resumeAt } from '../../src/scripts/music';
+import { AWAY_FADE, MUSIC, MUSIC_VOLUME, NARRATOR_DUCK, RETURN_FADE, musicLevel, musicVolume, resumeAt } from '../../src/scripts/music';
 import { ENTER_SPARK, SPARK } from '../../src/scripts/samples';
 import { FIRST_FLICKER, FLICKER_EVERY, FLICKER_LENGTH, FLICKER_PATTERN, FLICKER_VOLUME, flickerScore } from '../../src/scripts/neon';
 import { existsSync } from 'node:fs';
@@ -16,6 +16,20 @@ describe('background music', () => {
   it('stays in the background', () => {
     expect(MUSIC_VOLUME).toBeGreaterThan(0);
     expect(MUSIC_VOLUME).toBeLessThanOrEqual(0.5);
+  });
+
+  it('is silent with sound off or while the tab is in the background', () => {
+    expect(musicLevel({ sound: true, narrating: false, hidden: false })).toBe(MUSIC_VOLUME);
+    expect(musicLevel({ sound: true, narrating: true, hidden: false })).toBe(musicVolume(true));
+    expect(musicLevel({ sound: true, narrating: false, hidden: true })).toBe(0);
+    expect(musicLevel({ sound: false, narrating: false, hidden: false })).toBe(0);
+  });
+
+  it('fades out slowly when you switch tabs, and comes back a little faster', () => {
+    expect(AWAY_FADE).toBeGreaterThanOrEqual(2);
+    expect(AWAY_FADE).toBeLessThanOrEqual(4);
+    expect(RETURN_FADE).toBeGreaterThan(0.5);
+    expect(RETURN_FADE).toBeLessThanOrEqual(AWAY_FADE);
   });
 
   it('resumes where the previous page left off, or from the start', () => {

@@ -152,7 +152,10 @@ export function flicker(logo: HTMLElement): void {
   logo.classList.add('is-flickering');
   setTimeout(() => logo.classList.remove('is-flickering'), FLICKER_LENGTH);
   const frames = FLICKER_PATTERN.map(([offset, level]) => ({ offset, opacity: level, easing: 'step-end' }));
-  logo.querySelectorAll<HTMLElement>('.logo-mark, .logo-text').forEach((part) => part.animate?.([...frames, { offset: 1, opacity: 1 }], FLICKER_LENGTH));
+  // The eye and the name flicker together.
+  (logo.closest('.brand') ?? logo)
+    .querySelectorAll<HTMLElement>('.logo-eye, .logo-text')
+    .forEach((part) => part.animate?.([...frames, { offset: 1, opacity: 1 }], FLICKER_LENGTH));
   playFlickerSound();
 }
 
