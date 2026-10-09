@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import { url } from '../lib/site';
+import ZombieEye from './ZombieEye.astro';
 import { baseId, byOrder, entryLang } from '../lib/maps';
 import { LANGS, localePath, pagePath, t, tList, type Lang } from '../i18n/ui';
 
@@ -28,10 +29,12 @@ const ticker = tList(lang, 'ticker');
 ---
 
 <header class="site-header">
-  <a class="logo" href={url(localePath(lang, '/'))} data-sfx aria-label={t(lang, 'logo.home')}>
-    <span class="logo-mark" aria-hidden="true">115</span>
-    <span class="logo-text">{t(lang, 'site.word')} <b>115</b></span>
-  </a>
+  <div class="brand">
+    <ZombieEye label={t(lang, 'logo.eye')} class="logo-eye" />
+    <a class="logo" href={url(localePath(lang, '/'))} data-sfx aria-label={t(lang, 'logo.home')}>
+      <span class="logo-text">{t(lang, 'site.word')} <b>115</b></span>
+    </a>
+  </div>
   <div class="lang-switch" role="group" aria-label={t(lang, 'nav.lang')}>
     {
       LANGS.map((l) => (

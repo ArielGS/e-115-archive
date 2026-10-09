@@ -1021,38 +1021,16 @@ html.intro-pending:has(.intro[data-intro]) {
   justify-items: center;
   text-align: center;
 }
-.intro-atom {
-  position: relative;
-  width: 120px;
-  height: 120px;
-  display: grid;
-  place-items: center;
+.intro-eye {
+  width: 150px;
+  height: 125px;
 }
-.intro-atom b {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 2.4rem;
-  color: var(--accent);
-  text-shadow: 0 0 24px var(--accent);
+.intro-eye .ze {
+  filter: drop-shadow(0 0 16px rgb(255 122 24 / 0.5)) drop-shadow(0 4px 0 rgb(0 0 0 / 0.6));
 }
-.intro-atom i {
-  position: absolute;
-  inset: 0;
-  border: 2px solid color-mix(in srgb, var(--accent-2) 70%, transparent);
-  border-radius: 50%;
-  animation: orbit 2.4s linear infinite;
-}
-.intro-atom i:nth-child(1) {
-  transform: rotateX(72deg);
-}
-.intro-atom i:nth-child(2) {
-  transform: rotateY(72deg);
-  animation-duration: 3.1s;
-}
-.intro-atom i:nth-child(3) {
-  transform: rotateX(72deg) rotateY(60deg);
-  animation-duration: 3.8s;
-  animation-direction: reverse;
+/* Waking up: the lids drag themselves open with the loading bar. */
+.intro-eye .ze-lid {
+  transition-duration: 0.35s;
 }
 .intro-title {
   margin: 0;

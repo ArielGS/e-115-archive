@@ -100,6 +100,7 @@ const es = {
   'nav.sound': 'Sonido',
   'nav.lang': 'Idioma',
   'logo.home': 'Archivo 115, inicio',
+  'logo.eye': 'Ojo zombi: haz clic para despertarlo',
   'ticker': [
     'Transmisión entrante desde el Archivo 115',
     'Todo lo que puede arruinarte la sorpresa está bloqueado con un ojo',
@@ -241,6 +242,7 @@ const en: Dict = {
   'nav.sound': 'Sound',
   'nav.lang': 'Language',
   'logo.home': 'Archive 115, home',
+  'logo.eye': 'Zombie eye: click to wake it up',
   'ticker': [
     'Incoming transmission from Archive 115',
     'Anything that could spoil the surprise is locked behind an eye',

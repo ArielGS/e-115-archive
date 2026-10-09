@@ -19,6 +19,7 @@ import { initMusic } from './music';
 import { initNeon } from './neon';
 import { initModals } from './modal';
 import { initCardCursor } from './cursor';
+import { initZombieEye } from './zombie-eye';
 
 /** Fired by the client router before the old page is replaced (see astro:transitions). */
 export const BEFORE_SWAP = 'astro:before-swap';
@@ -40,6 +41,7 @@ function initPage(): AbortController {
   initModals(signal);
   initNeon(signal);
   initCardCursor(signal);
+  initZombieEye(signal);
   return page;
 }
 

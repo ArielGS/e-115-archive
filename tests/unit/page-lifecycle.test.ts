@@ -8,7 +8,10 @@ import { FIRST_FLICKER } from '../../src/scripts/neon';
 
 const PAGE = `
   <header class="site-header">
-    <a class="logo" href="/"><span class="logo-mark"></span><span class="logo-text">115</span></a>
+    <div class="brand">
+      <button type="button" class="logo-eye" data-zombie-eye aria-label="Zombie eye"></button>
+      <a class="logo" href="/"><span class="logo-text">115</span></a>
+    </div>
     <a href="/#eras" data-games-toggle aria-expanded="false">Games</a>
     <button type="button" data-sound-toggle data-sfx aria-pressed="false">Sound: <span data-sound-label>OFF</span></button>
     <div data-games-menu hidden><ul><li><a href="/#bo3">BO3</a></li></ul></div>
