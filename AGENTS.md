@@ -79,3 +79,4 @@ Before you say a task is finished:
 - Changing a heading text and relying on its old anchor (anchors are generated from heading text).
 - Adding pages without a `path`/`lang` to `Base.astro` (the language switch and `hreflang` depend on them).
 - Hard-coding `/` URLs instead of `url()` from `src/lib/site.ts` (breaks GitHub Pages sub-path hosting).
+- Adding a `document`/`window` listener, timer or animation loop in a page script without tying it to the page `signal` (`src/scripts/main.ts`). Pages change through Astro's client router without a reload, so the music keeps playing; anything not torn down piles up on every page change. Same-page `#hash` links do not fire `hashchange` under the router.

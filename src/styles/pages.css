@@ -749,7 +749,10 @@ html:has(.modal[open]) {
 }
 .narrator-fab .bars i {
   width: 3px;
+  height: 14px;
   background: var(--accent-ink);
+  /* Scaled, not resized: the bars bounce without a layout on every frame. */
+  transform-origin: bottom;
   animation: eq 0.9s ease-in-out infinite alternate;
 }
 .narrator-fab .bars i:nth-child(2) {
@@ -760,10 +763,10 @@ html:has(.modal[open]) {
 }
 @keyframes eq {
   from {
-    height: 3px;
+    transform: scaleY(calc(3 / 14));
   }
   to {
-    height: 14px;
+    transform: none;
   }
 }
 .narrator {

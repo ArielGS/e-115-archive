@@ -1,9 +1,12 @@
 // Background music: one looping track ("Nuclear Winter", public/sounds) that
 // plays on every page while sound is on. It is streamed by an <audio> element
 // (thirteen minutes would be far too big to decode into memory) and routed
-// through WebAudio for smooth volume changes. It keeps its place between
-// pages and dips while the voice narrator speaks. On a first visit it stays
-// silent while the Flash intro is up and starts with "enter with sound".
+// through WebAudio for smooth volume changes. Pages change without a reload
+// (see main.ts) and the element lives in a host the client router carries
+// over (transition:persist in Base.astro), so the track never stops between
+// pages. After a real reload it resumes where it was. It dips while the
+// voice narrator speaks. On a first visit it stays silent while the Flash
+// intro is up and starts with "enter with sound".
 import { audio, soundEnabled } from './sfx';
 import { url } from '../lib/site';
 
@@ -14,6 +17,9 @@ export const MUSIC_VOLUME = 0.3;
 export const NARRATOR_DUCK = 0.9;
 /** Fired by the narrator when it starts or stops speaking (detail: { playing }). */
 export const NARRATOR_EVENT = 'archivo115:narrator';
+
+/** Element the router keeps from page to page (Base.astro); the track plays inside it. */
+export const MUSIC_HOST = '[data-music-host]';
 
 const POSITION_KEY = 'archivo115:music-at';
 
@@ -61,7 +67,7 @@ export function initMusic(): void {
     } catch {
       /* no saved position */
     }
-    document.body.append(el);
+    (document.querySelector(MUSIC_HOST) ?? document.body).append(el);
     gain = ac.createGain();
     gain.gain.value = 0;
     ac.createMediaElementSource(el).connect(gain).connect(ac.destination);

@@ -2,7 +2,7 @@
 // plain link to the game tabs until this script turns it into a button.
 import { blip } from './sfx';
 
-export function initGamesMenu(): void {
+export function initGamesMenu(signal?: AbortSignal): void {
   const toggle = document.querySelector<HTMLAnchorElement>('[data-games-toggle]');
   const menu = document.querySelector<HTMLElement>('[data-games-menu]');
   if (!toggle || !menu) return;
@@ -46,13 +46,21 @@ export function initGamesMenu(): void {
   menu.addEventListener('click', (e) => {
     if ((e.target as Element).closest('a')) setOpen(false);
   });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && isOpen()) setOpen(false, 'toggle');
-  });
-  document.addEventListener('click', (e) => {
-    const target = e.target as Node;
-    if (isOpen() && !menu.contains(target) && !toggle.contains(target)) setOpen(false);
-  });
+  document.addEventListener(
+    'keydown',
+    (e) => {
+      if (e.key === 'Escape' && isOpen()) setOpen(false, 'toggle');
+    },
+    { signal },
+  );
+  document.addEventListener(
+    'click',
+    (e) => {
+      const target = e.target as Node;
+      if (isOpen() && !menu.contains(target) && !toggle.contains(target)) setOpen(false);
+    },
+    { signal },
+  );
   // Tabbing out of the menu closes it.
   menu.addEventListener('focusout', (e) => {
     const next = e.relatedTarget as Node | null;

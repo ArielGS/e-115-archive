@@ -4,7 +4,7 @@
 
 const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-export function initReveal(): void {
+export function initReveal(signal?: AbortSignal): void {
   const items = document.querySelectorAll<HTMLElement>('[data-reveal], .prose > *, .figure, .dossier, .card');
   if (reduced() || !('IntersectionObserver' in window)) {
     items.forEach((el) => el.classList.add('in'));
@@ -21,9 +21,14 @@ export function initReveal(): void {
     },
     { rootMargin: '0px 0px -8% 0px', threshold: 0.05 },
   );
-  items.forEach((el) => {
+  signal?.addEventListener('abort', () => io.disconnect());
+  // Measure everything first, then change classes: interleaving the two would
+  // force a fresh layout for every block of a long guide.
+  const fold = innerHeight;
+  const onScreen = [...items].map((el) => el.getBoundingClientRect().top < fold);
+  items.forEach((el, i) => {
     // Already visible on load: show immediately, no pop-in.
-    if (el.getBoundingClientRect().top < innerHeight) el.classList.add('in');
+    if (onScreen[i]) el.classList.add('in');
     else {
       el.classList.add('will-reveal');
       io.observe(el);
@@ -31,7 +36,7 @@ export function initReveal(): void {
   });
 }
 
-export function initParallax(): void {
+export function initParallax(signal?: AbortSignal): void {
   if (reduced()) return;
   const layers = [...document.querySelectorAll<HTMLElement>('[data-parallax]')];
   if (!layers.length) return;
@@ -50,11 +55,11 @@ export function initParallax(): void {
       ticking = true;
       requestAnimationFrame(update);
     }
-  }, { passive: true });
+  }, { passive: true, signal });
   update();
 }
 
-export function initToc(): void {
+export function initToc(signal?: AbortSignal): void {
   const links = [...document.querySelectorAll<HTMLAnchorElement>('[data-toc] a[href^="#"]')];
   if (!links.length || !('IntersectionObserver' in window)) return;
   const byId = new Map(links.map((a) => [decodeURIComponent(a.hash.slice(1)), a]));
@@ -68,6 +73,7 @@ export function initToc(): void {
     },
     { rootMargin: '-20% 0px -70% 0px' },
   );
+  signal?.addEventListener('abort', () => io.disconnect());
   byId.forEach((_, id) => {
     const target = document.getElementById(id);
     if (target) io.observe(target);
@@ -93,9 +99,9 @@ export function initTilt(): void {
   });
 }
 
-export function initFx(): void {
-  initReveal();
-  initParallax();
-  initToc();
+export function initFx(signal?: AbortSignal): void {
+  initReveal(signal);
+  initParallax(signal);
+  initToc(signal);
   initTilt();
 }

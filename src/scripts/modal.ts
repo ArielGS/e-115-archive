@@ -3,7 +3,7 @@
 // the dimmed backdrop close it; the browser returns focus to the button.
 import { blip } from './sfx';
 
-export function initModals(): void {
+export function initModals(signal?: AbortSignal): void {
   document.querySelectorAll<HTMLButtonElement>('[data-modal-open]').forEach((btn) => {
     const dialog = document.getElementById(btn.getAttribute('aria-controls') ?? '');
     if (!(dialog instanceof HTMLDialogElement)) return;
@@ -27,9 +27,13 @@ export function initModals(): void {
     });
     // Browsers close a modal dialog on Escape themselves; this also covers
     // synthetic key events (tests, assistive tools) that skip that default.
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && dialog.open) dialog.close();
-    });
+    document.addEventListener(
+      'keydown',
+      (e) => {
+        if (e.key === 'Escape' && dialog.open) dialog.close();
+      },
+      { signal },
+    );
     // Old links to the section (/#manual) open the window.
     if (location.hash === `#${dialog.id}`) open();
   });
